@@ -37,7 +37,7 @@ module.exports = {
         name: 'Freshworks',
         description: 'Senior Backend Engineer, May 2021 - June 2022',
         link: 'https://www.freshworks.com/',
-        subdescription: 'Implemented a multilevel cache architecture for feature flags using Redis and in-memory cache which reduced the database calls by 99.9 percent. <br> Managed the development and execution of CRM and Contact Center product bundles and associated public APIs using Ember.js and Ruby on Rails which created an impact on sales and in turn increased company revenue. <br> Mentored Software Engineers on full-stack development best practices including reviewing code and tech specs.',
+        subdescription: 'Implemented a multilevel cache architecture for feature flags using Redis and in-memory cache which reduced the database calls by 99.9 percent. <br> Managed the development and execution of CRM and Contact Center product bundles and associated public APIs using Ember.js and Ruby on Rails which created an impact on sales and in turn increased company revenue (Documented <a href= "s3://ashwin-docs/Global Feature Flags.pdf" target="_blank">here</a>). <br> Mentored Software Engineers on full-stack development best practices including reviewing code and tech specs.',
       },
       {
         description: 'Software Engineer, June 2018 - May 2021',
