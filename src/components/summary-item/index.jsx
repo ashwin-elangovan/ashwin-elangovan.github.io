@@ -8,7 +8,7 @@ const classes = {
   
 };
 
-const SummaryItem = ({ name, description, link = false, internal = false, subdescription, paragraph }) => {
+const SummaryItem = ({ name, description, link = false, internal = false, subdescription, desc, paragraph }) => {
   let linkContent;
   if (internal) {
     linkContent = <Link to={link}>{name}</Link>;
@@ -26,10 +26,31 @@ const SummaryItem = ({ name, description, link = false, internal = false, subdes
       >
         {link ? linkContent : name}
       </h3>
-      <p className={`${classes.description} ${subdescription ? 'italic leading-10 font-normal' : ''}`}>{description}</p>
+      <p className={`${classes.description} ${subdescription || desc ? 'italic leading-10 font-normal' : ''}`}>{description}</p>
       <ul>
       {
-        subdescription ? subdescription.split(/<br> /).map(subdescription => <li key={subdescription} className={`${paragraph ? '':'list-disc'} text-justify`}>{subdescription}</li>) : ''
+        desc ? 
+        desc.map(
+          desc => 
+          <li key={desc} className={'list-disc text-justify'}>
+            {desc.content} {desc.link && desc.linkname ? <a href={desc.link} target='_blank' rel='noreferrer'>(<b><u>{desc.linkname}</u></b>).</a>: ''}
+          </li>
+        )
+        :
+        ''
+      }
+      </ul>
+      <ul>
+      {
+        subdescription ? 
+        subdescription.split(/<br> /).map(
+          subdescription => 
+          <li key={subdescription} className={`${paragraph ? '':'list-disc'} text-justify`}>
+            {subdescription}
+          </li>
+        )
+        :
+        ''
       }
       </ul>
     </div>

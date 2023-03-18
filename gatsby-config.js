@@ -19,7 +19,7 @@ module.exports = {
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
     projects: [
       {
-        name: 'Website change detector',
+        name: 'Theia: Website change detector',
         description: 'Feb 2022',
         subdescription: 'A Python web app that monitors a website and alerts upon visual or text changes with screenshots. Implemented image comparison using Pytorch, background workers using rq and email integration using Sendgrid.',
         link: '',
@@ -37,19 +37,74 @@ module.exports = {
         name: 'Freshworks',
         description: 'Senior Backend Engineer, May 2021 - June 2022',
         link: 'https://www.freshworks.com/',
-        subdescription: 'Implemented a multilevel cache architecture for feature flags using Redis and in-memory cache which reduced the database calls by 99.9 percent. <br> Managed the development and execution of CRM and Contact Center product bundles and associated public APIs using Ember.js and Ruby on Rails which created an impact on sales and in turn increased company revenue (Documented <a href="s3://ashwin-docs/Global Feature Flags.pdf" target="_blank">here</a>). <br> Mentored Software Engineers on full-stack development best practices including reviewing code and tech specs.',
+        subdescription: '',
+        desc: [
+          {
+            content: 'Implemented a multilevel cache architecture for feature flags using Redis and in-memory cache which reduced the database calls by 99.9 percent',
+            link: 'https://ashwin-docs.s3.amazonaws.com/Global-flag.pdf',
+            linkname: 'Documentation'
+          },
+          {
+            content: 'Managed the development and execution of CRM and Contact Center product bundles and associated public APIs using Ember.js and Ruby on Rails which created an impact on sales and in turn increased company revenue.',
+            link: '',
+            linkname:''
+          },
+          {
+            content: 'Mentored Software Engineers on full-stack development best practices including reviewing code and tech specs.',
+            link: '',
+            linkname:''
+          }
+        ]
       },
       {
         description: 'Software Engineer, June 2018 - May 2021',
-        subdescription: 'Collaborated with 4 members of the ML team and built a voice bot powered by Freddy AI engine and cast this into a customer-facing beta feature using Ruby on Rails and Memcached. <br> Enhanced the core call-routing design by allowing lookups in serverless custom apps like Helpdesk, ITSM, CRM, etc., to route calls based on dynamic real-time inputs using Node.js. <br> Collaborated with the billing team and created a custom subscription Ruby gem to achieve complete integration with the subscription management platform. <br> Received the Quality Champion award for fixing critical customer issues and enhancing product performance by restructuring frequent SQL queries. Improved the execution time of several APIs by 70 percent.'
+        desc: [
+          {
+            content: 'Collaborated with 4 members of the ML team and built a voice bot powered by Freddy AI engine and cast this into a customer-facing beta feature using Ruby on Rails and Memcached.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Enhanced the core call-routing design by allowing lookups in serverless custom apps like Helpdesk, ITSM, CRM, etc., to route calls based on dynamic real-time inputs using Node.js.',
+            link: '',
+            linkname:''
+          },
+          {
+            content: 'Collaborated with the billing team and created a custom subscription Ruby gem to achieve complete integration with the subscription management platform.',
+            link: '',
+            linkname:''
+          },
+          {
+            content: 'Received the Quality Champion award for fixing critical customer issues and enhancing product performance by restructuring frequent SQL queries. Improved the execution time of several APIs by 70 percent.',
+            link: '',
+            linkname:''
+          }
+        ]
       },
       {
         description: 'Product Development Intern, Jan 2018 - Jun 2018',
-        subdescription: 'Designed and developed new features on the admin application which drastically reduced the turnaround time for high-priority customer support tickets using Ruby on Rails. <br> Spearheaded the second phase of Freshcaller’s website development using HTML and JavaScript which provided a 360-degree view of Freshworks.'
+        desc: [
+          {
+            content: 'Designed and developed new features on the admin application which drastically reduced the turnaround time for high-priority customer support tickets using Ruby on Rails.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Spearheaded the second phase of Freshcaller’s website development using HTML and JavaScript which provided a 360-degree view of Freshworks.',
+            link: '',
+            linkname: ''
+          }
+        ]
       },
       {
         description: 'Summer Intern, Mar 2017 - Jul 2017',
-        subdescription: 'Improved SPACES - an internal web portal of Freshworks by developing a meeting room booking system for Freshdesk employees using Node.js which regulated meeting room bookings and reduced the waiting time.'
+        desc: [
+          {
+            content: 'Improved SPACES - an internal web portal of Freshworks by developing a meeting room booking system for Freshdesk employees using Node.js which regulated meeting room bookings and reduced the waiting time.',
+            link: '',
+            linkname: ''
+          }
+        ]
       },
     ],
     // Optional: List your skills, they must have `name` and `description`.

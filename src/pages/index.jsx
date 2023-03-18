@@ -57,7 +57,11 @@ export const pageQuery = graphql`
           description
           link
           subdescription
-          subdescriptionCount
+          desc {
+            content
+            link
+            linkname
+          }
         }
         skills {
           name

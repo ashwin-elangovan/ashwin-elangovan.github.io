@@ -86,6 +86,13 @@ exports.createSchemaCustomization = ({ actions }) => {
       link: String
       subdescription: String
       subdescriptionCount: String
+      desc: [ExpDescription]
+    }
+
+    type ExpDescription {
+      content: String
+      link: String
+      linkname: String
     }
 
     type MarkdownRemark implements Node {
