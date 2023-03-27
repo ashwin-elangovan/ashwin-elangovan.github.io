@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; 
 import {
   SiStatuspage
 } from 'react-icons/si';
@@ -15,6 +15,11 @@ const classes = {
 };
 
 const Layout = ({ children }) => {
+  const [svgHeight, setSvgHeight] = useState(0);
+
+  useEffect(() => {
+    setSvgHeight(window.innerHeight);
+  }, []);
   return (
     <div className={classes.outerWrapper}>
       <div>
@@ -34,9 +39,9 @@ const Layout = ({ children }) => {
       <svg
         className={classes.svg}
         width="404"
-        height="784"
+        height={svgHeight}
         fill="none"
-        viewBox="0 0 404 784"
+        viewBox={`0 0 404 ${svgHeight}`}
       >
         <defs>
           <pattern
@@ -57,7 +62,7 @@ const Layout = ({ children }) => {
         </defs>
         <rect
           width="404"
-          height="784"
+          height={svgHeight}
           fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
         />
       </svg>
