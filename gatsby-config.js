@@ -173,10 +173,21 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-dark-mode`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: `G-60H1R2RWVB`, // Optional Google Analytics
-      },
+        trackingIds: [
+          "G-2GWQ9WBCZX", // Google Analytics / GA
+        ],
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          // exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
