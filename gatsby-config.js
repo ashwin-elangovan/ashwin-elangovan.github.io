@@ -15,7 +15,7 @@ module.exports = {
     // Optional: LinkedIn account URL
     linkedin: `https://www.linkedin.com/in/ashwin-elangovan/`,
     // Content of the About Me section
-    about: `Computer Science Graduate student with 4 years of experience in full-stack development, object-oriented programming and microservices deployed in cloud, seeking internship opportunities starting Summer 2023.`,
+    about: `Computer Science Graduate student with 4 years of experience in full-stack development, object-oriented programming and microservices deployed in cloud.`,
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
     projects: [
       {
@@ -172,7 +172,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-dark-mode`,
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
