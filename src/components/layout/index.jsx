@@ -16,12 +16,15 @@ const classes = {
 
 const Layout = ({ children }) => {
   const [svgHeight, setSvgHeight] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     setSvgHeight(window.innerHeight);
+    setIsDesktop(window.innerWidth >= 768);
   }, []);
   return (
     <div className={classes.outerWrapper}>
+      {isDesktop && ( // Only render the following if isDesktop is true
       <div>
         <ul className={classes.list} style={{ position: "absolute", top: -10, right: 10 }}>
           <li className={classes.item}>
@@ -36,6 +39,7 @@ const Layout = ({ children }) => {
           </li>
         </ul>
       </div>
+      )}
       <svg
         className={classes.svg}
         width="404"

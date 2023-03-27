@@ -182,8 +182,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Nirmal Jasmatiya`,
-        short_name: `Nirmal`,
+        name: `Ashwin Elangovan`,
+        short_name: `Ashwin`,
         start_url: `/`,
         background_color: `#2f3e46`,
         theme_color: `#2f3e46`, // This color appears on mobile
