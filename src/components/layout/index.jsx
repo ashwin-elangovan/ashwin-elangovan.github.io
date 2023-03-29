@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
     <div className={classes.outerWrapper}>
       {isDesktop && ( // Only render the following if isDesktop is true
       <div>
-        <ul className={classes.list} style={{ position: "absolute", top: -10, right: 10 }}>
+        <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
           <li className={classes.item}>
             <a
               className={classes.link}
@@ -70,7 +70,7 @@ const Layout = ({ children }) => {
           fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
         />
       </svg>
-      <div className={classes.wrapper}>{children}</div>
+      <div className={classes.wrapper} style={{ marginRight: '10%' }}>{children}</div>
     </div>
   );
 };
