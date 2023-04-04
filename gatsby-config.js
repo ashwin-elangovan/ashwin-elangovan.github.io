@@ -14,6 +14,8 @@ module.exports = {
     github: `https://github.com/ashwin-elangovan`,
     // Optional: LinkedIn account URL
     linkedin: `https://www.linkedin.com/in/ashwin-elangovan/`,
+    // Optional: Resume URL
+    resume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-resume.pdf`,
     // Content of the About Me section
     about: `Computer Science Graduate student with 4 years of experience in full-stack development, object-oriented programming and microservices deployed in cloud.`,
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
@@ -182,10 +184,6 @@ module.exports = {
         pluginConfig: {
           // Puts tracking script in the head instead of the body
           head: true,
-          // Setting this parameter is also optional
-          respectDNT: true,
-          // Avoids sending pageview hits from custom paths
-          // exclude: ["/preview/**", "/do-not-track/me/too/"],
         },
       }
     },
