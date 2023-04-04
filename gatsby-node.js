@@ -109,3 +109,12 @@ exports.createSchemaCustomization = ({ actions }) => {
   `;
   createTypes(typeDefs);
 };
+
+exports.createPages = async ({ actions }) => {
+  const { createPage } = actions;
+
+  createPage({
+    path: '/resume',
+    component: require.resolve('./src/pages/resume.jsx'),
+  });
+};
