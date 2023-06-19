@@ -17,19 +17,25 @@ module.exports = {
     // Optional: Resume URL
     resume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-resume.pdf`,
     // Content of the About Me section
-    about: `Computer Science Graduate student with 4 years of experience in full-stack development, object-oriented programming and microservices deployed in cloud.`,
+    about: `Computer Science Graduate student at ASU with 4 years of experience in full-stack development, object-oriented programming and microservices deployed in cloud.`,
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
     projects: [
       {
         name: 'Theia: Website change detector',
-        description: 'Feb 2022',
-        subdescription: 'A Python web app that monitors a website and alerts upon visual or text changes with screenshots. Implemented image comparison using Pytorch, background workers using rq and email integration using Sendgrid.',
+        description: 'Feb 2023',
+        subdescription: 'Developed a web app using Python and React to monitor websites and send email alerts with screenshots upon changes. Utilized OpenCV-Python to detect image changes and rq for implementing background workers.Integrated with Sendgrid for email notifications and leveraged Amazon S3 to securely store website screenshots. Implemented public APIs using GraphQL, incorporating API key authentication for enhanced security.Achieved 95% test coverage using pytest and Selenium',
         link: '',
       },
       {
-        name: 'Tweet Aggregator',
-        description: 'July 2021',
-        subdescription: 'A Ruby on Rails web app that curates tweets of given categories and displays them on a daily basis using the Twitter API.',
+        name: 'FluxFlow: Visual analysis of anomalous information spreading',
+        description: 'Oct 2022',
+        subdescription: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on Twitter. Scraped and processed nearly a million tweets about related topics, creating a dataset to identify location- specific anomalies. Leveraged MongoDB as a robust storage solution for efficient retrieval and analysis of the dataset. Employed model- based clustering algorithms to categorize related topics and used D3.js to create captivating and intuitive visualization designs to present the anomalies, which enabled in-depth analysis.',
+        link: '',
+      },
+      {
+        name: 'Hodoor: A rate limiter service',
+        description: 'Jan 2022',
+        subdescription: 'Implemented a high-performance rate limiter middleware based on the sliding window algorithm using Java and Redis.',
         link: '',
       },
     ],
@@ -42,14 +48,24 @@ module.exports = {
         subdescription: '',
         desc: [
           {
-            content: 'Implemented a multilevel cache architecture for feature flags using Redis and in-memory cache which reduced the database calls by 99.9 percent',
+            content: 'Designed and developed a multilevel cache architecture using Redis, process and thread caches for handling feature flags. This reduced feature flag database calls by 99.99% (123M to 400 calls per day), and 6% of the overall database load.',
             link: 'https://ashwin-docs.s3.amazonaws.com/Global-flag.pdf',
             linkname: 'Documentation'
           },
           {
-            content: 'Managed the development and execution of CRM and Contact Center product bundles and associated public APIs using Ember.js and Ruby on Rails which created an impact on sales and in turn increased company revenue.',
+            content: 'Played a key role in the containerization of the product’s tech stack using Docker, resulting in more efficient development, testing, and deployment processes',
             link: '',
             linkname:''
+          },
+          {
+            content: 'Led the development of a shared cloud - based phone system which integrated with multiple Freshworks products, utilizing  Ember.js and Ruby on Rails, resulting in a 15% increase in product revenue.',
+            link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/shared-call-appearance/',
+            linkname: 'Product Website'
+          },
+          {
+            content: 'Deployed applications using AWS OpsWorks and Chef ensuring streamlined deployments and configuration management',
+            link: '',
+            linkname: ''
           },
           {
             content: 'Mentored Software Engineers on full-stack development best practices including reviewing code and tech specs.',
@@ -62,22 +78,22 @@ module.exports = {
         description: 'Software Engineer, June 2018 - May 2021',
         desc: [
           {
-            content: 'Collaborated with 4 members of the ML team and built a voice bot powered by Freddy AI engine and cast this into a customer-facing beta feature using Ruby on Rails and Memcached.',
-            link: '',
-            linkname: ''
+            content: 'Collaborated with a team of 4 machine learning experts and built a Freddy AI powered voicebot using Spring Boot, Rails and Memcached. Upon its beta release to the customers, this bot resolved an average of 25% of common customer queries',
+            link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/voicebot/',
+            linkname: 'Product Website'
           },
           {
-            content: 'Enhanced the core call-routing design by allowing lookups in serverless custom apps like Helpdesk, ITSM, CRM, etc., to route calls based on dynamic real-time inputs using Node.js.',
+            content: 'Enhanced the core design of the Freshdesk Contact Center by building an automated call routing framework using Node.js. This facilitated effortless integration with supported third-party apps and achieve parity with competing products.',
+            link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/automated-call-routing/',
+            linkname:'Product Website'
+          },
+          {
+            content: 'Built a custom library to handle the product’s subscription logic and streamline integration with the billing platform.',
             link: '',
             linkname:''
           },
           {
-            content: 'Collaborated with the billing team and created a custom subscription Ruby gem to achieve complete integration with the subscription management platform.',
-            link: '',
-            linkname:''
-          },
-          {
-            content: 'Received the Quality Champion award for fixing critical customer issues and enhancing product performance by restructuring frequent SQL queries. Improved the execution time of several APIs by 70 percent.',
+            content: 'Earned the Quality Champion award for resolving critical customer issues and restructuring frequent SQL queries, which reduced the response times of several APIs by up to 70%.',
             link: '',
             linkname:''
           }
@@ -87,12 +103,12 @@ module.exports = {
         description: 'Product Development Intern, Jan 2018 - Jun 2018',
         desc: [
           {
-            content: 'Designed and developed new features on the admin application which drastically reduced the turnaround time for high-priority customer support tickets using Ruby on Rails.',
+            content: 'Designed and implemented new features based on frequent customer issues on the product’s internal admin application using Ruby on Rails, reducing the number of high- priority L2 customer support tickets by 50%.',
             link: '',
             linkname: ''
           },
           {
-            content: 'Spearheaded the second phase of Freshcaller’s website development using HTML and JavaScript which provided a 360-degree view of Freshworks.',
+            content: 'Led the second phase of Freshcaller’s website development using HTML and JS, offering a 360-degree view of the product.',
             link: '',
             linkname: ''
           }
@@ -114,20 +130,16 @@ module.exports = {
       {
         name: 'Programming Languages',
         description:
-          'Ruby, Java, JavaScript, Python, C++, Bash',
-      },
-      {
-        name: 'Front-End',
-        description: 'HTML, CSS, Bootstrap',
+          'Ruby, Python, JavaScript, Java, C, C++, Bash',
       },
       {
         name: 'Frameworks',
-        description: 'Ruby on Rails, Ember.js, Node.js, Java Spring, Flask',
+        description: 'Ruby on Rails, Ember.js, Node.js, Flask, Django, Spring boot, React, Tailwind CSS',
       },
       {
-        name: 'Tools, Databases, and OS',
+        name: 'Tools and Databases',
         description:
-          'MySQL, Apache Kafka, MongoDB, AWS, Git, Redis, Jenkins, Docker, MacOS, Linux, CI / CD, Microservices, API design, Agile / Scrum, System Design, Jira, Confluence',
+          'MySQL, PostgreSQL, MongoDB, Apache Kafka, AWS, Git, gRPC, Jenkins, Docker, GraphQL, Redis, Memcached, Elasticsearch, Microsoft Azure, Kubernetes, Grafana, Selenium, Microservices, API design, Agile / Scrum, System Design, Jira, Confluence',
       },
     ],
   },
