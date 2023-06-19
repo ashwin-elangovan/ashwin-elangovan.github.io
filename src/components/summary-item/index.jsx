@@ -26,12 +26,12 @@ const SummaryItem = ({ name, description, link = false, internal = false, subdes
       >
         {link ? linkContent : name}
       </h3>
-      <p className={`${classes.description} ${subdescription || desc ? 'italic leading-10 font-normal' : ''}`}>{description}</p>
+      <p className={`${classes.description} ${subdescription || desc ? 'italic leading-10 font-normal' : ''} text-justify`}>{description}</p>
       <ul>
       {
-        desc ? 
+        desc ?
         desc.map(
-          desc => 
+          desc =>
           <li key={desc} className={'list-disc text-justify'}>
             {desc.content} {desc.link && desc.linkname ? <a href={desc.link} target='_blank' rel='noreferrer'>(<b><u>{desc.linkname}</u></b>).</a>: ''}
           </li>
@@ -42,9 +42,9 @@ const SummaryItem = ({ name, description, link = false, internal = false, subdes
       </ul>
       <ul>
       {
-        subdescription ? 
+        subdescription ?
         subdescription.split(/<br> /).map(
-          subdescription => 
+          subdescription =>
           <li key={subdescription} className={`${paragraph ? '':'list-disc'} text-justify`}>
             {subdescription}
           </li>

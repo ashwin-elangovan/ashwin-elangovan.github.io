@@ -23,7 +23,7 @@ module.exports = {
       {
         name: 'Theia: Website change detector',
         description: 'Feb 2023',
-        subdescription: 'Developed a web app using Python and React to monitor websites and send email alerts with screenshots upon changes. Utilized OpenCV-Python to detect image changes and rq for implementing background workers.Integrated with Sendgrid for email notifications and leveraged Amazon S3 to securely store website screenshots. Implemented public APIs using GraphQL, incorporating API key authentication for enhanced security.Achieved 95% test coverage using pytest and Selenium',
+        subdescription: 'Developed a web app using Python and React to monitor websites and send email alerts with screenshots upon changes. Utilized OpenCV-Python to detect image changes and rq for implementing background workers. Integrated with Sendgrid for email notifications and leveraged Amazon S3 to securely store website screenshots. Implemented public APIs using GraphQL, incorporating API key authentication for enhanced security. Achieved 95% test coverage using pytest and Selenium',
         link: '',
       },
       {
