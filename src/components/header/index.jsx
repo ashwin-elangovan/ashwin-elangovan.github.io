@@ -17,10 +17,10 @@ const classes = {
   imageWrapper: 'w-full max-w-150',
   image: 'rounded-full transform transition-all duration-150 hover:scale-105',
   contentWrapper: 'flex-none pt-6 md:pt-1 md:flex-1 md:pl-20',
-  name: 'text-5xl text-gray-900 dark:text-white font-bold leading-tight hover:text-black dark:hover:text-blue-200',
-  description: 'text-gray-600 dark:text-gray-300 italic',
+  name: 'text-7xl text-gray-900 dark:text-white font-bold leading-tight hover:text-black dark:hover:text-blue-200',
+  description: 'text-gray-600 dark:text-gray-300 italic pt-2',
   list: 'mt-6 uppercase tracking-wider',
-  item: 'inline list-none pr-4',
+  item: 'inline list-none pr-8',
   link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-blue-400',
   linkName: 'ml-1'
 };

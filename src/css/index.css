@@ -254,3 +254,20 @@ pre[class*='language-'] {
   padding: 2px 5px !important;
   text-shadow: none !important;
 }
+
+.tags {
+  background: rgb(74, 85, 104);
+  color: rgb(237, 242, 247);
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: 0.75rem;
+  height: 2em;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.5;
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 0 0.75em;
+  transition: 0.2s ease-in;
+}

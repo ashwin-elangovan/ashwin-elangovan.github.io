@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import {
   SiStatuspage
 } from 'react-icons/si';
@@ -16,11 +16,13 @@ const classes = {
 
 const Layout = ({ children }) => {
   const [svgHeight, setSvgHeight] = useState(0);
+  const [svgWidth, setSvgWidth] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     setSvgHeight(window.innerHeight);
     setIsDesktop(window.innerWidth >= 768);
+    setSvgWidth((window.innerWidth * 30) / 100);
   }, []);
   return (
     <div className={classes.outerWrapper}>
@@ -43,10 +45,10 @@ const Layout = ({ children }) => {
       <svg
         className={classes.svg}
         style={{ top: '10%' }}
-        width="404"
+        width={svgWidth}
         height={svgHeight}
         fill="none"
-        viewBox={`0 0 404 ${svgHeight}`}
+        viewBox={`0 0 ${svgWidth} ${svgHeight}`}
       >
         <defs>
           <pattern
@@ -66,12 +68,12 @@ const Layout = ({ children }) => {
           </pattern>
         </defs>
         <rect
-          width="404"
+          width={svgWidth}
           height={svgHeight}
           fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
         />
       </svg>
-      <div className={classes.wrapper} style={{ marginRight: '10%' }}>{children}</div>
+      <div className={classes.wrapper} style={{ width: "70%", marginRight: '10%' }}>{children}</div>
     </div>
   );
 };

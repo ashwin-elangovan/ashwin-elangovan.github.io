@@ -7,7 +7,7 @@ module.exports = {
     // Main Site Title
     title: `Ashwin Elangovan | Full-Stack Developer`,
     // Description that goes under your name in main bio
-    description: `Student at Arizona State University.`,
+    description: `Grad CS student at Arizona State University.`,
     // Optional: Twitter account handle
     author: `@im_ashwinn`,
     // Optional: Github account URL
@@ -21,49 +21,95 @@ module.exports = {
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
     projects: [
       {
-        name: 'Theia: Website change detector',
-        description: 'Feb 2023',
-        subdescription: 'Developed a web app using Python and React to monitor websites and send email alerts with screenshots upon changes. Utilized OpenCV-Python to detect image changes and rq for implementing background workers. Integrated with Sendgrid for email notifications and leveraged Amazon S3 to securely store website screenshots. Implemented public APIs using GraphQL, incorporating API key authentication for enhanced security. Achieved 95% test coverage using pytest and Selenium',
+        name: 'Theia: Website change detector | Feb 2023',
+        subdescription: '',
         link: '',
+        description_bullets: [
+          {
+            content: 'Developed a web app using Python and React to monitor websites and send email alerts with screenshots upon changes.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Utilized OpenCV-Python to detect image changes and rq for implementing background workers. Integrated with Sendgrid for email notifications and leveraged Amazon S3 to securely store website screenshots.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Implemented public APIs using GraphQL, incorporating API key authentication for enhanced security.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Achieved 95% test coverage using pytest and Selenium',
+            link: '',
+            linkname: ''
+          }
+        ],
+
       },
       {
-        name: 'FluxFlow: Visual analysis of anomalous information spreading',
-        description: 'Oct 2022',
-        subdescription: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on Twitter. Scraped and processed nearly a million tweets about related topics, creating a dataset to identify location- specific anomalies. Leveraged MongoDB as a robust storage solution for efficient retrieval and analysis of the dataset. Employed model- based clustering algorithms to categorize related topics and used D3.js to create captivating and intuitive visualization designs to present the anomalies, which enabled in-depth analysis.',
+        name: 'FluxFlow: Visual analysis of anomalous information spreading | Oct 2022',
+        // description: 'Oct 2022',
+        subdescription: '',
         link: '',
+        description_bullets: [
+          {
+            content: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on Twitter.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Scraped and processed nearly a million tweets about related topics, creating a dataset to identify location- specific anomalies. Leveraged MongoDB as a robust storage solution for efficient retrieval and analysis of the dataset.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Employed model- based clustering algorithms to categorize related topics and used D3.js to create captivating and intuitive visualization designs to present the anomalies, which enabled in-depth analysis.',
+            link: '',
+            linkname: ''
+          }
+        ],
       },
       {
-        name: 'Hodoor: A rate limiter service',
-        description: 'Jan 2022',
-        subdescription: 'Implemented a high-performance rate limiter middleware based on the sliding window algorithm using Java and Redis.',
+        name: 'Hodoor: A rate limiter service | Jan 2022',
+        // description: 'Jan 2022',
+        subdescription: '',
         link: '',
+        description_bullets: [
+          {
+            content: 'Implemented a high-performance rate limiter middleware based on the sliding window algorithm using Java and Redis.',
+            link: '',
+            linkname: ''
+          }
+        ],
       },
     ],
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
       {
         name: 'Freshworks',
-        description: 'Senior Backend Engineer, May 2021 - June 2022',
+        description: 'Senior Software Engineer | May 2021 - June 2022',
         link: 'https://www.freshworks.com/',
         subdescription: '',
-        desc: [
+        description_bullets: [
           {
-            content: 'Designed and developed a multilevel cache architecture using Redis, process and thread caches for handling feature flags. This reduced feature flag database calls by 99.99% (123M to 400 calls per day), and 6% of the overall database load.',
+            content: 'Designed and developed a multilevel cache architecture using Redis, process and thread caches for handling feature flags. This reduced feature flag database calls by 99.99% (123M to 400 calls per day), and 6% of the overall database load',
             link: 'https://ashwin-docs.s3.amazonaws.com/Global-flag.pdf',
             linkname: 'Documentation'
           },
           {
-            content: 'Played a key role in the containerization of the product’s tech stack using Docker, resulting in more efficient development, testing, and deployment processes',
+            content: 'Played a key role in the containerization of the product’s tech stack using Docker, resulting in more efficient development, testing, and deployment processes.',
             link: '',
             linkname:''
           },
           {
-            content: 'Led the development of a shared cloud - based phone system which integrated with multiple Freshworks products, utilizing  Ember.js and Ruby on Rails, resulting in a 15% increase in product revenue.',
+            content: 'Led the development of a shared cloud - based phone system which integrated with multiple Freshworks products, utilizing  Ember.js and Ruby on Rails, resulting in a 15% increase in product revenue',
             link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/shared-call-appearance/',
             linkname: 'Product Website'
           },
           {
-            content: 'Deployed applications using AWS OpsWorks and Chef ensuring streamlined deployments and configuration management',
+            content: 'Deployed applications using AWS OpsWorks and Chef ensuring streamlined deployments and configuration management.',
             link: '',
             linkname: ''
           },
@@ -75,8 +121,8 @@ module.exports = {
         ]
       },
       {
-        description: 'Software Engineer, June 2018 - May 2021',
-        desc: [
+        description: 'Software Engineer | June 2018 - May 2021',
+        description_bullets: [
           {
             content: 'Collaborated with a team of 4 machine learning experts and built a Freddy AI powered voicebot using Spring Boot, Rails and Memcached. Upon its beta release to the customers, this bot resolved an average of 25% of common customer queries',
             link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/voicebot/',
@@ -100,8 +146,8 @@ module.exports = {
         ]
       },
       {
-        description: 'Product Development Intern, Jan 2018 - Jun 2018',
-        desc: [
+        description: 'Product Development Intern | Jan 2018 - Jun 2018',
+        description_bullets: [
           {
             content: 'Designed and implemented new features based on frequent customer issues on the product’s internal admin application using Ruby on Rails, reducing the number of high- priority L2 customer support tickets by 50%.',
             link: '',
@@ -115,8 +161,8 @@ module.exports = {
         ]
       },
       {
-        description: 'Summer Intern, Mar 2017 - Jul 2017',
-        desc: [
+        description: 'Summer Intern | Mar 2017 - Jul 2017',
+        description_bullets: [
           {
             content: 'Improved SPACES - an internal web portal of Freshworks by developing a meeting room booking system for Freshdesk employees using Node.js which regulated meeting room bookings and reduced the waiting time.',
             link: '',
@@ -129,17 +175,19 @@ module.exports = {
     skills: [
       {
         name: 'Programming Languages',
-        description:
-          'Ruby, Python, JavaScript, Java, C, C++, Bash',
+        // subdescription: 'Ruby, Python, JavaScript, Java, C, C++, Bash',
+        tags: ['Ruby', 'Python', 'JavaScript', 'Java', 'C', 'C++', 'Bash']
       },
       {
         name: 'Frameworks',
-        description: 'Ruby on Rails, Ember.js, Node.js, Flask, Django, Spring boot, React, Tailwind CSS',
+        // description: 'Ruby on Rails, Ember.js, Node.js, Flask, Django, Spring boot, React, Tailwind CSS',
+        tags: ['Ruby on Rails', 'Ember.js', 'Node.js', 'Flask', 'Django', 'Spring boot', 'React', 'Tailwind CSS']
       },
       {
         name: 'Tools and Databases',
-        description:
-          'MySQL, PostgreSQL, MongoDB, Apache Kafka, AWS, Git, gRPC, Jenkins, Docker, GraphQL, Redis, Memcached, Elasticsearch, Microsoft Azure, Kubernetes, Grafana, Selenium, Microservices, API design, Agile / Scrum, System Design, Jira, Confluence',
+        // description:
+        //   'MySQL, PostgreSQL, MongoDB, Apache Kafka, AWS, Git, gRPC, Jenkins, Docker, GraphQL, Redis, Memcached, Elasticsearch, Microsoft Azure, Kubernetes, Grafana, Selenium, Microservices, API design, Agile / Scrum, System Design, Jira, Confluence',
+        tags: ['MySQL', 'PostgreSQL', 'MongoDB', 'Apache Kafka', 'AWS', 'Git', 'gRPC', 'Jenkins', 'Docker', 'GraphQL', 'Redis', 'Memcached', 'Elasticsearch', 'Microsoft Azure', 'Kubernetes', 'Grafana', 'Selenium', 'Microservices', 'API design', 'Agile / Scrum', 'System Design', 'Jira', 'Confluence']
       },
     ],
   },

@@ -83,8 +83,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       link: String
       subdescription: String
-      subdescriptionCount: String
-      desc: [ExpDescription]
+      description_bullets: [ExpDescription]
     }
 
     type ExpDescription {

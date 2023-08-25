@@ -11,6 +11,8 @@ const SectionSkills = ({ skills }) => {
           key={skill.name}
           name={skill.name}
           description={skill.description}
+          subdescription={skill.subdescription}
+          tags={skill.tags}
         />
       ))}
     </Section>

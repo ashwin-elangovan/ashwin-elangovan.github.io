@@ -52,13 +52,18 @@ export const pageQuery = graphql`
           description
           link
           subdescription
+          description_bullets {
+            content
+            link
+            linkname
+          }
         }
         experience {
           name
           description
           link
           subdescription
-          desc {
+          description_bullets {
             content
             link
             linkname
@@ -67,6 +72,8 @@ export const pageQuery = graphql`
         skills {
           name
           description
+          subdescription
+          tags
         }
       }
     }
