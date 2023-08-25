@@ -65,7 +65,7 @@ module.exports = {
             linkname: ''
           },
           {
-            content: 'Employed model- based clustering algorithms to categorize related topics and used D3.js to create captivating and intuitive visualization designs to present the anomalies, which enabled in-depth analysis.',
+            content: 'Employed model-based clustering algorithms to categorize related topics and used D3.js to create captivating and intuitive visualization designs to present the anomalies, which enabled in-depth analysis.',
             link: '',
             linkname: ''
           }
