@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Seo from '../components/seo';
 
 const classes = {
-  title: 'text-lg font-bold',
+  title: 'dark:text-lg font-bold',
   link: 'underline',
 };
 

@@ -68,6 +68,7 @@ export const pageQuery = graphql`
             link
             linkname
           }
+          title_image
         }
         skills {
           name

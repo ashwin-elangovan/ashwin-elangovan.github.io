@@ -84,6 +84,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       link: String
       subdescription: String
       description_bullets: [ExpDescription]
+      title_image: String
     }
 
     type ExpDescription {

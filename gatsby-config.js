@@ -88,9 +88,44 @@ module.exports = {
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
       {
+        name: 'Arizona State University',
+        description: 'Graduate Teaching Assistant | Aug 2023 - Present',
+        link: 'https://www.asu.edu/',
+        title_image: 'asu',
+        subdescription: '',
+        description_bullets: [
+          {
+            content: 'Working as a Teaching Assistant for the course CSE 551: Foundations of Algorithms. Responsible for grading assignments, conducting office hours and assisting students with their queries.',
+            link: '',
+            linkname: ''
+          }
+        ]
+      },
+      {
+        description: 'Student Supervisor | Aug 2023 - Aug 2023',
+        description_bullets: [
+          {
+            content: 'By showcasing exceptional skills as a Verifier, I earned a promotion to a supervisor role, contributing to tasks such as training, and mentoring of new student verifiers.',
+            link: '',
+            linkname: ''
+          }
+        ]
+      },
+      {
+        description: 'Student Verifier | Sep 2022 - July 2023',
+        description_bullets: [
+          {
+            content: 'Proficiently verified and processed a high volume of Domestic College, High School, and International student transcripts. Handled confidential data for over 3000 students while achieving a remarkable accuracy rate of more than 98%.',
+            link: '',
+            linkname: ''
+          }
+        ]
+      },
+      {
         name: 'Freshworks',
-        description: 'Senior Software Engineer | May 2021 - June 2022',
+        description: 'Senior Software Engineer | May 2021 - July 2022',
         link: 'https://www.freshworks.com/',
+        title_image: 'freshworks',
         subdescription: '',
         description_bullets: [
           {

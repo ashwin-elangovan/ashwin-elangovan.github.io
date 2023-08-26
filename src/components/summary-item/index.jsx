@@ -1,11 +1,21 @@
 import { Link } from "gatsby";
 import React from "react";
 import { BiLinkExternal as IconExternalLink } from "react-icons/bi";
+import { useEffect } from 'react';
+import { useState } from 'react';
+
+import freshworksImgLight from '../../images/freshworks-light.png';
+import freshworksImgDark from '../../images/freshworks-dark.png';
+import asuImgLight from '../../images/asu-light.png';
+import asuImgDark from '../../images/asu-dark.png';
+
 
 const classes = {
   wrapper: "mb-6",
   name: "font-bold text-gray-900 dark:text-white pb-1 pt-0",
   description: "text-md text-gray-600 dark:text-gray-200 font-semibold text-lg",
+  image: 'transform transition-all duration-150 hover:scale-105',
+  imageWrapper: 'w-full max-w-[25%] text-gray-600 dark:text-gray-200'
 };
 
 const SummaryItem = ({
@@ -17,6 +27,7 @@ const SummaryItem = ({
   description_bullets,
   paragraph,
   tags,
+  title_image,
 }) => {
   let linkContent;
   if (internal) {
@@ -27,31 +38,60 @@ const SummaryItem = ({
 
   const dParts = description ? description.split("|") : null;
   const nParts = name ? name.split("|") : null;
+
+  let light_image = null;
+  let dark_image = null;
+
+  switch (title_image) {
+    case 'freshworks':
+      light_image = freshworksImgLight;
+      dark_image = freshworksImgDark;
+      break;
+    case 'asu':
+      light_image = asuImgLight;
+      dark_image = asuImgDark;
+      break;
+    default:
+    // code block
+  }
   return (
     <div className={classes.wrapper}>
-      {/* Title */}
-      {nParts && nParts.length === 2 ? (
-        <p
-          className={`${classes.name} ${link
-              ? "hover:text-black dark:hover:text-blue-400 text-3xl"
-              : "font-semibold text-lg"
-            } text-justify flex justify-between`}
-        >
-          <span>{nParts[0]}</span>
-          <span>
-            <i>{nParts[1]}</i>
-          </span>
-        </p>
+      {!title_image ? (
+        nParts && nParts.length === 2 ? (
+          // Render this if nParts has 2 elements
+          <p
+            className={`${classes.name} ${link
+                ? "hover:text-black dark:hover:text-blue-400 text-3xl"
+                : "font-semibold text-lg"
+              } text-justify flex justify-between`}
+          >
+            <span>{nParts[0]}</span>
+            <span>
+              <i>{nParts[1]}</i>
+            </span>
+          </p>
+        ) : (
+          // Render this if nParts doesn't have 2 elements
+          <h3
+            className={`${classes.name} ${link
+                ? "hover:text-black dark:hover:text-blue-400 text-3xl"
+                : "font-semibold text-lg"
+              }`}
+          >
+            {link ? linkContent : name}
+          </h3>
+        )
       ) : (
-        <h3
-          className={`${classes.name} ${link
-              ? "hover:text-black dark:hover:text-blue-400 text-3xl"
-              : "font-semibold text-lg"
-            }`}
-        >
-          {link ? linkContent : name}
-        </h3>
+          <div className={`flex justify-center items-center mx-auto text-center pb-8`}>
+            <div className={`${classes.imageWrapper}`}>
+            <Link to= {link}>
+                <img className={`${classes.image} block dark:hidden`} src={light_image} alt={name} />
+                <img className={`${classes.image} hidden dark:block`} src={dark_image} alt={name} />
+            </Link>
+          </div>
+          </div>
       )}
+
 
       {/* Description */}
       {dParts && dParts.length === 2 ? (
@@ -123,7 +163,7 @@ const SummaryItem = ({
             return (
               <span
                 key={tag}
-                className={'tags'}
+                className={'tags dark:bg-slate-500 bg-slate-600'}
               >
                 {tag}
               </span>

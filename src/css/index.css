@@ -256,7 +256,6 @@ pre[class*='language-'] {
 }
 
 .tags {
-  background: rgb(74, 85, 104);
   color: rgb(237, 242, 247);
   vertical-align: middle;
   align-items: center;
@@ -264,6 +263,22 @@ pre[class*='language-'] {
   display: inline-flex;
   font-size: 0.9rem;
   height: 2em;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.5;
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 0 0.75em;
+  transition: 0.2s ease-in;
+}
+
+.images {
+  /* background: rgb(116, 128, 148); */
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  /* font-size: 0.9rem; */
+  height: 4em;
   justify-content: center;
   white-space: nowrap;
   line-height: 1.5;
