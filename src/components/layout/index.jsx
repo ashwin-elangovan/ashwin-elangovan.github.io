@@ -21,9 +21,11 @@ const Layout = ({ children }) => {
   const [svgWidth, setSvgWidth] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
 
-  const [themeIcon, setThemeIcon] = useState(
-    (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />
-  );
+  // const [themeIcon, setThemeIcon] = useState(
+  //   (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />
+  // );
+
+  const [themeIcon, setThemeIcon] = useState(null);
 
   const updateTheme = () => {
     document.querySelector('body').classList.add('changing-theme');
@@ -47,6 +49,11 @@ const Layout = ({ children }) => {
     setSvgHeight(window.innerHeight);
     setIsDesktop(window.innerWidth >= 768);
     setSvgWidth((window.innerWidth * 30) / 100);
+    // Set theme icon based on localStorage (client-side)
+    if (typeof window !== 'undefined') {
+      const theme = localStorage.getItem('theme');
+      setThemeIcon((theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />);
+    }
   }, []);
   return (
     <div className={classes.outerWrapper}>
