@@ -3,6 +3,8 @@ import {
   SiStatuspage
 } from 'react-icons/si';
 
+import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
+
 
 const classes = {
   wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
@@ -19,6 +21,28 @@ const Layout = ({ children }) => {
   const [svgWidth, setSvgWidth] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
 
+  const [themeIcon, setThemeIcon] = useState(
+    (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />
+  );
+
+  const updateTheme = () => {
+    document.querySelector('body').classList.add('changing-theme');
+    if ((localStorage.theme === 'dark') || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      localStorage.theme = 'light';
+      document.querySelector('body').classList.remove('dark');
+      document.querySelector('body').classList.add('light');
+      setThemeIcon(() => <BsFillSunFill />);
+    } else {
+      localStorage.theme = 'dark';
+      document.querySelector('body').classList.remove('light');
+      document.querySelector('body').classList.add('dark');
+      setThemeIcon(() => <BsFillMoonFill />);
+    }
+    window.setTimeout(() => {
+      document.querySelector('body').classList.remove('changing-theme');
+    });
+  };
+
   useEffect(() => {
     setSvgHeight(window.innerHeight);
     setIsDesktop(window.innerWidth >= 768);
@@ -29,16 +53,21 @@ const Layout = ({ children }) => {
       {isDesktop && ( // Only render the following if isDesktop is true
       <div>
         <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
-          <li className={classes.item}>
-            <a
-              className={classes.link}
-              href={`https://ashwin.statuspage.io/`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <SiStatuspage /> <span className={classes.linkName}>STATUS PAGE</span>
-            </a>
-          </li>
+            <li className={classes.item}>
+              <a className={`${classes.link} cursor-pointer`} onClick={() => updateTheme()}>
+                {themeIcon}
+              </a>
+            </li>
+            <li className={classes.item}>
+              <a
+                className={classes.link}
+                href={`https://ashwin.statuspage.io/`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <SiStatuspage /> <span className={classes.linkName}>STATUS PAGE</span>
+              </a>
+            </li>
         </ul>
       </div>
       )}
