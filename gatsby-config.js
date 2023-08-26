@@ -226,6 +226,9 @@ module.exports = {
       },
     ],
   },
+  flags: {
+    DEV_SSR: true
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
