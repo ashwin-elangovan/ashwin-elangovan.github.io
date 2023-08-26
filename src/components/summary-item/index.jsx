@@ -120,7 +120,7 @@ const SummaryItem = ({
               key={description_bullets}
               className={"list-disc text-justify pt-2 font-light"}
             >
-              {description_bullets.content}{" "}
+              <div dangerouslySetInnerHTML={{ __html: description_bullets.content  }} />
               {description_bullets.link && description_bullets.linkname ? (
                 <a
                   href={description_bullets.link}

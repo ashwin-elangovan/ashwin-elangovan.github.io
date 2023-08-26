@@ -286,3 +286,29 @@ pre[class*='language-'] {
   padding: 0 0.75em;
   transition: 0.2s ease-in;
 }
+
+/* @font-face {
+  font-family: 'Anonima';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/anonima.woff) format("woff");
+}
+
+.custom-font-link {
+  font-family: 'Anonima', sans-serif;
+}
+
+@font-face {
+  font-family: 'Gilland';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/gilland.woff) format("woff");
+}
+
+.custom-font-link2 {
+  font-family: 'Gilland', sans-serif;
+} */

@@ -41,7 +41,7 @@ module.exports = {
             linkname: ''
           },
           {
-            content: 'Achieved 95% test coverage using pytest and Selenium',
+            content: 'Achieved 95% test coverage using pytest and Selenium.',
             link: '',
             linkname: ''
           }
