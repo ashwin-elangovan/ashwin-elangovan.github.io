@@ -12,6 +12,7 @@ const classes = {
   svg: 'hidden fixed transform right-0 z-0 xl:block',
   list: 'mt-6 uppercase tracking-wider',
   item: 'inline list-none pr-4',
+  bigitem: 'inline list-none pr-6',
   link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-blue-400',
   linkName: 'ml-1'
 };
@@ -60,7 +61,7 @@ const Layout = ({ children }) => {
       {isDesktop && ( // Only render the following if isDesktop is true
       <div>
         <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
-            <li className={classes.item}>
+            <li className={classes.bigitem}>
               <a className={`${classes.link} cursor-pointer`} onClick={() => updateTheme()}>
                 {themeIcon}
               </a>
