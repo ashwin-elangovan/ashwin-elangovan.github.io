@@ -1,21 +1,21 @@
 import { Link } from "gatsby";
 import React from "react";
 import { BiLinkExternal as IconExternalLink } from "react-icons/bi";
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect } from "react";
+import { useState } from "react";
+import ReactDOMServer from "react-dom/server";
 
-import freshworksImgLight from '../../images/freshworks-light.png';
-import freshworksImgDark from '../../images/freshworks-dark.png';
-import asuImgLight from '../../images/asu-light.png';
-import asuImgDark from '../../images/asu-dark.png';
-
+import freshworksImgLight from "../../images/freshworks-light.png";
+import freshworksImgDark from "../../images/freshworks-dark.png";
+import asuImgLight from "../../images/asu-light.png";
+import asuImgDark from "../../images/asu-dark.png";
 
 const classes = {
   wrapper: "mb-6",
   name: "font-bold text-gray-900 dark:text-white pb-1 pt-0",
   description: "text-md text-gray-600 dark:text-gray-200 font-semibold text-lg",
-  image: 'transform transition-all duration-150 hover:scale-105',
-  imageWrapper: 'w-full max-w-[25%] text-gray-600 dark:text-gray-200'
+  image: "transform transition-all duration-150 hover:scale-105",
+  imageWrapper: "w-full max-w-[25%] text-gray-600 dark:text-gray-200",
 };
 
 const SummaryItem = ({
@@ -43,11 +43,11 @@ const SummaryItem = ({
   let dark_image = null;
 
   switch (title_image) {
-    case 'freshworks':
+    case "freshworks":
       light_image = freshworksImgLight;
       dark_image = freshworksImgDark;
       break;
-    case 'asu':
+    case "asu":
       light_image = asuImgLight;
       dark_image = asuImgDark;
       break;
@@ -82,16 +82,25 @@ const SummaryItem = ({
           </h3>
         )
       ) : (
-          <div className={`flex justify-center items-center mx-auto text-center pb-8`}>
-            <div className={`${classes.imageWrapper}`}>
-            <Link to= {link}>
-                <img className={`${classes.image} block dark:hidden`} src={light_image} alt={name} />
-                <img className={`${classes.image} hidden dark:block`} src={dark_image} alt={name} />
+        <div
+          className={`flex justify-center items-center mx-auto text-center pb-8`}
+        >
+          <div className={`${classes.imageWrapper}`}>
+            <Link to={link}>
+              <img
+                className={`${classes.image} block dark:hidden`}
+                src={light_image}
+                alt={name}
+              />
+              <img
+                className={`${classes.image} hidden dark:block`}
+                src={dark_image}
+                alt={name}
+              />
             </Link>
           </div>
-          </div>
+        </div>
       )}
-
 
       {/* Description */}
       {dParts && dParts.length === 2 ? (
@@ -120,24 +129,28 @@ const SummaryItem = ({
               key={description_bullets}
               className={"list-disc text-justify pt-2 font-light"}
             >
-              <div dangerouslySetInnerHTML={{ __html: description_bullets.content  }} />
-              {description_bullets.link && description_bullets.linkname ? (
-                <a
-                  href={description_bullets.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center font-bold hover:text-black dark:hover:text-blue-400"
-                >
-                  [
-                  <span className="mr-1">{description_bullets.linkname}</span>
-                  <span>
-                    <IconExternalLink />
-                  </span>
-                  ]
-                </a>
-              ) : (
-                ""
-              )}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${description_bullets.content}
+    ${description_bullets.link && description_bullets.linkname
+                      ? `<a
+            href="${description_bullets.link}"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center font-bold hover:text-black dark:hover:text-blue-400 ml-2"
+          >
+            [
+            <span class="mr-1">${description_bullets.linkname}</span>
+            <span>
+              ${ReactDOMServer.renderToString(<IconExternalLink />)}
+            </span>
+            ]
+          </a>`
+                      : ""
+                    }
+  `,
+                }}
+              />
             </li>
           ))
           : ""}
@@ -161,17 +174,15 @@ const SummaryItem = ({
         <div>
           {tags.map((tag) => {
             return (
-              <span
-                key={tag}
-                className={'tags dark:bg-slate-500 bg-slate-600'}
-              >
+              <span key={tag} className={"tags dark:bg-slate-500 bg-slate-600"}>
                 {tag}
               </span>
             );
           })}
         </div>
-      ): ""}
-
+      ) : (
+        ""
+      )}
     </div>
   );
 };
