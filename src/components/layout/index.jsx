@@ -21,11 +21,6 @@ const Layout = ({ children }) => {
   const [svgHeight, setSvgHeight] = useState(0);
   const [svgWidth, setSvgWidth] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
-
-  // const [themeIcon, setThemeIcon] = useState(
-  //   (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />
-  // );
-
   const [themeIcon, setThemeIcon] = useState(null);
 
   const updateTheme = () => {

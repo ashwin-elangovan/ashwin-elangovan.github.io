@@ -1,26 +1,23 @@
-import React from 'react';
-import { Link } from 'gatsby';
+// import React from 'react';
+// import { Link } from 'gatsby';
+import { useEffect } from 'react';
+import { navigate } from 'gatsby'
 
-import Layout from '../components/layout';
-import Seo from '../components/seo';
+// import Layout from '../components/layout';
+// import Seo from '../components/seo';
 
 const classes = {
   title: 'dark:text-lg font-bold',
   link: 'underline',
 };
 
-const NotFoundPage = () => (
-  <Layout>
-    <Seo title="Not found" />
-    <h1 className={classes.title}>404: Not Found</h1>
-    <p>
-      You just hit a route that doesn't exist.{' '}
-      <Link className={classes.link} to="/">
-        Return to safety
-      </Link>
-      .
-    </p>
-  </Layout>
-);
+const NotFoundPage = () => {
+  useEffect(() => {
+    // Use the navigate function to redirect to your homepage
+    navigate('/'); // Replace with the actual path to your homepage
+  }, []);
+
+  // return <div>Redirecting to homepage...</div>;
+};
 
 export default NotFoundPage;
