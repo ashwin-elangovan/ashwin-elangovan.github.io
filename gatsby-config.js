@@ -22,6 +22,7 @@ module.exports = {
     projects: [
       {
         name: 'Theia: Website change detector | Feb 2023',
+        description: '',
         subdescription: '',
         link: '',
         description_bullets: [

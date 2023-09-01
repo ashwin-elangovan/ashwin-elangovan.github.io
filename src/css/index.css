@@ -287,6 +287,10 @@ pre[class*='language-'] {
   transition: 0.2s ease-in;
 }
 
+.mobile-center {
+  text-align: center;
+}
+
 /* @font-face {
   font-family: 'Anonima';
   font-weight: 100 900;

@@ -56,6 +56,11 @@ const Layout = ({ children }) => {
       setThemeIcon((theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />);
     }
   }, []);
+
+  const containerStyle = {
+    width: isDesktop ? '70%' : '100%', // Adjust the width based on the device type
+    marginRight: isDesktop ? '10%' : '0', // Adjust the margin for desktop
+  };
   return (
     <div className={classes.outerWrapper}>
       {isDesktop && ( // Only render the following if isDesktop is true
@@ -110,7 +115,7 @@ const Layout = ({ children }) => {
           fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
         />
       </svg>
-      <div className={classes.wrapper} style={{ width: "70%", marginRight: '10%' }}>{children}</div>
+      <div className={classes.wrapper} style={containerStyle}>{children}</div>
     </div>
   );
 };

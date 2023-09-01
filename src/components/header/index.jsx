@@ -8,6 +8,8 @@ import {
   IoChatbox as IconBlog
 } from 'react-icons/io5';
 
+import { useState, useEffect } from 'react';
+
 import { AiFillFile as IconResume } from "react-icons/ai";
 
 import profileImg from '../../images/profile.jpeg';
@@ -25,7 +27,15 @@ const classes = {
   linkName: 'ml-1'
 };
 
+
+
 const Header = ({ metadata = {}, noBlog = false }) => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 768);
+  }, []);
+
   const twitter = get(metadata, 'author', false);
   const github = get(metadata, 'github', false);
   const linkedin = get(metadata, 'linkedin', false);
@@ -33,12 +43,12 @@ const Header = ({ metadata = {}, noBlog = false }) => {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.imageWrapper}>
+      <div className={`${classes.imageWrapper} ${isDesktop ? '' : 'mx-auto'}`}>
         <Link to="/">
           <img className={classes.image} src={profileImg} alt={metadata.name} />
         </Link>
       </div>
-      <div className={classes.contentWrapper}>
+      <div className={`${classes.contentWrapper} ${isDesktop ? '' : 'mobile-center'}`}>
         <h1 className={classes.name}>
           <Link to="/">{metadata.name}</Link>
         </h1>

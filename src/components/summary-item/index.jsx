@@ -15,7 +15,9 @@ const classes = {
   name: "font-bold text-gray-900 dark:text-white pb-1 pt-0",
   description: "text-md text-gray-600 dark:text-gray-200 font-semibold text-lg",
   image: "transform transition-all duration-150 hover:scale-105",
-  imageWrapper: "w-full max-w-[25%] text-gray-600 dark:text-gray-200",
+  mobileImageSize: "lg:w-1/4 w-full max-w-[60%]",
+  desktopImageSize: "w-full max-w-[25%]",
+  imageWrapper: "text-gray-600 dark:text-gray-200",
 };
 
 const SummaryItem = ({
@@ -35,6 +37,12 @@ const SummaryItem = ({
   } else {
     linkContent = <a href={link}>{name}</a>;
   }
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 768);
+  }, []);
 
   const dParts = description ? description.split("|") : null;
   const nParts = name ? name.split("|") : null;
@@ -59,24 +67,32 @@ const SummaryItem = ({
       {!title_image ? (
         nParts && nParts.length === 2 ? (
           // Render this if nParts has 2 elements
-          <p
+          <div
             className={`${classes.name} ${link
                 ? "hover:text-black dark:hover:text-blue-400 text-3xl"
                 : "font-semibold text-lg"
-              } text-justify flex justify-between`}
+              } ${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}`}
           >
-            <span>{nParts[0]}</span>
-            <span>
-              <i>{nParts[1]}</i>
-            </span>
-          </p>
+            <div>
+              <span>{nParts[0]}</span>
+            </div>
+            {isDesktop ? (
+              <div>
+                <span><i>{nParts[1]}</i></span>
+              </div>
+            ) : (
+              <div>
+                  <i>{nParts[1]}</i>
+              </div>
+            )}
+          </div>
         ) : (
           // Render this if nParts doesn't have 2 elements
           <h3
             className={`${classes.name} ${link
                 ? "hover:text-black dark:hover:text-blue-400 text-3xl"
                 : "font-semibold text-lg"
-              }`}
+                }${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}`}
           >
             {link ? linkContent : name}
           </h3>
@@ -85,7 +101,7 @@ const SummaryItem = ({
         <div
           className={`flex justify-center items-center mx-auto text-center pb-8`}
         >
-          <div className={`${classes.imageWrapper}`}>
+            <div className={`${classes.imageWrapper} ${isDesktop ? classes.desktopImageSize : classes.mobileImageSize}`}>
             <Link to={link}>
               <img
                 className={`${classes.image} block dark:hidden`}
@@ -104,15 +120,20 @@ const SummaryItem = ({
 
       {/* Description */}
       {dParts && dParts.length === 2 ? (
-        <p
-          className={`${classes.description} ${subdescription || description_bullets ? "leading-10 pt-3" : ""
-            } text-justify flex justify-between`}
-        >
-          <span>{dParts[0]}</span>
-          <span>
-            <i>{dParts[1]}</i>
-          </span>
-        </p>
+        <div className={`${classes.description} ${subdescription || description_bullets ? 'leading-10 pt-3' : ''} ${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}`}>
+          <div>
+            <span>{dParts[0]}</span>
+          </div>
+          {isDesktop ? (
+            <div>
+              <span><i>{dParts[1]}</i></span>
+            </div>
+          ) : (
+            <div>
+              <i>{dParts[1]}</i>
+            </div>
+          )}
+        </div>
       ) : (
         <p
           className={`${classes.description} ${subdescription || description_bullets ? "leading-10 pt-3" : ""
@@ -121,6 +142,8 @@ const SummaryItem = ({
           {description}
         </p>
       )}
+
+
       {/* Description bullets */}
       <ul>
         {description_bullets
@@ -171,7 +194,7 @@ const SummaryItem = ({
 
       {/* Tags */}
       {tags ? (
-        <div>
+        <div className="pt-3">
           {tags.map((tag) => {
             return (
               <span key={tag} className={"tags dark:bg-slate-500 bg-slate-600"}>
