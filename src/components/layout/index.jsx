@@ -8,7 +8,7 @@ import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
 const classes = {
   wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
-  outerWrapper: 'relative dark:bg-gray-800',
+  outerWrapper: 'relative dark:bg-slate-900',
   svg: 'hidden fixed transform right-0 z-0 xl:block',
   list: 'mt-6 uppercase tracking-wider',
   item: 'inline list-none pr-4',

@@ -170,9 +170,14 @@ module.exports = {
             linkname:'Product Website'
           },
           {
-            content: 'Built a custom library to handle the product’s subscription logic and streamline integration with the billing platform.',
+            content: 'Built a custom subscription library to handle the product’s billing logic and streamline integration with the billing platform.',
             link: '',
             linkname:''
+          },
+          {
+            content: 'Used Apache Kafka for publishing product events across various services, ensuring robust data consistency within the ecosystem.',
+            link: '',
+            linkname: ''
           },
           {
             content: 'Earned the Quality Champion award for resolving critical customer issues and restructuring frequent SQL queries, which reduced the response times of several APIs by up to 70%.',
