@@ -19,7 +19,9 @@ const classes = {
   imageWrapper: 'w-full max-w-150',
   image: 'rounded-full transform transition-all duration-150 hover:scale-105',
   contentWrapper: 'flex-none pt-6 md:pt-1 md:flex-1 md:pl-20',
-  name: 'text-7xl text-gray-900 dark:text-white font-bold leading-tight hover:text-black dark:hover:text-blue-200',
+  // name: 'text-7xl text-transparent bg-gradient-to-r from-black text-gray-700 dark:text-white font-bold leading-tight hover:text-black dark:hover:text-blue-200 bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-white dark:to-gray-500',
+  name: 'text-7xl font-bold leading-tight hover:text-black dark:hover:text-blue-200 text-transparent bg-clip-text hover:text-black dark:text-white dark:text-transparent',
+  gradient: 'bg-gradient-to-r from-black to-gray-100 dark:from-white dark:to-gray-700',
   description: 'text-gray-600 dark:text-gray-300 italic pt-2',
   list: 'mt-6 uppercase tracking-wider',
   item: 'inline list-none pr-8',
@@ -49,7 +51,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
         </Link>
       </div>
       <div className={`${classes.contentWrapper} ${isDesktop ? '' : 'mobile-center'}`}>
-        <h1 className={classes.name}>
+        <h1 className={`${classes.name} ${classes.gradient}`}>
           <Link to="/">{metadata.name}</Link>
         </h1>
         <p className={classes.description}>{metadata.description}</p>
