@@ -291,6 +291,20 @@ pre[class*='language-'] {
   text-align: center;
 }
 
+/* For Light Mode */
+.light-text-gradient {
+  --text-gradient-color: linear-gradient(90deg, white, gray 500);
+}
+
+/* For Dark Mode */
+.dark-text-gradient {
+  --text-gradient-color: linear-gradient(90deg, gray 500, white);
+}
+
+.bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 /* @font-face {
   font-family: 'Anonima';
   font-weight: 100 900;
