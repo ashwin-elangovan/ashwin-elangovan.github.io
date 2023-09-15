@@ -6,10 +6,10 @@ import { navigate } from 'gatsby'
 // import Layout from '../components/layout';
 // import Seo from '../components/seo';
 
-const classes = {
-  title: 'dark:text-lg font-bold',
-  link: 'underline',
-};
+// const classes = {
+//   title: 'dark:text-lg font-bold',
+//   link: 'underline',
+// };
 
 const NotFoundPage = () => {
   useEffect(() => {

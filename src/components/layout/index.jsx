@@ -20,7 +20,7 @@ const classes = {
 const Layout = ({ children }) => {
   const [svgHeight, setSvgHeight] = useState(0);
   const [svgWidth, setSvgWidth] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
   const [themeIcon, setThemeIcon] = useState(null);
 
   const updateTheme = () => {
@@ -79,6 +79,7 @@ const Layout = ({ children }) => {
         </ul>
       </div>
       )}
+      { isDesktop && ( // Only render the following if isDesktop is true
       <svg
         className={classes.svg}
         style={{ top: '10%' }}
@@ -110,6 +111,7 @@ const Layout = ({ children }) => {
           fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
         />
       </svg>
+      )}
       <div className={classes.wrapper} style={containerStyle}>{children}</div>
     </div>
   );

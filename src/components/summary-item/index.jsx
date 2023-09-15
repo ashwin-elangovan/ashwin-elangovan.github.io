@@ -38,7 +38,7 @@ const SummaryItem = ({
     linkContent = <a href={link}>{name}</a>;
   }
 
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     setIsDesktop(window.innerWidth >= 768);
