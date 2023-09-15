@@ -24,11 +24,10 @@ const classes = {
   description: 'text-gray-600 dark:text-gray-300 italic pt-2',
   list: 'mt-6 uppercase tracking-wider',
   item: 'inline list-none pr-8',
+  zoom: 'transform transition-all duration-150 hover:scale-125',
   link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-blue-400',
   linkName: 'ml-1'
 };
-
-
 
 const Header = ({ metadata = {}, noBlog = false }) => {
   const [isDesktop, setIsDesktop] = useState(true);
@@ -58,30 +57,30 @@ const Header = ({ metadata = {}, noBlog = false }) => {
           {twitter && (
             <li className={classes.item}>
               <a
-                className={classes.link}
+                className={`${classes.link} ${classes.zoom}`}
                 href={`https://twitter.com/${twitter}`}
               >
-                <IconTwitter /> <span className={classes.linkName}>Twitter</span>
+                <IconTwitter/> <span className= {classes.linkName}>Twitter</span>
               </a>
             </li>
           )}
           {github && (
             <li className={classes.item}>
-              <a className={classes.link} href={github}>
+              <a className={`${classes.link} ${classes.zoom}`} href={github}>
                 <IconGithub /> <span className={classes.linkName}>GitHub</span>
               </a>
             </li>
           )}
           {linkedin && (
             <li className={classes.item}>
-              <a className={classes.link} href={linkedin}>
+              <a className={`${classes.link} ${classes.zoom}`} href={linkedin}>
                 <IconLinkedin /> <span className={classes.linkName}>LinkedIn</span>
               </a>
             </li>
           )}
           {resume && (
             <li className={classes.item}>
-              <a className={classes.link} href={resume}>
+              <a className={`${classes.link} ${classes.zoom}`} href={resume}>
                 <IconResume /> <span className={classes.linkName}>Resume</span>
               </a>
             </li>

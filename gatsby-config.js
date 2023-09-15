@@ -7,7 +7,7 @@ module.exports = {
     // Main Site Title
     title: `Ashwin Elangovan | Full-Stack Developer`,
     // Description that goes under your name in main bio
-    description: `Grad CS student at Arizona State University.`,
+    // description: `Grad CS student at Arizona State University.`,
     // Optional: Twitter account handle
     author: `@im_ashwinn`,
     // Optional: Github account URL
@@ -17,7 +17,7 @@ module.exports = {
     // Optional: Resume URL
     resume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-resume.pdf`,
     // Content of the About Me section
-    about: `Computer Science Graduate student at ASU with 4 years of experience in full-stack development, object-oriented programming and microservices deployed in cloud.`,
+    about: `I am a Grad student pursuing Masters in Computer Science at Arizona State University. I have worked as an Inten, Software Engineer, Senior Software Engineer at Freshworks for 4+ years where I explored full-stack development, object-oriented programming and microservices deployed in cloud.`,
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
     projects: [
       {
@@ -106,7 +106,7 @@ module.exports = {
         description: 'Student Supervisor | Aug 2023 - Aug 2023',
         description_bullets: [
           {
-            content: 'By showcasing exceptional skills as a Verifier, I earned a promotion to a supervisor role, contributing to tasks such as training, and mentoring of new student verifiers.',
+            content: 'By showcasing exceptional skills as a Verifier, I earned a promotion to the supervisor role, contributing to tasks such as training, and mentoring of new student verifiers.',
             link: '',
             linkname: ''
           }
@@ -116,8 +116,13 @@ module.exports = {
         description: 'Student Verifier | Sep 2022 - July 2023',
         description_bullets: [
           {
-            content: 'Proficiently verified and processed a high volume of Domestic College, High School, and International student transcripts. Handled confidential data for over 3000 students while achieving a remarkable accuracy rate of more than 98%.',
+            content: 'Proficiently verified and processed a high volume of Domestic College, High School, and International student transcripts.',
             link: '',
+            linkname: ''
+          },
+          {
+            content: 'Handled confidential data for over 3000 students while achieving a remarkable accuracy rate of more than 98%.',
+            link:'',
             linkname: ''
           }
         ]

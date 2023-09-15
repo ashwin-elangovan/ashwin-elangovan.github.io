@@ -14,7 +14,7 @@ const classes = {
   wrapper: "mb-6",
   name: "font-bold text-gray-900 dark:text-white pb-1 pt-0",
   description: "text-md text-gray-600 dark:text-gray-200 font-semibold text-lg",
-  image: "transform transition-all duration-150 hover:scale-105",
+  image: "transform transition-all duration-150 hover:scale-125",
   mobileImageSize: "lg:w-1/4 w-full max-w-[60%]",
   desktopImageSize: "w-full max-w-[25%]",
   imageWrapper: "text-gray-600 dark:text-gray-200",
@@ -99,7 +99,7 @@ const SummaryItem = ({
         )
       ) : (
         <div
-          className={`flex justify-center items-center mx-auto text-center pb-8`}
+          className={`flex justify-center items-center mx-auto text-center pb-6 pt-1`}
         >
             <div className={`${classes.imageWrapper} ${isDesktop ? classes.desktopImageSize : classes.mobileImageSize}`}>
             <Link to={link}>
