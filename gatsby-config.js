@@ -50,7 +50,7 @@ module.exports = {
 
       },
       {
-        name: 'FluxFlow: Visual analysis of anomalous information spreading | Oct 2022',
+        name: 'FluxFlow: Visual analysis of anomalous information spreading in social media | Oct 2022',
         // description: 'Oct 2022',
         subdescription: '',
         link: '',
@@ -145,7 +145,7 @@ module.exports = {
             linkname:''
           },
           {
-            content: 'Led the development of a shared cloud - based phone system which integrated with multiple Freshworks products, utilizing  Ember.js and Ruby on Rails, resulting in a 15% increase in product revenue',
+            content: 'Led the development of a shared cloud - based phone system which integrated with multiple Freshworks products, utilizing  Ember.js and Ruby on Rails, resulting in a 15% increase in product revenue.',
             link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/shared-call-appearance/',
             linkname: 'Product Website'
           },
