@@ -68,23 +68,33 @@ const SummaryItem = ({
         nParts && nParts.length === 2 ? (
           // Render this if nParts has 2 elements
           <div
-            className={`${classes.name} ${link
-                ? "hover:text-black dark:hover:text-blue-400 text-3xl"
-                : "font-semibold text-lg"
-              } ${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}`}
+            className={`
+              ${classes.name}
+              ${link ? 'hover:text-black dark:hover:text-blue-400' : ''}
+              font-semibold text-lg
+              ${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}
+            `}
           >
-            <div>
-              <span>{nParts[0]}</span>
+            <div className={isDesktop ? 'w-10/12' : ''}>
+              {link ? (
+                <a href={link} target="_blank" rel="noopener noreferrer">{nParts[0]}</a>
+              ) : (
+                <span>{nParts[0]}</span>
+              )}
             </div>
-            {isDesktop ? (
-              <div>
-                <span><i>{nParts[1]}</i></span>
-              </div>
-            ) : (
-              <div>
+            <div className={isDesktop ? 'w-2/12 flex justify-end' : 'mt-3'}>
+              {link ? (
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <i>{nParts[1]}</i>
+                  </span>
+                </a>
+              ) : (
+                <span>
                   <i>{nParts[1]}</i>
-              </div>
-            )}
+                </span>
+              )}
+            </div>
           </div>
         ) : (
           // Render this if nParts doesn't have 2 elements
@@ -156,22 +166,18 @@ const SummaryItem = ({
                 dangerouslySetInnerHTML={{
                   __html: `${description_bullets.content}
     ${description_bullets.link && description_bullets.linkname
-                      ? `<a
-            href="${description_bullets.link}"
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex items-center font-bold hover:text-black dark:hover:text-blue-400 ml-2"
-          >
-            [
-            <span class="mr-1">${description_bullets.linkname}</span>
-            <span>
-              ${ReactDOMServer.renderToString(<IconExternalLink />)}
-            </span>
-            ]
-          </a>`
+                      ? `<a href="${description_bullets.link}" target="_blank" rel="noreferrer"
+                          class="inline-flex items-center font-bold hover:text-black dark:hover:text-blue-400 ml-2"
+                         >
+                          [
+                          <span class="mr-1">${description_bullets.linkname}</span>
+                          <span>
+                            ${ReactDOMServer.renderToString(<IconExternalLink />)}
+                          </span>
+                          ]
+                        </a>`
                       : ""
-                    }
-  `,
+                    }`,
                 }}
               />
             </li>

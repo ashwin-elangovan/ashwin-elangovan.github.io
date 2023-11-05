@@ -53,7 +53,7 @@ module.exports = {
         name: 'FluxFlow: Visual analysis of anomalous information spreading in social media | Oct 2022',
         // description: 'Oct 2022',
         subdescription: '',
-        link: '',
+        link: 'https://fluxflow.ashwinelangovan.com',
         description_bullets: [
           {
             content: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on Twitter.',
@@ -61,7 +61,7 @@ module.exports = {
             linkname: ''
           },
           {
-            content: 'Scraped and processed nearly a million tweets about related topics, creating a dataset to identify location- specific anomalies. Leveraged MongoDB as a robust storage solution for efficient retrieval and analysis of the dataset.',
+            content: 'Scraped and processed nearly a million tweets about related topics, creating a dataset to identify location-specific anomalies. Leveraged MongoDB as a robust storage solution for efficient retrieval and analysis of the dataset.',
             link: '',
             linkname: ''
           },

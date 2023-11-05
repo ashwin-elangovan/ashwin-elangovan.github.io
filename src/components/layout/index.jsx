@@ -62,9 +62,12 @@ const Layout = ({ children }) => {
       <div>
         <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
             <li className={classes.bigitem}>
-              <a className={`${classes.link} cursor-pointer`} onClick={() => updateTheme()}>
+              <button
+                className={`${classes.link} cursor-pointer`}
+                onClick={() => updateTheme()}
+              >
                 {themeIcon}
-              </a>
+              </button>
             </li>
             <li className={classes.item}>
               <a
