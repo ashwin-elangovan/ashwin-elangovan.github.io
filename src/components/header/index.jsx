@@ -26,7 +26,9 @@ const classes = {
   item: 'inline list-none pr-8',
   zoom: 'transform transition-all duration-150 hover:scale-125',
   link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-blue-400',
-  linkName: 'ml-1'
+  linkName: 'ml-1',
+  dropDown: "absolute top-full left-1/2 transform -translate-x-1/2 ml-[-10%] p-3 mt-2 border dark:border-white-300 border-gray-600 rounded shadow-md text-gray-600 dark:text-gray-300 dark:bg-slate-900 bg-white",
+  dropDownText: 'block px-4 py-2 text-xs hover:text-black dark:hover:text-blue-200 text-center'
 };
 
 const Header = ({ metadata = {}, noBlog = false }) => {
@@ -36,10 +38,25 @@ const Header = ({ metadata = {}, noBlog = false }) => {
     setIsDesktop(window.innerWidth >= 768);
   }, []);
 
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const handleResumeMouseEnter = () => {
+    setIsDropdownVisible(true);
+  };
+
+  const handleResumeMouseLeave = () => {
+    setIsDropdownVisible(false);
+  };
+
+  const handleResumeClick = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  };
+
   const twitter = get(metadata, 'author', false);
   const github = get(metadata, 'github', false);
   const linkedin = get(metadata, 'linkedin', false);
   const resume = get(metadata, 'resume', false);
+  const fullResume = get(metadata, 'fullResume', false);
 
   return (
     <div className={classes.wrapper}>
@@ -78,11 +95,33 @@ const Header = ({ metadata = {}, noBlog = false }) => {
               </a>
             </li>
           )}
-          {resume && (
+          {/* {resume && (
             <li className={classes.item}>
               <a className={`${classes.link} ${classes.zoom}`} href={resume}>
                 <IconResume /> <span className={classes.linkName}>Resume</span>
               </a>
+            </li>
+          )} */}
+          {resume && (
+            <li
+              className={`${classes.item} relative`}
+              onMouseEnter={handleResumeMouseEnter}
+              onMouseLeave={handleResumeMouseLeave}
+              onClick={handleResumeClick}
+            >
+              <a className={`${classes.link} ${classes.zoom} cursor-pointer`}>
+                <IconResume /> <span className={classes.linkName}>Resume</span>
+              </a>
+              {isDropdownVisible && (
+                <div className={classes.dropDown}>
+                  <a className={`${classes.dropDownText} ${classes.zoom}`} href={resume} target="_blank" rel="noreferrer">
+                    Professional Resume
+                  </a>
+                  <a className={`${classes.dropDownText} ${classes.zoom}`} href={fullResume} target="_blank" rel="noreferrer">
+                    Full Resume
+                  </a>
+                </div>
+              )}
             </li>
           )}
           {!noBlog && (
