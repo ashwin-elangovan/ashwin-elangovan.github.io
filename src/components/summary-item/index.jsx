@@ -77,7 +77,12 @@ const SummaryItem = ({
           >
             <div className={isDesktop ? 'w-10/12' : ''}>
               {link ? (
-                <a href={link} target="_blank" rel="noopener noreferrer">{nParts[0]}</a>
+
+                <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
+                  <span className="mr-2">{nParts[0]}</span>
+                  <span> <IconExternalLink /></span>
+                </a>
+
               ) : (
                 <span>{nParts[0]}</span>
               )}

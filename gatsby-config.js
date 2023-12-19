@@ -51,13 +51,13 @@ module.exports = {
 
       },
       {
-        name: 'FluxFlow: Visual analysis of anomalous information spreading in social media | Oct 2022',
+        name: 'FluxFlow: Visual analysis of anomalous info spreading on X | Oct 2022',
         // description: 'Oct 2022',
         subdescription: '',
         link: 'https://fluxflow.ashwinelangovan.com',
         description_bullets: [
           {
-            content: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on Twitter.',
+            content: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on x (Twitter).',
             link: '',
             linkname: ''
           },
@@ -91,13 +91,18 @@ module.exports = {
     experience: [
       {
         name: 'Arizona State University',
-        description: 'Graduate Teaching Assistant | Aug 2023 - Present',
+        description: 'Graduate Teaching Assistant | Aug 2023 - Dec 2023',
         link: 'https://www.asu.edu/',
         title_image: 'asu',
         subdescription: '',
         description_bullets: [
           {
-            content: 'Working as a Teaching Assistant for the course CSE 551: Foundations of Algorithms. Responsible for grading assignments, conducting office hours and assisting students with their queries.',
+            content: 'Served as a Teaching Assistant for CSE 551: Foundations of Algorithms, where responsibilities included grading assignments and exam papers, conducting office hours, and providing assistance to students with their inquiries.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Organized review sessions to enhance students’ understanding of algorithmic concepts, fostering a collaborative and engaging learning environment.',
             link: '',
             linkname: ''
           }
@@ -107,7 +112,12 @@ module.exports = {
         description: 'Student Supervisor | Aug 2023 - Aug 2023',
         description_bullets: [
           {
-            content: 'By showcasing exceptional skills as a Verifier, I earned a promotion to the supervisor role, contributing to tasks such as training, and mentoring of new student verifiers.',
+            content: 'Demonstrated outstanding skills as a Verifier, earning a promotion to the supervisor role.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'In this position, played a key role in tasks such as training and mentoring new student verifiers, contributing to the overall success of the team.',
             link: '',
             linkname: ''
           }
