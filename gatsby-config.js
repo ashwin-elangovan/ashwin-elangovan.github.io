@@ -22,6 +22,29 @@ module.exports = {
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
     projects: [
       {
+        name: 'Guardian Angel | Nov 2023',
+        description: '',
+        subdescription: '',
+        link: 'https://github.com/ashwin-elangovan/guardian-angel',
+        description_bullets: [
+          {
+            content: 'Developed a Health Monitor android app which continuously tracks vital signs swiftly identifying irregularities. In critical scenarios, the application prompts users to seek medical attention and has the capability to notify emergency contacts.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Tracked sleep patterns of the user to identify the ideal wake-up time and used the data to set alarms accordingly.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Employed fuzzy inference system and incorporated location and weather data to deliver personalized recommendations in a timely manner.',
+            link: '',
+            linkname: ''
+          }
+        ],
+      },
+      {
         name: 'Theia: Website change detector | Feb 2023',
         description: '',
         subdescription: '',
