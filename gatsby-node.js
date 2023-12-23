@@ -103,7 +103,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       date: Date @dateformat
     }
-    
+
     type Fields {
       slug: String
     }
@@ -117,5 +117,10 @@ exports.createPages = async ({ actions }) => {
   createPage({
     path: '/resume',
     component: require.resolve('./src/pages/resume.jsx'),
+  });
+
+  createPage({
+    path: '/full-resume',
+    component: require.resolve('./src/pages/full-resume.jsx'),
   });
 };

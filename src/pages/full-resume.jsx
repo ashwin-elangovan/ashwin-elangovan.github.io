@@ -7,16 +7,16 @@ export default function MyDocument() {
     query {
       site {
         siteMetadata {
-          resume
+          fullResume
         }
       }
     }
   `);
 
-  const { resume } = data.site.siteMetadata;
+  const { fullResume } = data.site.siteMetadata;
   useEffect(() => {
-    window.location.href = resume;
-  }, [resume]);
+    window.location.href = fullResume;
+  }, [fullResume]);
 
   return null;
 }
