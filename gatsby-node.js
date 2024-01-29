@@ -123,4 +123,9 @@ exports.createPages = async ({ actions }) => {
     path: '/full-resume',
     component: require.resolve('./src/pages/full-resume.jsx'),
   });
+
+  createPage({
+    path: '/multilevel-cache-report',
+    component: require.resolve('./src/pages/multilevel-cache-report.jsx'),
+  });
 };

@@ -48,6 +48,7 @@ export const pageQuery = graphql`
         linkedin
         resume
         fullResume
+        multilevelCacheReport
         projects {
           name
           description
