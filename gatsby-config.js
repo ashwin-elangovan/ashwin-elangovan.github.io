@@ -186,7 +186,12 @@ module.exports = {
             linkname: 'Product Website'
           },
           {
-            content: 'Deployed applications using AWS OpsWorks and Chef ensuring streamlined deployments and configuration management.',
+            content: 'Developed ETL pipelines to extract data from subscription platforms, employing Python, Ruby and SQL scripts for processing, and storing data in Snowflake and Amazon S3, leading to comprehensive reports and analytics.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Orchestrated application deployments on AWS infrastructure utilizing Kubernetes and Terraform, ensuring efficient deployments.',
             link: '',
             linkname: ''
           },
@@ -206,14 +211,24 @@ module.exports = {
             linkname: 'Product Website'
           },
           {
-            content: 'Enhanced the core design of the Freshdesk Contact Center by building an automated call routing framework using Node.js. This facilitated effortless integration with supported third-party apps and achieve parity with competing products.',
-            link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/automated-call-routing/',
-            linkname:'Product Website'
-          },
-          {
             content: 'Built a custom subscription library to handle the product’s billing logic and streamline integration with the billing platform.',
             link: '',
             linkname:''
+          },
+          {
+            content: 'Conducted performance profiling of Spring Boot and Rails applications using New Relic, Rack Mini Profiler and Jprofiler, effectively identifying bottlenecks and improving several API and SQL query performances by 35%.',
+            link: '',
+            linkname: ''
+          },
+          {
+            content: 'Enhanced the core design of the Freshdesk Contact Center by building an automated call routing framework using Node.js. This facilitated effortless integration with supported third-party apps and achieve parity with competing products.',
+            link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/automated-call-routing/',
+            linkname: 'Product Website'
+          },
+          {
+            content: 'Enhanced the core design of the website monitoring product by leveraging Flask and React to integrate advanced analytics and enable SMS alerts, empowering users with deeper insights and real- time notifications.',
+            link: '',
+            linkname: ''
           },
           {
             content: 'Used Apache Kafka for publishing product events across various services, ensuring robust data consistency within the ecosystem.',
