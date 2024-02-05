@@ -5,6 +5,7 @@ import {
 
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 const classes = {
   wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
@@ -20,7 +21,7 @@ const classes = {
 const Layout = ({ children }) => {
   const [svgHeight, setSvgHeight] = useState(0);
   const [svgWidth, setSvgWidth] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(true);
+  // const [isDesktop, setIsDesktop] = useState(true);
   const [themeIcon, setThemeIcon] = useState(null);
 
   const updateTheme = () => {
@@ -43,7 +44,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     setSvgHeight(window.innerHeight);
-    setIsDesktop(window.innerWidth >= 768);
+    // setIsDesktop(window.innerWidth >= 768);
     setSvgWidth((window.innerWidth * 30) / 100);
     // Set theme icon based on localStorage (client-side)
     if (typeof window !== 'undefined') {
@@ -53,12 +54,12 @@ const Layout = ({ children }) => {
   }, []);
 
   const containerStyle = {
-    width: isDesktop ? '70%' : '100%', // Adjust the width based on the device type
-    marginRight: isDesktop ? '10%' : '0', // Adjust the margin for desktop
+    width: isBrowser ? '70%' : '100%', // Adjust the width based on the device type
+    marginRight: isBrowser ? '10%' : '0', // Adjust the margin for desktop
   };
   return (
     <div className={classes.outerWrapper}>
-      {isDesktop && ( // Only render the following if isDesktop is true
+      {isBrowser && ( // Only render the following if isBrowser is true
       <div>
         <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
             <li className={classes.bigitem}>
@@ -82,7 +83,7 @@ const Layout = ({ children }) => {
         </ul>
       </div>
       )}
-      { isDesktop && ( // Only render the following if isDesktop is true
+      {isBrowser && ( // Only render the following if isBrowser is true
       <svg
         className={classes.svg}
         style={{ top: '10%' }}

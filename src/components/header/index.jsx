@@ -8,6 +8,8 @@ import {
   IoChatbox as IconBlog
 } from 'react-icons/io5';
 
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
 import { useScramble } from "use-scramble";
 
 import { useState, useEffect } from 'react';
@@ -34,15 +36,14 @@ const classes = {
 };
 
 const Header = ({ metadata = {}, noBlog = false }) => {
-  const [isDesktop, setIsDesktop] = useState(true);
-
-  useEffect(() => {
-    setIsDesktop(window.innerWidth >= 768);
-  }, []);
-
+  // const [isDesktop, setIsDesktop] = useState(true);
   const { ref, replay } = useScramble({
     text: metadata.name,
   });
+
+  // useEffect(() => {
+  //   setIsDesktop(window.innerWidth >= 768);
+  // }, []);
 
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
@@ -66,18 +67,20 @@ const Header = ({ metadata = {}, noBlog = false }) => {
 
   return (
     <div className={classes.wrapper}>
-      <div className={`${classes.imageWrapper} ${isDesktop ? '' : 'mx-auto'}`}>
+      <div className={`${classes.imageWrapper} ${isBrowser ? '' : 'mx-auto'}`}>
         <Link to="/">
           <img className={classes.image} src={profileImg} alt={metadata.name} />
         </Link>
       </div>
-      <div className={`${classes.contentWrapper} ${isDesktop ? '' : 'mobile-center'}`}>
+      <div className={`${classes.contentWrapper} ${isBrowser ? '' : 'mobile-center'}`}>
         <h1
           ref={ref}
           className={`${classes.name} ${classes.gradient}`}
           onMouseOver={replay}
           onFocus={replay}
-        />
+        >
+          {metadata.name}
+        </h1>
         <p className={classes.description}>{metadata.description}</p>
         <ul className={classes.list}>
           {twitter && (
@@ -86,7 +89,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
                 className={`${classes.link} ${classes.zoom}`}
                 href={`https://twitter.com/${twitter}`}
               >
-                <IconTwitter/> <span className= {classes.linkName}>Twitter</span>
+                <IconTwitter /> <span className={classes.linkName}>Twitter</span>
               </a>
             </li>
           )}
@@ -104,13 +107,6 @@ const Header = ({ metadata = {}, noBlog = false }) => {
               </a>
             </li>
           )}
-          {/* {resume && (
-            <li className={classes.item}>
-              <a className={`${classes.link} ${classes.zoom}`} href={resume}>
-                <IconResume /> <span className={classes.linkName}>Resume</span>
-              </a>
-            </li>
-          )} */}
           {resume && (
             <li
               className={`${classes.item} relative`}
@@ -143,6 +139,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
         </ul>
       </div>
     </div>
+
   );
 };
 
