@@ -8,6 +8,8 @@ import {
   IoChatbox as IconBlog
 } from 'react-icons/io5';
 
+import { useScramble } from "use-scramble";
+
 import { useState, useEffect } from 'react';
 
 import { AiFillFile as IconResume } from "react-icons/ai";
@@ -38,6 +40,10 @@ const Header = ({ metadata = {}, noBlog = false }) => {
     setIsDesktop(window.innerWidth >= 768);
   }, []);
 
+  const { ref, replay } = useScramble({
+    text: metadata.name,
+  });
+
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleResumeMouseEnter = () => {
@@ -66,9 +72,12 @@ const Header = ({ metadata = {}, noBlog = false }) => {
         </Link>
       </div>
       <div className={`${classes.contentWrapper} ${isDesktop ? '' : 'mobile-center'}`}>
-        <h1 className={`${classes.name} ${classes.gradient}`}>
-          {metadata.name}
-        </h1>
+        <h1
+          ref={ref}
+          className={`${classes.name} ${classes.gradient}`}
+          onMouseOver={replay}
+          onFocus={replay}
+        />
         <p className={classes.description}>{metadata.description}</p>
         <ul className={classes.list}>
           {twitter && (
