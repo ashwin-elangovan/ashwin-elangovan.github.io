@@ -8,8 +8,8 @@ import {
   IoChatbox as IconBlog
 } from 'react-icons/io5';
 
-import imageBlack from "../../images/image_black.png";
-import imageNew from "../../images/image_new_2.png";
+import imageBlack from "../../images/image_black.jpeg";
+import imageNew from "../../images/image_2_2.png";
 import sign from "../../images/sign.png";
 
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
