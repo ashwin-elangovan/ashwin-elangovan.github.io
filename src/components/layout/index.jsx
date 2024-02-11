@@ -3,6 +3,8 @@ import {
   SiStatuspage
 } from 'react-icons/si';
 
+import SplashScreen from '../splash-screen';
+
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
@@ -23,6 +25,12 @@ const Layout = ({ children }) => {
   const [svgWidth, setSvgWidth] = useState(0);
   // const [isDesktop, setIsDesktop] = useState(true);
   const [themeIcon, setThemeIcon] = useState(null);
+
+  const [splashVisible, setSplashVisible] = useState(true);
+
+  const hideSplash = () => {
+    setSplashVisible(false);
+  };
 
   const updateTheme = () => {
     document.querySelector('body').classList.add('changing-theme');
@@ -58,65 +66,70 @@ const Layout = ({ children }) => {
     marginRight: isBrowser ? '10%' : '0', // Adjust the margin for desktop
   };
   return (
-    <div className={classes.outerWrapper}>
-      {isBrowser && ( // Only render the following if isBrowser is true
-      <div>
-        <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
-            <li className={classes.bigitem}>
-              <button
-                className={`${classes.link} cursor-pointer`}
-                onClick={() => updateTheme()}
-              >
-                {themeIcon}
-              </button>
-            </li>
-            <li className={classes.item}>
-              <a
-                className={classes.link}
-                href={`https://ashwin.statuspage.io/`}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <SiStatuspage /> <span className={classes.linkName}>STATUS PAGE</span>
-              </a>
-            </li>
-        </ul>
-      </div>
-      )}
-      {isBrowser && ( // Only render the following if isBrowser is true
-      <svg
-        className={classes.svg}
-        style={{ top: '10%' }}
-        width={svgWidth}
-        height={svgHeight}
-        fill="none"
-        viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-      >
-        <defs>
-          <pattern
-            id="5d0dd344-b041-4d26-bec4-8d33ea57ec9b"
-            x="0"
-            y="0"
-            width="20"
-            height="20"
-            patternUnits="userSpaceOnUse"
+    <div>
+      {splashVisible && <SplashScreen hideSplash={hideSplash} />}
+      {!splashVisible && (
+        <div className={classes.outerWrapper}>
+          {isBrowser && ( // Only render the following if isBrowser is true
+          <div>
+            <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
+                <li className={classes.bigitem}>
+                  <button
+                    className={`${classes.link} cursor-pointer`}
+                    onClick={() => updateTheme()}
+                  >
+                    {themeIcon}
+                  </button>
+                </li>
+                <li className={classes.item}>
+                  <a
+                    className={classes.link}
+                    href={`https://ashwin.statuspage.io/`}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <SiStatuspage /> <span className={classes.linkName}>STATUS PAGE</span>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          )}
+          {isBrowser && ( // Only render the following if isBrowser is true
+          <svg
+            className={classes.svg}
+            style={{ top: '10%' }}
+            width={svgWidth}
+            height={svgHeight}
+            fill="none"
+            viewBox={`0 0 ${svgWidth} ${svgHeight}`}
           >
-            <circle
-              cx="3"
-              cy="3"
-              r="3"
-              className="text-gray-200 dark:text-gray-600 fill-current"
+            <defs>
+              <pattern
+                id="5d0dd344-b041-4d26-bec4-8d33ea57ec9b"
+                x="0"
+                y="0"
+                width="20"
+                height="20"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle
+                  cx="3"
+                  cy="3"
+                  r="3"
+                  className="text-gray-200 dark:text-gray-600 fill-current"
+                />
+              </pattern>
+            </defs>
+            <rect
+              width={svgWidth}
+              height={svgHeight}
+              fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
             />
-          </pattern>
-        </defs>
-        <rect
-          width={svgWidth}
-          height={svgHeight}
-          fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
-        />
-      </svg>
+          </svg>
+          )}
+          <div className={classes.wrapper} style={containerStyle}>{children}</div>
+        </div>
       )}
-      <div className={classes.wrapper} style={containerStyle}>{children}</div>
     </div>
   );
 };
