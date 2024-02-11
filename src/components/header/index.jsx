@@ -25,6 +25,7 @@ import profileImg from '../../images/profile.jpeg';
 const classes = {
   wrapper: 'block mb-6 md:flex',
   imageWrapper: 'max-w-250 mt-[-30px]',
+  imageWrapperMobile: 'w-full max-w-150',
   image: 'rounded-full transform transition-all duration-150 hover:scale-105',
   contentWrapper: 'flex-none flex flex-col justify-center items-center pt-6 md:pt-1 md:flex-1 md:pl-20',
   name: 'text-7xl font-bold leading-tight hover:text-black dark:hover:text-blue-200 text-transparent bg-clip-text dark:text-transparent',
@@ -72,7 +73,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
   return (
     <div className={classes.wrapper}>
       {isBrowser ? (
-        <div className={`${classes.imageWrapper} mx-auto`}>
+        <div className={`${classes.imageWrapper}`}>
           <div className="card">
             <div className="wrapper">
               <img src={imageBlack} className="cover-image" />
@@ -82,7 +83,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
           </div>
         </div>
       ) : (
-        <div className={`${classes.imageWrapper} mx-auto`}>
+          <div className={`${classes.imageWrapperMobile} mx-auto`}>
           <Link to="/">
             <img className={classes.image} src={profileImg} alt={metadata.name} />
           </Link>
