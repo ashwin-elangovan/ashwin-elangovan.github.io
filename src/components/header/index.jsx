@@ -8,6 +8,10 @@ import {
   IoChatbox as IconBlog
 } from 'react-icons/io5';
 
+import imageBlack from "../../images/image_black.png";
+import imageNew from "../../images/image_new_2.png";
+import sign from "../../images/sign.png";
+
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 import { useScramble } from "use-scramble";
@@ -20,9 +24,9 @@ import profileImg from '../../images/profile.jpeg';
 
 const classes = {
   wrapper: 'block mb-6 md:flex',
-  imageWrapper: 'w-full max-w-150',
+  imageWrapper: 'max-w-250 mt-[-30px]',
   image: 'rounded-full transform transition-all duration-150 hover:scale-105',
-  contentWrapper: 'flex-none pt-6 md:pt-1 md:flex-1 md:pl-20',
+  contentWrapper: 'flex-none flex flex-col justify-center items-center pt-6 md:pt-1 md:flex-1 md:pl-20',
   name: 'text-7xl font-bold leading-tight hover:text-black dark:hover:text-blue-200 text-transparent bg-clip-text dark:text-transparent',
   gradient: 'bg-gradient-to-r from-black to-gray-100 dark:from-white dark:to-gray-700',
   description: 'text-gray-600 dark:text-gray-300 italic pt-2',
@@ -67,11 +71,23 @@ const Header = ({ metadata = {}, noBlog = false }) => {
 
   return (
     <div className={classes.wrapper}>
-      <div className={`${classes.imageWrapper} ${isBrowser ? '' : 'mx-auto'}`}>
-        <Link to="/">
-          <img className={classes.image} src={profileImg} alt={metadata.name} />
-        </Link>
-      </div>
+      {isBrowser ? (
+        <div className={`${classes.imageWrapper} mx-auto`}>
+          <div className="card">
+            <div className="wrapper">
+              <img src={imageBlack} className="cover-image" />
+            </div>
+            <img src={sign} className="title" />
+            <img src={imageNew} className="character" />
+          </div>
+        </div>
+      ) : (
+        <div className={`${classes.imageWrapper} mx-auto`}>
+          <Link to="/">
+            <img className={classes.image} src={profileImg} alt={metadata.name} />
+          </Link>
+        </div>
+      )}
       <div className={`${classes.contentWrapper} ${isBrowser ? '' : 'mobile-center'}`}>
         <h1
           ref={ref}
