@@ -406,7 +406,7 @@ pre[class*='language-'] {
 }
 
 .character {
-  width: 70%;
+  width: 50%;
   opacity: 0;
   transition: all 0.5s;
   position: absolute;
