@@ -17,7 +17,8 @@ const classes = {
   item: 'inline list-none pr-4',
   bigitem: 'inline list-none pr-6',
   link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-blue-400',
-  linkName: 'ml-1'
+  linkName: 'ml-1',
+  topBar: 'fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-10 shadow-lg'
 };
 
 const Layout = ({ children }) => {
@@ -71,7 +72,7 @@ const Layout = ({ children }) => {
       {!splashVisible && (
         <div className={classes.outerWrapper}>
           {isBrowser && ( // Only render the following if isBrowser is true
-          <div>
+            <div className = {classes.topBar}>
             <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
                 <li className={classes.bigitem}>
                   <button
