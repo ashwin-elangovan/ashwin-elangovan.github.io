@@ -61,6 +61,19 @@ const Layout = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '//fw-cdn.com/11364413/4045228.js';
+    script.async = true;
+    if (isBrowser){
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+      };
+    }
+  }, []);
+
   const containerStyle = {
     width: isBrowser ? '75%' : '100%', // Adjust the width based on the device type
     marginRight: isBrowser ? '10%' : '0', // Adjust the margin for desktop
