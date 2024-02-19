@@ -12,7 +12,7 @@ const classes = {
 const Section = ({ title, children }) => {
   const { ref, replay } = useScramble({
     text: title,
-    speed: 0.5
+    speed: 0.25
   });
 
   return (

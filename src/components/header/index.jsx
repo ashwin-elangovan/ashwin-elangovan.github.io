@@ -44,6 +44,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
   // const [isDesktop, setIsDesktop] = useState(true);
   const { ref, replay } = useScramble({
     text: metadata.name,
+    speed: 0.4
   });
 
   // useEffect(() => {
