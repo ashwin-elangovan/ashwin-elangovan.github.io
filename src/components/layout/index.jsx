@@ -13,9 +13,10 @@ const classes = {
   wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
   outerWrapper: 'relative dark:bg-slate-900',
   svg: 'hidden fixed transform right-0 z-0 xl:block',
-  list: 'mt-6 uppercase tracking-wider',
-  item: 'inline list-none pr-4',
-  bigitem: 'inline list-none pr-6',
+  list: 'mt-6 uppercase tracking-wider mr-4',
+  zoom: 'transform transition-all duration-150 hover:scale-125',
+  statusPage: 'inline list-none pr-4',
+  updateTheme: 'inline list-none pr-6',
   link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-blue-400',
   linkName: 'ml-1',
   topBar: 'fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-10 shadow-lg'
@@ -53,9 +54,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     setSvgHeight(window.innerHeight);
-    // setIsDesktop(window.innerWidth >= 768);
-    setSvgWidth((window.innerWidth * 30) / 100);
-    // Set theme icon based on localStorage (client-side)
+    setSvgWidth((window.innerWidth * 25) / 100);
     if (typeof window !== 'undefined') {
       const theme = localStorage.getItem('theme');
       setThemeIcon((theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />);
@@ -63,7 +62,7 @@ const Layout = ({ children }) => {
   }, []);
 
   const containerStyle = {
-    width: isBrowser ? '70%' : '100%', // Adjust the width based on the device type
+    width: isBrowser ? '75%' : '100%', // Adjust the width based on the device type
     marginRight: isBrowser ? '10%' : '0', // Adjust the margin for desktop
   };
   return (
@@ -74,17 +73,17 @@ const Layout = ({ children }) => {
           {isBrowser && ( // Only render the following if isBrowser is true
             <div className = {classes.topBar}>
             <ul className={classes.list} style={{ position: "absolute", top: 0, right: 10 }}>
-                <li className={classes.bigitem}>
+                <li className={classes.updateTheme}>
                   <button
-                    className={`${classes.link} cursor-pointer`}
+                    className={`${classes.link} cursor-pointer ${classes.zoom} mr-1`}
                     onClick={() => updateTheme()}
                   >
                     {themeIcon}
                   </button>
                 </li>
-                <li className={classes.item}>
+                <li className={classes.statusPage}>
                   <a
-                    className={classes.link}
+                    className={`${classes.link} ${classes.zoom}`}
                     href={`https://ashwin.statuspage.io/`}
                     rel="noreferrer"
                     target="_blank"
@@ -96,35 +95,23 @@ const Layout = ({ children }) => {
           </div>
           )}
           {isBrowser && ( // Only render the following if isBrowser is true
-          <svg
-            className={classes.svg}
-            style={{ top: '10%' }}
-            width={svgWidth}
-            height={svgHeight}
-            fill="none"
-            viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-          >
+            <svg
+              className={classes.svg}
+              style={{ top: '10%' }}
+              width={svgWidth}
+              height={svgHeight}
+              fill="none"
+              viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+            >
             <defs>
-              <pattern
-                id="5d0dd344-b041-4d26-bec4-8d33ea57ec9b"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="3"
-                  cy="3"
-                  r="3"
-                  className="text-gray-200 dark:text-gray-600 fill-current"
-                />
+              <pattern id="side-bg-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <rect x="0" y="0" width="4" height="4" class="text-gray-500" fill="currentColor" />
               </pattern>
             </defs>
             <rect
               width={svgWidth}
               height={svgHeight}
-              fill="url(#5d0dd344-b041-4d26-bec4-8d33ea57ec9b)"
+                fill="url(#side-bg-pattern)"
             />
           </svg>
           )}
