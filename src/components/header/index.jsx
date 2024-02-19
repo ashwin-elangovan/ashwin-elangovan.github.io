@@ -12,7 +12,7 @@ import imageBlack from "../../images/image_black.jpeg";
 import imageNew from "../../images/image_2_2.png";
 import sign from "../../images/sign.png";
 
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import { isBrowser } from 'react-device-detect';
 
 import { useScramble } from "use-scramble";
 

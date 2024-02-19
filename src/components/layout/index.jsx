@@ -7,7 +7,7 @@ import SplashScreen from '../splash-screen';
 
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import { isBrowser} from 'react-device-detect';
 
 const classes = {
   wrapper: 'p-8 relative max-w-screen-xl xs:p-24',

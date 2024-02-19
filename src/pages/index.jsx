@@ -11,12 +11,17 @@ import SectionProjects from '../components/section-projects';
 import SectionSkills from '../components/section-skills';
 import Seo from '../components/seo';
 
+const classes = {
+  footer: 'absolute bottom-0 left-0 right-0 font-bold text-gray-900 dark:text-white text-center mb-10'
+};
+
 const Index = ({ data }) => {
   const about = get(data, 'site.siteMetadata.about', false);
   const projects = get(data, 'site.siteMetadata.projects', false);
   const posts = data.allMarkdownRemark.edges;
   const experience = get(data, 'site.siteMetadata.experience', false);
   const skills = get(data, 'site.siteMetadata.skills', false);
+  const footerText = get(data, 'site.siteMetadata.footer', false);
   const noBlog = !posts || !posts.length;
 
   return (
@@ -29,6 +34,7 @@ const Index = ({ data }) => {
       )}
       {projects && projects.length && <SectionProjects projects={projects} />}
       {skills && skills.length && <SectionSkills skills={skills} />}
+      <div className={classes.footer}>{footerText}</div>
     </Layout>
   );
 };
@@ -50,6 +56,7 @@ export const pageQuery = graphql`
         fullResume
         workResume
         multilevelCacheReport
+        footer
         projects {
           name
           description

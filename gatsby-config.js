@@ -19,6 +19,7 @@ module.exports = {
     fullResume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-full-resume.pdf`,
     workResume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-ruby-resume.pdf`,
     multilevelCacheReport: `https://ashwin-docs.s3.amazonaws.com/Global-flag.pdf`,
+    footer: 'Built with ❤️ by Ashwin Elangovan',
     // Content of the About Me section
     about: `I am a graduate student pursuing a Master's in Computer Science at Arizona State University, actively seeking full-time opportunities. I have worked as an Intern, Software Engineer, Senior Software Engineer at Freshworks for 4+ years where I explored full-stack development, object-oriented programming and microservices deployed in cloud.`,
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
