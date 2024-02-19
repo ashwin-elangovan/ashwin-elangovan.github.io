@@ -83,7 +83,7 @@ module.exports = {
         link: 'https://fluxflow.ashwinelangovan.com',
         description_bullets: [
           {
-            content: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on x (Twitter).',
+            content: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on X (Twitter).',
             link: '',
             linkname: ''
           },
@@ -107,6 +107,19 @@ module.exports = {
         description_bullets: [
           {
             content: 'Implemented a high-performance rate limiter middleware based on the sliding window algorithm using Java and Redis.',
+            link: '',
+            linkname: ''
+          }
+        ],
+      },
+      {
+        name: 'EmailChecker | Feb 2024',
+        // description: 'Jan 2022',
+        subdescription: '',
+        link: 'https://pkg.go.dev/github.com/ashwin-elangovan/email-checker',
+        description_bullets: [
+          {
+            content: 'A Go package which checks the DNS records for a given domain extracted from an email address and displays information about its MX, SPF, and DMARC records.',
             link: '',
             linkname: ''
           }
