@@ -10,7 +10,7 @@ import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { isBrowser} from 'react-device-detect';
 
 const classes = {
-  wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
+  wrapper: 'p-8 relative xs:p-24',
   outerWrapper: 'relative dark:bg-slate-900',
   svg: 'hidden fixed transform right-0 z-0 xl:block',
   list: 'mt-6 uppercase tracking-wider mr-4',

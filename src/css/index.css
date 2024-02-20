@@ -420,3 +420,21 @@ pre[class*='language-'] {
   opacity: 1;
   transform: translate3d(0%, -30%, 100px);
 }
+
+.logo-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* max-width: 440px; */
+}
+
+.logo-image {
+  width: auto;
+  height: auto;
+  margin-top: 2vw;
+  margin-right: 2vw;
+  margin-bottom: 50px;
+  max-width: 100px;
+  max-height: 100px;
+  transform: scale(0.85);
+}

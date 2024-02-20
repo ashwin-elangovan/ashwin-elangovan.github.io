@@ -285,21 +285,21 @@ module.exports = {
     // Optional: List your skills, they must have `name` and `description`.
     skills: [
       {
-        name: 'Programming Languages',
+        name: 'PROGRAMMING LANGUAGES: ',
         // subdescription: 'Ruby, Python, JavaScript, Java, C, C++, Bash',
         tags: ['Ruby', 'Python', 'JavaScript', 'Java', 'C', 'C++', 'Bash']
       },
       {
-        name: 'Frameworks',
+        name: 'FRAMEWORKS: ',
         // description: 'Ruby on Rails, Ember.js, Node.js, Flask, Django, Spring boot, React, Tailwind CSS',
         tags: ['Ruby on Rails', 'Ember.js', 'Node.js', 'Flask', 'Django', 'Spring boot', 'React', 'Tailwind CSS']
       },
       {
-        name: 'Tools and Databases',
+        name: 'TOOLS AND DATABASES: ',
         // description:
         //   'MySQL, PostgreSQL, MongoDB, Apache Kafka, AWS, Git, gRPC, Jenkins, Docker, GraphQL, Redis, Memcached, Elasticsearch, Microsoft Azure, Kubernetes, Grafana, Selenium, Microservices, API design, Agile / Scrum, System Design, Jira, Confluence',
         tags: ['MySQL', 'PostgreSQL', 'MongoDB', 'Apache Kafka', 'AWS', 'Git', 'gRPC', 'Jenkins', 'Docker', 'GraphQL', 'Redis', 'Memcached', 'Elasticsearch', 'Microsoft Azure', 'Kubernetes', 'Grafana', 'Selenium', 'Microservices', 'API design', 'Agile / Scrum', 'System Design', 'Jira', 'Confluence']
-      },
+      }
     ],
   },
   flags: {
