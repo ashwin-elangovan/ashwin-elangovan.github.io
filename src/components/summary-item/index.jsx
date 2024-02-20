@@ -29,6 +29,7 @@ const SummaryItem = ({
   description_bullets,
   paragraph,
   tags,
+  images,
   title_image,
 }) => {
   let linkContent;
@@ -38,17 +39,20 @@ const SummaryItem = ({
     linkContent = <a href={link}>{name}</a>;
   }
 
-  const [isDesktop, setIsDesktop] = useState(true);
-
-  useEffect(() => {
-    setIsDesktop(window.innerWidth >= 768);
-  }, []);
-
   const dParts = description ? description.split("|") : null;
   const nParts = name ? name.split("|") : null;
 
   let light_image = null;
   let dark_image = null;
+
+  let lightImagesArray = null;
+  let darkImagesArray = null;
+
+  if (images && images.length === 2) {
+    lightImagesArray = images[0];
+    darkImagesArray = images[1];
+  }
+  const [value, setValue] = useState(0);
 
   switch (title_image) {
     case "freshworks":
@@ -72,10 +76,10 @@ const SummaryItem = ({
               ${classes.name}
               ${link ? 'hover:text-black dark:hover:text-blue-400' : ''}
               font-semibold text-lg
-              ${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}
+              ${isBrowser ? 'flex justify-between text-justify' : 'flex-col text-center'}
             `}
           >
-            <div className={isDesktop ? 'w-10/12' : ''}>
+            <div className={isBrowser ? 'w-10/12' : ''}>
               {link ? (
 
                 <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
@@ -87,7 +91,7 @@ const SummaryItem = ({
                 <span>{nParts[0]}</span>
               )}
             </div>
-            <div className={isDesktop ? 'w-2/12 flex justify-end' : 'mt-3'}>
+            <div className={isBrowser ? 'w-2/12 flex justify-end' : 'mt-3'}>
               {link ? (
                 <a href={link} target="_blank" rel="noopener noreferrer">
                   <span>
@@ -107,7 +111,7 @@ const SummaryItem = ({
             className={`${classes.name} ${link
                 ? "hover:text-black dark:hover:text-blue-400 text-3xl"
                 : "font-semibold text-lg"
-                }${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}`}
+                }${isBrowser ? 'flex justify-between text-justify' : 'flex-col text-center'}`}
           >
             {link ? linkContent : name}
           </h3>
@@ -116,7 +120,7 @@ const SummaryItem = ({
         <div
           className={`flex justify-center items-center mx-auto text-center pb-6 pt-1`}
         >
-            <div className={`${classes.imageWrapper} ${isDesktop ? classes.desktopImageSize : classes.mobileImageSize}`}>
+            <div className={`${classes.imageWrapper} ${isBrowser ? classes.desktopImageSize : classes.mobileImageSize}`}>
             <Link to={link}>
               <img
                 className={`${classes.image} block dark:hidden`}
@@ -135,11 +139,11 @@ const SummaryItem = ({
 
       {/* Description */}
       {dParts && dParts.length === 2 ? (
-        <div className={`${classes.description} ${subdescription || description_bullets ? 'leading-10 pt-3' : ''} ${isDesktop ? 'flex justify-between text-justify' : 'flex-col text-center'}`}>
+        <div className={`${classes.description} ${subdescription || description_bullets ? 'leading-10 pt-3' : ''} ${isBrowser ? 'flex justify-between text-justify' : 'flex-col text-center'}`}>
           <div>
             <span>{dParts[0]}</span>
           </div>
-          {isDesktop ? (
+          {isBrowser ? (
             <div>
               <span><i>{dParts[1]}</i></span>
             </div>
@@ -203,19 +207,43 @@ const SummaryItem = ({
           : ""}
       </ul>
 
-      {/* Tags */}
-      {tags ? (
-        <div className="pt-3">
-          {tags.map((tag) => {
-            return (
+
+      {isBrowser ? (
+        (lightImagesArray || darkImagesArray) && (
+          <div className="pt-3">
+            <div className="logo-container">
+              {/* Light mode images */}
+              {lightImagesArray && lightImagesArray.map((image, index) => (
+                <img
+                  key={`light_${index}`}
+                  src={image}
+                  alt={`Light Mode Image ${index}`}
+                  className={`logo-image block dark:hidden ${classes.image}`}
+                />
+              ))}
+              {/* Dark mode images */}
+              {darkImagesArray && darkImagesArray.map((image, index) => (
+                <img
+                  key={`dark_${index}`}
+                  src={image}
+                  alt={`Dark Mode Image ${index}`}
+                  className={`logo-image hidden dark:block ${classes.image}`}
+                />
+              ))}
+            </div>
+          </div>
+        )
+      ) : (
+        /* Render tags if not in browser */
+        tags && (
+          <div className="pt-3">
+            {tags.map((tag) => (
               <span key={tag} className={"tags dark:bg-slate-500 bg-slate-600"}>
                 {tag}
               </span>
-            );
-          })}
-        </div>
-      ) : (
-        ""
+            ))}
+          </div>
+        )
       )}
     </div>
   );
