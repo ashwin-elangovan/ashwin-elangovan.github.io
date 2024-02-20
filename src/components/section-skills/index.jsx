@@ -10,6 +10,7 @@ import java_light from "../../images/languages/light-mode/java.png";
 import javascript_light from "../../images/languages/light-mode/javascript.png";
 import python_light from "../../images/languages/light-mode/python.png";
 import ruby_light from "../../images/languages/light-mode/ruby.svg";
+import go_light from "../../images/languages/light-mode/go.svg";
 
 import django_light from "../../images/frameworks/light-mode/django.png";
 import emberjs_light from "../../images/frameworks/light-mode/emberjs.png";
@@ -47,6 +48,7 @@ import java_dark from "../../images/languages/dark-mode/java.png";
 import javascript_dark from "../../images/languages/dark-mode/javascript.png";
 import python_dark from "../../images/languages/dark-mode/python.png";
 import ruby_dark from "../../images/languages/dark-mode/ruby.svg";
+import go_dark from "../../images/languages/dark-mode/go.svg";
 
 import django_dark from "../../images/frameworks/dark-mode/django.png";
 import emberjs_dark from "../../images/frameworks/dark-mode/emberjs.png";
@@ -88,16 +90,26 @@ const SectionSkills = ({ skills }) => {
         let imagesArray;
         switch (skill.name) {
           case "PROGRAMMING LANGUAGES: ":
-            darkImagesArray = [python_dark, javascript_dark, java_dark, c_dark, cpp_dark, ruby_dark, bash_dark];
-            lightImagesArray = [python_light, javascript_light, java_light, c_light, cpp_light, ruby_light, bash_light];
+            darkImagesArray = [python_dark, javascript_dark, ruby_dark, java_dark, c_dark, cpp_dark, go_dark, bash_dark];
+            lightImagesArray = [python_light, javascript_light, ruby_light, java_light, c_light, cpp_light, go_light, bash_light];
             break;
           case "FRAMEWORKS: ":
-            darkImagesArray = [django_dark, emberjs_dark, flask_dark, node_dark, react_dark, rails_dark, spring_dark, tailwindcss_dark];
-            lightImagesArray = [django_light, emberjs_light, flask_light, node_light, react_light, rails_light, spring_light, tailwindcss_light];
+            darkImagesArray = [node_dark, react_dark, rails_dark, django_dark, spring_dark, flask_dark, emberjs_dark, tailwindcss_dark];
+            lightImagesArray = [node_light, react_light, rails_light, django_light, spring_light, flask_light, emberjs_light, tailwindcss_light];
             break;
           case "TOOLS AND DATABASES: ":
-            darkImagesArray = [apache_kafka_dark, aws_dark, azure_dark, confluence_dark, docker_dark, elasticsearch_dark, git_dark, grafana_dark, graphql_dark, grpc_dark, jenkins_dark, jira_dark, kubernetes_dark, memcached_dark, mongodb_dark, mysql_dark, postgresql_dark, redis_dark, selenium_dark];
-            lightImagesArray = [apache_kafka_light, aws_light, azure_light, confluence_light, docker_light, elasticsearch_light, git_light, grafana_light, graphql_light, grpc_light, jenkins_light, jira_light, kubernetes_light, memcached_light, mongodb_light, mysql_light, postgresql_light, redis_light, selenium_light];
+            darkImagesArray = [
+              mysql_dark, postgresql_dark, redis_dark, aws_dark, docker_dark,
+              kubernetes_dark, mongodb_dark, jenkins_dark, graphql_dark, grpc_dark,
+              apache_kafka_dark, memcached_dark, elasticsearch_dark, grafana_dark,
+              azure_dark, confluence_dark, git_dark, , jira_dark, selenium_dark
+            ];
+            lightImagesArray = [
+              mysql_light, postgresql_light, redis_light, aws_light, docker_light,
+              kubernetes_light, mongodb_light, jenkins_light, graphql_light, grpc_light,
+              apache_kafka_light, memcached_light, elasticsearch_light, grafana_light,
+              azure_light, confluence_light, git_light, jira_light, selenium_light
+            ];
             break;
         }
         return (

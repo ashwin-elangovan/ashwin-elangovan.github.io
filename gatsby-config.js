@@ -124,7 +124,7 @@ module.exports = {
             linkname: ''
           }
         ],
-      },
+      }
     ],
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
@@ -185,7 +185,7 @@ module.exports = {
         subdescription: '',
         description_bullets: [
           {
-            content: 'Designed and developed a multilevel cache architecture using Redis, process and thread caches for handling feature flags. This reduced feature flag database calls by 99.99% (123M to 400 calls per day), and 6% of the overall database load',
+            content: 'Designed and developed a multilevel cache architecture using Redis, process and thread caches for handling feature flags. This reduced feature flag database calls by 99.99% (123M to 400 calls per day), and 6% of the overall database load.',
             link: 'https://ashwin-docs.s3.amazonaws.com/Global-flag.pdf',
             linkname: 'Documentation'
           },
@@ -220,7 +220,7 @@ module.exports = {
         description: 'Software Engineer | June 2018 - May 2021',
         description_bullets: [
           {
-            content: 'Collaborated with a team of 4 machine learning experts and built a Freddy AI powered voicebot using Spring Boot, Rails and Memcached. Upon its beta release to the customers, this bot resolved an average of 25% of common customer queries',
+            content: 'Collaborated with a team of 4 machine learning experts and built a Freddy AI powered voicebot using Spring Boot, Rails and Memcached. Upon its beta release to the customers, this bot resolved an average of 25% of common customer queries.',
             link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/voicebot/',
             linkname: 'Product Website'
           },
