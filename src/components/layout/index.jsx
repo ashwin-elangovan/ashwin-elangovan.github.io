@@ -10,7 +10,7 @@ import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { isBrowser} from 'react-device-detect';
 
 const classes = {
-  wrapper: 'p-8 relative xs:p-24',
+  wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
   outerWrapper: 'relative dark:bg-slate-900',
   svg: 'hidden fixed transform right-0 z-0 xl:block',
   list: 'mt-6 uppercase tracking-wider mr-4',
@@ -118,7 +118,7 @@ const Layout = ({ children }) => {
             >
             <defs>
               <pattern id="side-bg-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <rect x="0" y="0" width="4" height="4" class="text-gray-500" fill="currentColor" />
+                <rect x="0" y="0" width="4" height="4" className="text-gray-500" fill="currentColor" />
               </pattern>
             </defs>
             <rect

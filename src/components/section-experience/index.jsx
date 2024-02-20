@@ -10,7 +10,7 @@ const SectionExperience = ({ experience }) => {
     <Section title="Experience">
       {experience.map((item) => (
         <SummaryItem
-          key={item.name}
+          key={item.description}
           name={item.name}
           description={item.description}
           link={item.link}

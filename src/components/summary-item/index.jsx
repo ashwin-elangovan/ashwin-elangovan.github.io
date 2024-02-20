@@ -1,8 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import { BiLinkExternal as IconExternalLink } from "react-icons/bi";
-import { useEffect } from "react";
-import { useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import { isBrowser } from 'react-device-detect';
 
@@ -10,6 +8,7 @@ import freshworksImgLight from "../../images/freshworks-light.png";
 import freshworksImgDark from "../../images/freshworks-dark.png";
 import asuImgLight from "../../images/asu-light.png";
 import asuImgDark from "../../images/asu-dark.png";
+import { v4 as uuidv4 } from 'uuid';
 
 const classes = {
   wrapper: "mb-6",
@@ -53,7 +52,6 @@ const SummaryItem = ({
     lightImagesArray = images[0];
     darkImagesArray = images[1];
   }
-  const [value, setValue] = useState(0);
 
   switch (title_image) {
     case "freshworks":
@@ -169,7 +167,7 @@ const SummaryItem = ({
         {description_bullets
           ? description_bullets.map((description_bullets) => (
             <li
-              key={description_bullets}
+              key={`${description_bullets}-${uuidv4()}`}
               className={"list-disc text-justify pt-2 font-light"}
             >
               <div
