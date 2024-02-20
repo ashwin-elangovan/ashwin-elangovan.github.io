@@ -4,6 +4,7 @@ import { BiLinkExternal as IconExternalLink } from "react-icons/bi";
 import { useEffect } from "react";
 import { useState } from "react";
 import ReactDOMServer from "react-dom/server";
+import { isBrowser } from 'react-device-detect';
 
 import freshworksImgLight from "../../images/freshworks-light.png";
 import freshworksImgDark from "../../images/freshworks-dark.png";
