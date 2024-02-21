@@ -101,7 +101,7 @@ const Layout = ({ metadata = {}, children }) => {
       {!splashVisible && (
         // Cursor spotlight effect
         // <div ref={elementRef} style={{ background: { spotlightStyle } }}>
-
+        <div>
           {/* The wrapper that encapsulates the entire website */}
           <div className={classes.outerWrapper} >
 
@@ -162,7 +162,7 @@ const Layout = ({ metadata = {}, children }) => {
               {/* Main content wrapper */}
               <div className={classes.wrapper} style={containerStyle}>{children}</div>
           </div>
-        // </div>
+        </div>
       )}
     </div>
   );
