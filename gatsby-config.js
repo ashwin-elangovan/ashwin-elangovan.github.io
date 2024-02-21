@@ -12,24 +12,45 @@ module.exports = {
     author: `@im_ashwinn`,
     // Optional: Github account URL
     github: `https://github.com/ashwin-elangovan`,
+    githubContent: 'GitHub',
     // Optional: LinkedIn account URL
     linkedin: `https://www.linkedin.com/in/ashwin-elangovan/`,
+    linkedinContent: 'LinkedIn',
+    twitter: `https://twitter.com/im_ashwinn`,
+    twitterContent: 'Twitter',
     // Optional: Resume URL
+    resumeContent: 'Resume',
     resume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-resume.pdf`,
+    professionalResumeContent: 'Professional Resume',
     fullResume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-full-resume.pdf`,
+    fullResumeContent: 'Full Resume',
     workResume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-ruby-resume.pdf`,
     multilevelCacheReport: `https://ashwin-docs.s3.amazonaws.com/Global-flag.pdf`,
+    statusPage: `https://ashwin.statuspage.io/`,
+    statusPageContent: 'STATUS PAGE',
     footer: 'Built with ❤️ by Ashwin Elangovan',
     // Content of the About Me section
     about: `I am a graduate student pursuing a Master's in Computer Science at Arizona State University, actively seeking full-time opportunities. I have worked as an Intern, Software Engineer, Senior Software Engineer at Freshworks for 4+ years where I explored full-stack development, object-oriented programming and microservices deployed in cloud.`,
     // Optional: List your projects, they must have `name` and `description`. `link` is optional.
     projects: [
       {
-        name: 'Guardian Angel | Nov 2023',
+        name: 'EmailChecker | FEB 2024',
+        subdescription: '',
+        link: 'https://pkg.go.dev/github.com/ashwin-elangovan/email-checker',
+        descriptionBullets: [
+          {
+            content: 'A Go package which checks the DNS records for a given domain extracted from an email address and displays information about its MX, SPF, and DMARC records.',
+            link: '',
+            linkname: ''
+          }
+        ],
+      },
+      {
+        name: 'Guardian Angel | NOV 2023',
         description: '',
         subdescription: '',
         link: 'https://github.com/ashwin-elangovan/guardian-angel',
-        description_bullets: [
+        descriptionBullets: [
           {
             content: 'Developed a Health Monitor android app which continuously tracks vital signs swiftly identifying irregularities. In critical scenarios, the application prompts users to seek medical attention and has the capability to notify emergency contacts.',
             link: '',
@@ -48,11 +69,11 @@ module.exports = {
         ],
       },
       {
-        name: 'Theia: Website change detector | Feb 2023',
+        name: 'Theia: Website change detector | FEB 2023',
         description: '',
         subdescription: '',
         link: '',
-        description_bullets: [
+        descriptionBullets: [
           {
             content: 'Developed a web app using Python and React to monitor websites and send email alerts with screenshots upon changes.',
             link: '',
@@ -77,11 +98,11 @@ module.exports = {
 
       },
       {
-        name: 'FluxFlow: Visual analysis of anomalous info spreading on X | Oct 2022',
+        name: 'FluxFlow: Visual analysis of anomalous info spreading on X | OCT 2022',
         // description: 'Oct 2022',
         subdescription: '',
         link: 'https://fluxflow.ashwinelangovan.com',
-        description_bullets: [
+        descriptionBullets: [
           {
             content: 'Designed a Flask, D3.js and MongoDB based app for the visual analysis of anomalous information spreading on X (Twitter).',
             link: '',
@@ -100,26 +121,13 @@ module.exports = {
         ],
       },
       {
-        name: 'Hodoor: A rate limiter service | Jan 2022',
+        name: 'Hodoor: A rate limiter service | JAN 2022',
         // description: 'Jan 2022',
         subdescription: '',
         link: 'https://github.com/ashwin-elangovan/hodoor',
-        description_bullets: [
+        descriptionBullets: [
           {
             content: 'Implemented a high-performance rate limiter middleware based on the sliding window algorithm using Java and Redis.',
-            link: '',
-            linkname: ''
-          }
-        ],
-      },
-      {
-        name: 'EmailChecker | Feb 2024',
-        // description: 'Jan 2022',
-        subdescription: '',
-        link: 'https://pkg.go.dev/github.com/ashwin-elangovan/email-checker',
-        description_bullets: [
-          {
-            content: 'A Go package which checks the DNS records for a given domain extracted from an email address and displays information about its MX, SPF, and DMARC records.',
             link: '',
             linkname: ''
           }
@@ -130,11 +138,11 @@ module.exports = {
     experience: [
       {
         name: 'Arizona State University',
-        description: 'Graduate Teaching Assistant | Aug 2023 - Dec 2023',
+        description: 'Graduate Teaching Assistant | AUG 2023 - DEC 2023',
         link: 'https://www.asu.edu/',
         title_image: 'asu',
         subdescription: '',
-        description_bullets: [
+        descriptionBullets: [
           {
             content: 'Served as a Teaching Assistant for CSE 551: Foundations of Algorithms, where responsibilities included grading assignments and exam papers, conducting office hours, and providing assistance to students with their inquiries.',
             link: '',
@@ -148,8 +156,8 @@ module.exports = {
         ]
       },
       {
-        description: 'Student Supervisor | Aug 2023 - Aug 2023',
-        description_bullets: [
+        description: 'Student Supervisor | AUG 2023',
+        descriptionBullets: [
           {
             content: 'Demonstrated outstanding skills as a Verifier, earning a promotion to the supervisor role.',
             link: '',
@@ -163,8 +171,8 @@ module.exports = {
         ]
       },
       {
-        description: 'Student Verifier | Sep 2022 - July 2023',
-        description_bullets: [
+        description: 'Student Verifier | SEP 2022 - JUL 2023',
+        descriptionBullets: [
           {
             content: 'Proficiently verified and processed a high volume of Domestic College, High School, and International student transcripts.',
             link: '',
@@ -179,11 +187,11 @@ module.exports = {
       },
       {
         name: 'Freshworks',
-        description: 'Senior Software Engineer | May 2021 - July 2022',
+        description: 'Senior Software Engineer | MAY 2021 - JUL 2022',
         link: 'https://www.freshworks.com/',
         title_image: 'freshworks',
         subdescription: '',
-        description_bullets: [
+        descriptionBullets: [
           {
             content: 'Designed and developed a multilevel cache architecture using Redis, process and thread caches for handling feature flags. This reduced feature flag database calls by 99.99% (123M to 400 calls per day), and 6% of the overall database load.',
             link: 'https://ashwin-docs.s3.amazonaws.com/Global-flag.pdf',
@@ -217,8 +225,8 @@ module.exports = {
         ]
       },
       {
-        description: 'Software Engineer | June 2018 - May 2021',
-        description_bullets: [
+        description: 'Software Engineer | JUN 2018 - MAY 2021',
+        descriptionBullets: [
           {
             content: 'Collaborated with a team of 4 machine learning experts and built a Freddy AI powered voicebot using Spring Boot, Rails and Memcached. Upon its beta release to the customers, this bot resolved an average of 25% of common customer queries.',
             link: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/voicebot/',
@@ -257,10 +265,10 @@ module.exports = {
         ]
       },
       {
-        description: 'Product Development Intern | Jan 2018 - Jun 2018',
-        description_bullets: [
+        description: 'Product Development Intern | JAN 2018 - JUN 2018',
+        descriptionBullets: [
           {
-            content: 'Designed and implemented new features based on frequent customer issues on the product’s internal admin application using Ruby on Rails, reducing the number of high- priority L2 customer support tickets by 50%.',
+            content: 'Designed and implemented new features based on frequent customer issues on the product’s internal admin application using Ruby on Rails, reducing the number of high-priority L2 customer support tickets by 50%.',
             link: '',
             linkname: ''
           },
@@ -272,8 +280,8 @@ module.exports = {
         ]
       },
       {
-        description: 'Summer Intern | Mar 2017 - Jul 2017',
-        description_bullets: [
+        description: 'Summer Intern | MAR 2017 - JUL 2017',
+        descriptionBullets: [
           {
             content: 'Improved SPACES - an internal web portal of Freshworks by developing a meeting room booking system for Freshdesk employees using Node.js which regulated meeting room bookings and reduced the waiting time.',
             link: '',
@@ -285,17 +293,20 @@ module.exports = {
     // Optional: List your skills, they must have `name` and `description`.
     skills: [
       {
-        name: 'PROGRAMMING LANGUAGES: ',
+        name: 'languages',
+        title: 'PROGRAMMING LANGUAGES: ',
         // subdescription: 'Ruby, Python, JavaScript, Java, C, C++, Bash',
         tags: ['Ruby', 'Python', 'JavaScript', 'Java', 'C', 'C++', 'Bash']
       },
       {
-        name: 'FRAMEWORKS: ',
+        name: 'frameworks',
+        title: 'FRAMEWORKS: ',
         // description: 'Ruby on Rails, Ember.js, Node.js, Flask, Django, Spring boot, React, Tailwind CSS',
         tags: ['Ruby on Rails', 'Ember.js', 'Node.js', 'Flask', 'Django', 'Spring boot', 'React', 'Tailwind CSS']
       },
       {
-        name: 'TOOLS AND DATABASES: ',
+        name: 'tools',
+        title: 'TOOLS AND DATABASES: ',
         // description:
         //   'MySQL, PostgreSQL, MongoDB, Apache Kafka, AWS, Git, gRPC, Jenkins, Docker, GraphQL, Redis, Memcached, Elasticsearch, Microsoft Azure, Kubernetes, Grafana, Selenium, Microservices, API design, Agile / Scrum, System Design, Jira, Confluence',
         tags: ['MySQL', 'PostgreSQL', 'MongoDB', 'Apache Kafka', 'AWS', 'Git', 'gRPC', 'Jenkins', 'Docker', 'GraphQL', 'Redis', 'Memcached', 'Elasticsearch', 'Microsoft Azure', 'Kubernetes', 'Grafana', 'Selenium', 'Microservices', 'API design', 'Agile / Scrum', 'System Design', 'Jira', 'Confluence']

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Section from '../section';
 import SummaryItem from '../summary-item';
 
@@ -14,8 +13,9 @@ const SectionExperience = ({ experience }) => {
           name={item.name}
           description={item.description}
           link={item.link}
+          internal={false}
           subdescription={item.subdescription}
-          description_bullets={item.description_bullets}
+          descriptionBullets={item.descriptionBullets}
           title_image={item.title_image}
         />
       ))}

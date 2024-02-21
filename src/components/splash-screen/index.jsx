@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import loading from "../../images/loading.gif";
 
+const classes = {
+  splashScreenDiv: "bg-white h-screen flex justify-center items-center",
+};
+
 const SplashScreen = ({ hideSplash }) => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -17,9 +21,9 @@ const SplashScreen = ({ hideSplash }) => {
   if (!isVisible) return null;
 
   return (
-    <div style={{ backgroundColor: 'white', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div className={classes.splashScreenDiv}>
       <img src={loading} alt="Loading..." />
-      </div>
+    </div>
   );
 };
 

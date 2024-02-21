@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Section from '../section';
 import SummaryItem from '../summary-item';
 
@@ -16,7 +15,7 @@ const SectionProjects = ({ projects }) => {
           link={project.link}
           subdescription={project.subdescription}
           paragraph={true}
-          description_bullets={project.description_bullets}
+          descriptionBullets={project.descriptionBullets}
         />
       ))}
     </Section>

@@ -8,3 +8,10 @@ require('./src/css/index.css');
 //   // console.log("ReactDOM.render has executed")
 // };
 
+// gatsby-browser.js
+
+// exports.onInitialClientRender = () => {
+//   // Add your class to the body element
+//   // document.body.classList.add('dark:bg-slate-900');
+// };
+

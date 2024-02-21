@@ -70,9 +70,17 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       author: String
       github: String
+      githubContent: String
+      linkedinContent: String
+      twitterContent: String
+      resumeContent: String
+      professionalResumeContent: String
+      fullResumeContent: String
       linkedin: String
       resume: String
       about: String
+      footer: String
+      statusPage: String
       projects: [SectionItem]
       experience: [SectionItem]
       skills: [SectionItem]
@@ -83,7 +91,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       link: String
       subdescription: String
-      description_bullets: [ExpDescription]
+      descriptionBullets: [ExpDescription]
       title_image: String
     }
 

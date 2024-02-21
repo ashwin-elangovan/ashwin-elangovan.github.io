@@ -1,8 +1,11 @@
 import { Link } from 'gatsby';
 import React from 'react';
-
 import Section from '../section';
 import SummaryItem from '../summary-item';
+
+const classes = {
+  blogLink: "text-gray-500 dark:text-white text-sm hover:text-black dark:hover:text-blue-400"
+};
 
 const SectionBlog = ({ posts }) => {
   return (
@@ -16,8 +19,9 @@ const SectionBlog = ({ posts }) => {
           internal
         />
       ))}
+
       {posts.length >= 5 && (
-        <Link className="text-gray-500 dark:text-white text-sm hover:text-black dark:hover:text-blue-400" to="/blog">
+        <Link className={classes.blogLink} to="/blog">
           View all posts &rarr;
         </Link>
       )}

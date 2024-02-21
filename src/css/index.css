@@ -96,8 +96,8 @@
 }
 
 @layer utilities {
-  .max-w-150 {
-    max-width: 150px;
+  .max-w-180 {
+    max-width: 180px;
   }
 
   .top-5 {
@@ -300,31 +300,6 @@ pre[class*='language-'] {
     -webkit-background-clip: text;
     background-clip: text;
 }
-/* @font-face {
-  font-family: 'Anonima';
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-  font-named-instance: 'Regular';
-  src: url(/fonts/anonima.woff) format("woff");
-}
-
-.custom-font-link {
-  font-family: 'Anonima', sans-serif;
-}
-
-@font-face {
-  font-family: 'Gilland';
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-  font-named-instance: 'Regular';
-  src: url(/fonts/gilland.woff) format("woff");
-}
-
-.custom-font-link2 {
-  font-family: 'Gilland', sans-serif;
-} */
 
 .card {
   width: var(--card-width);
@@ -436,5 +411,19 @@ pre[class*='language-'] {
   margin-bottom: 50px;
   max-width: 100px;
   max-height: 100px;
-  transform: scale(0.85);
+  transform: scale(0.75);
 }
+
+@font-face {
+  font-family: 'Mabry';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/MabryPro-Regular.woff2) format("woff2");
+}
+
+/* body {
+  font-family: 'Mabry', sans-serif;
+  /* Use 'sans-serif' as fallback
+} */

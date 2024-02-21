@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Section from '../section';
 import SummaryItem from '../summary-item';
 
@@ -79,30 +78,27 @@ import postgresql_dark from "../../images/tools and databases/dark-mode/postgres
 import redis_dark from "../../images/tools and databases/dark-mode/redis.svg";
 import selenium_dark from "../../images/tools and databases/dark-mode/selenium.png";
 
-
-
 const SectionSkills = ({ skills }) => {
   let darkImagesArray = null;
   let lightImagesArray = null;
   return (
     <Section title="Skills">
       {skills.map((skill) => {
-        let imagesArray;
         switch (skill.name) {
-          case "PROGRAMMING LANGUAGES: ":
+          case "languages":
             darkImagesArray = [python_dark, javascript_dark, ruby_dark, java_dark, c_dark, cpp_dark, go_dark, bash_dark];
             lightImagesArray = [python_light, javascript_light, ruby_light, java_light, c_light, cpp_light, go_light, bash_light];
             break;
-          case "FRAMEWORKS: ":
+          case "frameworks":
             darkImagesArray = [node_dark, react_dark, rails_dark, django_dark, spring_dark, flask_dark, emberjs_dark, tailwindcss_dark];
             lightImagesArray = [node_light, react_light, rails_light, django_light, spring_light, flask_light, emberjs_light, tailwindcss_light];
             break;
-          case "TOOLS AND DATABASES: ":
+          case "tools":
             darkImagesArray = [
               mysql_dark, postgresql_dark, redis_dark, aws_dark, docker_dark,
               kubernetes_dark, mongodb_dark, jenkins_dark, graphql_dark, grpc_dark,
               apache_kafka_dark, memcached_dark, elasticsearch_dark, grafana_dark,
-              azure_dark, confluence_dark, git_dark, , jira_dark, selenium_dark
+              azure_dark, confluence_dark, git_dark, jira_dark, selenium_dark
             ];
             lightImagesArray = [
               mysql_light, postgresql_light, redis_light, aws_light, docker_light,
@@ -111,11 +107,13 @@ const SectionSkills = ({ skills }) => {
               azure_light, confluence_light, git_light, jira_light, selenium_light
             ];
             break;
+          default:
+            // No case possible
         }
         return (
           <SummaryItem
-            key={skill.name}
-            name={skill.name}
+            key={skill.title}
+            name={skill.title}
             description={skill.description}
             subdescription={skill.subdescription}
             tags={skill.tags}
@@ -124,7 +122,6 @@ const SectionSkills = ({ skills }) => {
         );
       })}
     </Section>
-
   );
 };
 

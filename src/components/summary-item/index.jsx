@@ -3,21 +3,36 @@ import React from "react";
 import { BiLinkExternal as IconExternalLink } from "react-icons/bi";
 import ReactDOMServer from "react-dom/server";
 import { isBrowser } from 'react-device-detect';
+import { v4 as uuidv4 } from 'uuid';
 
+// Image imports
 import freshworksImgLight from "../../images/freshworks-light.png";
 import freshworksImgDark from "../../images/freshworks-dark.png";
 import asuImgLight from "../../images/asu-light.png";
 import asuImgDark from "../../images/asu-dark.png";
-import { v4 as uuidv4 } from 'uuid';
 
 const classes = {
   wrapper: "mb-6",
-  name: "font-bold text-gray-900 dark:text-white pb-1 pt-0",
-  description: "text-md text-gray-600 dark:text-gray-200 font-semibold text-lg",
+  projectSectionTitle: "font-bold text-gray-600 dark:text-white pb-1 pt-0 text-lg",
+  experienceSectionTitle: "text-md text-gray-600 dark:text-gray-200 font-semibold text-lg",
   image: "transform transition-all duration-150 hover:scale-125",
-  mobileImageSize: "lg:w-1/4 w-full max-w-[60%]",
-  desktopImageSize: "w-full max-w-[25%]",
   imageWrapper: "text-gray-600 dark:text-gray-200",
+  linkHover: "hover:text-black dark:hover:text-blue-400",
+  titleExternalLink: "inline-flex items-center",
+  descriptionBullet: "list-disc text-justify pt-2 font-light text-gray-600 dark:text-gray-400",
+  desktop: {
+    ImageSize: "w-full max-w-[25%]",
+    TitlePartsFlex: "flex justify-between text-justify",
+    projectTitleWidth: "w-10/12",
+    projectTimeframe: "w-2/12 flex justify-end font-light"
+  },
+  mobile: {
+    ImageSize: "lg:w-1/4 w-full max-w-[60%]",
+    TitlePartsFlex: "flex-col text-center",
+    projectTimeframe: "mt-3 font-light"
+  },
+  tagLayout: "tags dark:bg-slate-500 bg-slate-600"
+
 };
 
 const SummaryItem = ({
@@ -26,25 +41,18 @@ const SummaryItem = ({
   link = false,
   internal = false,
   subdescription,
-  description_bullets,
+  descriptionBullets,
   paragraph,
   tags,
   images,
   title_image,
 }) => {
-  let linkContent;
-  if (internal) {
-    linkContent = <Link to={link}>{name}</Link>;
-  } else {
-    linkContent = <a href={link}>{name}</a>;
-  }
+  let linkContent = internal ? <Link to={link}>{name}</Link> : <a href={link}>{name}</a>;
 
-  const dParts = description ? description.split("|") : null;
-  const nParts = name ? name.split("|") : null;
+  const experienceTitleParts = description ? description.split("|") : null;
+  const projectTitleParts = name ? name.split("|") : null;
 
-  let light_image = null;
-  let dark_image = null;
-
+  // Specific images for skills
   let lightImagesArray = null;
   let darkImagesArray = null;
 
@@ -52,6 +60,10 @@ const SummaryItem = ({
     lightImagesArray = images[0];
     darkImagesArray = images[1];
   }
+
+  // Specific images for experience (ASU and Freshworks)
+  let light_image = null;
+  let dark_image = null;
 
   switch (title_image) {
     case "freshworks":
@@ -66,133 +78,151 @@ const SummaryItem = ({
     // code block
   }
   return (
+    // Wrapper for Experience, Projects and Skills
     <div className={classes.wrapper}>
+
       {!title_image ? (
-        nParts && nParts.length === 2 ? (
-          // Render this if nParts has 2 elements
-          <div
-            className={`
-              ${classes.name}
-              ${link ? 'hover:text-black dark:hover:text-blue-400' : ''}
-              font-semibold text-lg
-              ${isBrowser ? 'flex justify-between text-justify' : 'flex-col text-center'}
-            `}
-          >
-            <div className={isBrowser ? 'w-10/12' : ''}>
+        // If title image is not present [Applicable specifically for "Projects"]
+        // Check for projectTitleParts
+        // If projectTitleParts has 2 elements, render title and timeframe
+        projectTitleParts && projectTitleParts.length === 2 ? (
+          <div className={`
+            ${classes.projectSectionTitle}
+            ${link ? classes.linkHover : ''}
+            ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}
+          `}>
+
+            {/* Title of project */}
+            <div className={isBrowser ? classes.desktop.projectTitleWidth : ''}>
               {link ? (
-
-                <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
-                  <span className="mr-2">{nParts[0]}</span>
-                  <span> <IconExternalLink /></span>
+                <a href={link} target="_blank" rel="noopener noreferrer" className={classes.titleExternalLink}>
+                  <span className="mr-2">{projectTitleParts[0]}</span>
+                  <span>{" "}<IconExternalLink /></span>
                 </a>
-
               ) : (
-                <span>{nParts[0]}</span>
+                <span>{projectTitleParts[0]}</span>
               )}
             </div>
-            <div className={isBrowser ? 'w-2/12 flex justify-end' : 'mt-3'}>
+
+            {/* Year of project */}
+            <div className={isBrowser ? classes.desktop.projectTimeframe : classes.mobile.projectTimeframe}>
               {link ? (
                 <a href={link} target="_blank" rel="noopener noreferrer">
                   <span>
-                    <i>{nParts[1]}</i>
+                    {projectTitleParts[1]}
                   </span>
                 </a>
               ) : (
                 <span>
-                  <i>{nParts[1]}</i>
+                  {projectTitleParts[1]}
                 </span>
               )}
             </div>
+
           </div>
         ) : (
-          // Render this if nParts doesn't have 2 elements
-          <h3
-            className={`${classes.name} ${link
-                ? "hover:text-black dark:hover:text-blue-400 text-3xl"
-                : "font-semibold text-lg"
-                }${isBrowser ? 'flex justify-between text-justify' : 'flex-col text-center'}`}
+          // If project title does not have 2 elements, render as normal
+          // This shouldn't happen, but just in case [Dead code]
+          <h3 className={
+             `${classes.projectSectionTitle}
+              ${link ? `${classes.linkHover} text-3xl` : "font-semibold text-lg"}
+              ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}`
+            }
           >
             {link ? linkContent : name}
           </h3>
         )
       ) : (
-        <div
-          className={`flex justify-center items-center mx-auto text-center pb-6 pt-1`}
-        >
-            <div className={`${classes.imageWrapper} ${isBrowser ? classes.desktopImageSize : classes.mobileImageSize}`}>
-            <Link to={link}>
-              <img
-                className={`${classes.image} block dark:hidden`}
-                src={light_image}
-                alt={name}
-              />
-              <img
-                className={`${classes.image} hidden dark:block`}
-                src={dark_image}
-                alt={name}
-              />
-            </Link>
+        // If title image is present (Else condition)
+        // Title images in experience for ASU and Freshworks
+        <div className={`flex justify-center items-center mx-auto text-center pb-6 pt-1`}>
+          <div className={`${classes.imageWrapper} ${isBrowser ? classes.desktop.ImageSize : classes.mobile.ImageSize}`}>
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                <img
+                  className={`${classes.image} block dark:hidden`}
+                  src={light_image}
+                  alt={name}
+                />
+                <img
+                  className={`${classes.image} hidden dark:block`}
+                  src={dark_image}
+                  alt={name}
+                />
+              </a>
           </div>
         </div>
       )}
 
-      {/* Description */}
-      {dParts && dParts.length === 2 ? (
-        <div className={`${classes.description} ${subdescription || description_bullets ? 'leading-10 pt-3' : ''} ${isBrowser ? 'flex justify-between text-justify' : 'flex-col text-center'}`}>
+      {/* Experience title */}
+      {experienceTitleParts && experienceTitleParts.length === 2 ? (
+        <div className={
+          `${classes.experienceSectionTitle}
+           ${subdescription || descriptionBullets ? 'leading-10 pt-3' : ''}
+           ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}`
+        }>
+          {/* Experience Role */}
           <div>
-            <span>{dParts[0]}</span>
+            <span>{experienceTitleParts[0]}</span>
           </div>
-          {isBrowser ? (
-            <div>
-              <span><i>{dParts[1]}</i></span>
-            </div>
-          ) : (
-            <div>
-              <i>{dParts[1]}</i>
-            </div>
-          )}
+
+          {/* Timeframe of experience */}
+          {
+            isBrowser ? (
+              <div className='font-light'>
+                <span>{experienceTitleParts[1]}</span>
+              </div>
+            ) : (
+              <div className='font-light'>{experienceTitleParts[1]}</div>
+            )
+          }
         </div>
       ) : (
-        <p
-          className={`${classes.description} ${subdescription || description_bullets ? "leading-10 pt-3" : ""
-            } justify-between`}
-        >
+        // Experience always has 2 parts
+        // Just in case [Dead code]
+        <p className={
+          `${classes.experienceSectionTitle}
+           ${subdescription || descriptionBullets ? "leading-10 pt-3" : ""} justify-between`
+        }>
           {description}
         </p>
       )}
 
-
       {/* Description bullets */}
+      {/* Applicable for both Experience and Projects */}
       <ul>
-        {description_bullets
-          ? description_bullets.map((description_bullets) => (
-            <li
-              key={`${description_bullets}-${uuidv4()}`}
-              className={"list-disc text-justify pt-2 font-light"}
-            >
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: `${description_bullets.content}
-    ${description_bullets.link && description_bullets.linkname
-                      ? `<a href="${description_bullets.link}" target="_blank" rel="noreferrer"
-                          class="inline-flex items-center font-bold hover:text-black dark:hover:text-blue-400 ml-2"
+        {
+          descriptionBullets
+            ? descriptionBullets.map((descriptionBullet) => (
+              <li
+                key={`${descriptionBullet}-${uuidv4()}`}
+                className={`${classes.descriptionBullet}`}>
+                {/* ToDo: Should revamp this */}
+                {/* Render each bullet points */}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `${descriptionBullet.content} ${descriptionBullet.link && descriptionBullet.linkname
+                      ? `<a href="${descriptionBullet.link}" target="_blank" rel="noreferrer"
+                          class="inline-flex items-center font-bold ${classes.linkHover} ml-2"
                          >
                           [
-                          <span class="mr-1">${description_bullets.linkname}</span>
+                          <span class="mr-1">${descriptionBullet.linkname}</span>
                           <span>
                             ${ReactDOMServer.renderToString(<IconExternalLink />)}
                           </span>
                           ]
                         </a>`
-                      : ""
-                    }`,
-                }}
-              />
-            </li>
-          ))
-          : ""}
+                        : ""
+                      }`,
+                  }}
+                />
+              </li>
+            ))
+            : ""
+        }
       </ul>
+
       {/* Subdescription */}
+      {/* Dead code */}
       <ul>
         {subdescription
           ? subdescription.split(/<br> /).map((subdescription) => (
@@ -206,11 +236,12 @@ const SummaryItem = ({
           : ""}
       </ul>
 
-
+      {/* Skills images */}
       {isBrowser ? (
         (lightImagesArray || darkImagesArray) && (
           <div className="pt-3">
             <div className="logo-container">
+
               {/* Light mode images */}
               {lightImagesArray && lightImagesArray.map((image, index) => (
                 <img
@@ -220,6 +251,7 @@ const SummaryItem = ({
                   className={`logo-image block dark:hidden ${classes.image}`}
                 />
               ))}
+
               {/* Dark mode images */}
               {darkImagesArray && darkImagesArray.map((image, index) => (
                 <img
@@ -233,11 +265,11 @@ const SummaryItem = ({
           </div>
         )
       ) : (
-        /* Render tags if not in browser */
+        /* Render skills as tags if in mobile */
         tags && (
           <div className="pt-3">
             {tags.map((tag) => (
-              <span key={tag} className={"tags dark:bg-slate-500 bg-slate-600"}>
+              <span key={tag} className={classes.tagLayout}>
                 {tag}
               </span>
             ))}
