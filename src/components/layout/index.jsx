@@ -35,12 +35,12 @@ const Layout = ({ metadata = {}, children }) => {
     setSplashVisible(false);
   };
 
-  let [elementRef, spotlightStyle] = useCursorSpotlight(
-    "red", // Background color
-    "green", // Highlight color
-    "200px", // Highlight size
-    true // Active state
-  );
+  // let [elementRef, spotlightStyle] = useCursorSpotlight(
+  //   "red", // Background color
+  //   "green", // Highlight color
+  //   "200px", // Highlight size
+  //   true // Active state
+  // );
 
   // Theme toggler option
   const updateTheme = () => {
