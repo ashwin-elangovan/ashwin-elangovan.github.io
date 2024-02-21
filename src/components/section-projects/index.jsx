@@ -16,6 +16,8 @@ const SectionProjects = ({ projects }) => {
           subdescription={project.subdescription}
           paragraph={true}
           descriptionBullets={project.descriptionBullets}
+          sectionTags={project.sectionTags}
+          sectionImages={project.sectionImages}
         />
       ))}
     </Section>

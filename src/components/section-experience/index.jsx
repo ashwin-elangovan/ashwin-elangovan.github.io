@@ -16,6 +16,7 @@ const SectionExperience = ({ experience }) => {
           internal={false}
           subdescription={item.subdescription}
           descriptionBullets={item.descriptionBullets}
+          sectionTags={item.sectionTags}
           title_image={item.title_image}
         />
       ))}

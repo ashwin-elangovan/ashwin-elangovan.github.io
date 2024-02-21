@@ -4,7 +4,7 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
+  darkMode: 'selector',
   theme: {
     extend: {
       screens: {

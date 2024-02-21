@@ -18,7 +18,7 @@ const classes = {
   zoom: 'transform transition-all duration-150 hover:scale-125',
   statusPage: 'inline list-none pr-4',
   updateTheme: 'inline list-none pr-6',
-  link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-blue-400',
+  link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-teal-300',
   statusPageLink: 'ml-2',
   topBar: 'fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-10 shadow-lg'
 };

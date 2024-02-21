@@ -4,7 +4,7 @@ import Section from '../section';
 import SummaryItem from '../summary-item';
 
 const classes = {
-  blogLink: "text-gray-500 dark:text-white text-sm hover:text-black dark:hover:text-blue-400"
+  blogLink: "text-gray-500 dark:text-white text-sm hover:text-black dark:hover:text-teal-300"
 };
 
 const SectionBlog = ({ posts }) => {

@@ -44,6 +44,7 @@ module.exports = {
             linkname: ''
           }
         ],
+        sectionTags: ['Go', 'DNS']
       },
       {
         name: 'Guardian Angel | NOV 2023',
@@ -67,6 +68,7 @@ module.exports = {
             linkname: ''
           }
         ],
+        sectionTags: ['Android Studio', 'Kotlin', 'Flask', 'OpenAPI', 'MongoDB', 'Fuzzy Logic', 'Twilio']
       },
       {
         name: 'Theia: Website change detector | FEB 2023',
@@ -80,7 +82,7 @@ module.exports = {
             linkname: ''
           },
           {
-            content: 'Utilized OpenCV-Python to detect image changes and rq for implementing background workers. Integrated with Sendgrid for email notifications and leveraged Amazon S3 to securely store website screenshots.',
+            content: 'Utilized OpenCV-Python to detect image changes and celery for implementing background workers. Integrated with Sendgrid for email notifications and leveraged Amazon S3 to securely store website screenshots.',
             link: '',
             linkname: ''
           },
@@ -95,10 +97,10 @@ module.exports = {
             linkname: ''
           }
         ],
-
+        sectionTags: ['Python', 'Spring Boot', 'React', 'Rails', 'OpenCV', 'GraphQL', 'Sendgrid', 'Amazon S3', 'Celery', 'Selenium']
       },
       {
-        name: 'FluxFlow: Visual analysis of anomalous info spreading on X | OCT 2022',
+        name: 'FluxFlow: Visual analysis of anomalous information spreading on X | OCT 2022',
         // description: 'Oct 2022',
         subdescription: '',
         link: 'https://fluxflow.ashwinelangovan.com',
@@ -119,6 +121,7 @@ module.exports = {
             linkname: ''
           }
         ],
+        sectionTags: ['Flask', 'D3.js', 'MongoDB', 'Twitter API', 'Scrapy', 'NLP']
       },
       {
         name: 'Hodoor: A rate limiter service | JAN 2022',
@@ -132,6 +135,7 @@ module.exports = {
             linkname: ''
           }
         ],
+        sectionTags: ['Java', 'Redis']
       }
     ],
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
@@ -153,22 +157,21 @@ module.exports = {
             link: '',
             linkname: ''
           }
-        ]
+        ],
+        sectionTags: ['Algorithms', 'Python', 'C'],
+        sectionImages: []
       },
       {
         description: 'Student Supervisor | AUG 2023',
         descriptionBullets: [
           {
-            content: 'Demonstrated outstanding skills as a Verifier, earning a promotion to the supervisor role.',
-            link: '',
-            linkname: ''
-          },
-          {
-            content: 'In this position, played a key role in tasks such as training and mentoring new student verifiers, contributing to the overall success of the team.',
+            content: 'Demonstrated outstanding skills as a Verifier, earning a promotion to the supervisor role. In this position, played a key role in tasks such as training and mentoring new student verifiers, contributing to the overall success of the team.',
             link: '',
             linkname: ''
           }
-        ]
+        ],
+        sectionTags: [],
+        sectionImages: []
       },
       {
         description: 'Student Verifier | SEP 2022 - JUL 2023',
@@ -183,7 +186,9 @@ module.exports = {
             link:'',
             linkname: ''
           }
-        ]
+        ],
+        sectionTags: ['Hyland OnBase', 'Salesforce'],
+        sectionImages: []
       },
       {
         name: 'Freshworks',
@@ -222,7 +227,9 @@ module.exports = {
             link: '',
             linkname:''
           }
-        ]
+        ],
+        sectionTags: ['React', 'Node.js', 'Ruby on Rails', 'AWS', 'Docker', 'Ember.js', 'Redis', 'Snowflake', 'Kubernetes', 'Terraform'],
+        sectionImages: []
       },
       {
         description: 'Software Engineer | JUN 2018 - MAY 2021',
@@ -262,7 +269,22 @@ module.exports = {
             link: '',
             linkname:''
           }
-        ]
+        ],
+        sectionTags: ['Spring Boot', 'Ruby on Rails', 'React', 'Flask', 'Node.js', 'Docker', 'Ember.js', 'Redis', 'Kafka', 'Memcached', 'New Relic'],
+        sectionImages: [
+          {
+            imageLocation: '../../images/sectionImages/freshworks/se/routing_automation.jpeg',
+            url: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/automated-call-routing/'
+          },
+          {
+            imageLocation: '/src/images/sectionImages/freshworks/se/voicebot.jpeg',
+            url: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-setup/voicebot/'
+          },
+          {
+            imageLocation: '/src/images/sectionImages/freshworks/se/voicebot.jpeg',
+            url: 'https://www.freshworks.com/freshcaller-cloud-pbx/call-center-management/service-level-monitoring/'
+          }
+        ],
       },
       {
         description: 'Product Development Intern | JAN 2018 - JUN 2018',
@@ -277,7 +299,9 @@ module.exports = {
             link: '',
             linkname: ''
           }
-        ]
+        ],
+        sectionTags: ['Node.js', 'Rails', 'HTML', 'CSS'],
+        sectionImages: []
       },
       {
         description: 'Summer Intern | MAR 2017 - JUL 2017',
@@ -287,7 +311,9 @@ module.exports = {
             link: '',
             linkname: ''
           }
-        ]
+        ],
+        sectionTags: ['Node.js', 'HTML', 'CSS'],
+        sectionImages: []
       },
     ],
     // Optional: List your skills, they must have `name` and `description`.
@@ -357,8 +383,9 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-postcss`,
-    `gatsby-plugin-dark-mode`,
+    '@skagami/gatsby-plugin-dark-mode',
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {

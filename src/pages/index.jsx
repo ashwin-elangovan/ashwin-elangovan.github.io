@@ -86,6 +86,11 @@ export const pageQuery = graphql`
             link
             linkname
           }
+          sectionTags
+          sectionImages {
+            imageLocation
+            url
+          }
         }
         experience {
           name
@@ -98,6 +103,11 @@ export const pageQuery = graphql`
             linkname
           }
           title_image
+          sectionTags
+          sectionImages {
+            imageLocation
+            url
+          }
         }
         skills {
           name
