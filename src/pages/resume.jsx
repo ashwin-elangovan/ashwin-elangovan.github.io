@@ -13,10 +13,10 @@ export default function MyDocument() {
     }
   `);
 
-  const { resume } = data.site.siteMetadata;
+  const { professionalResume } = data.site.siteMetadata;
   useEffect(() => {
-    window.location.href = resume;
-  }, [resume]);
+    window.location.href = professionalResume;
+  }, [professionalResume]);
 
   return null;
 }
