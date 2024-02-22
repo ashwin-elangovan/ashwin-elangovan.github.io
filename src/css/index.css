@@ -411,7 +411,7 @@ pre[class*='language-'] {
   margin-bottom: 50px;
   max-width: 100px;
   max-height: 100px;
-  transform: scale(0.75);
+  transform: scale(0.7);
 }
 
 @font-face {

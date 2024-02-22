@@ -71,34 +71,41 @@ exports.createSchemaCustomization = ({ actions }) => {
       author: String
       github: String
       githubContent: String
+      linkedin: String
       linkedinContent: String
+      twitter: String
       twitterContent: String
       resumeContent: String
+      professionalResume: String
       professionalResumeContent: String
+      fullResume: String
       fullResumeContent: String
-      linkedin: String
-      resume: String
-      about: String
-      footer: String
+      workResume: String
       statusPage: String
+      statusPageContent: String
+      footer: String
+      about: String
       projects: [SectionItem]
       experience: [SectionItem]
       skills: [SectionItem]
     }
 
     type SectionItem {
+      key: String
+      organization: String
       name: String
-      description: String
+      timeframe: String
       link: String
       subdescription: String
-      descriptionBullets: [ExpDescription]
-      title_image: String
+      descriptionBullets: [DescriptionBullet]
+      titleImage: String
     }
 
-    type ExpDescription {
+    type DescriptionBullet {
       content: String
       link: String
       linkname: String
+      contentStyle: String
     }
 
     type MarkdownRemark implements Node {

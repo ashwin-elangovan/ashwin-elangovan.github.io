@@ -84,7 +84,9 @@ const classes = {
 };
 
 const SummaryItem = ({
-  name,
+  source,
+  titleName,
+  titleTime,
   description,
   link = false,
   internal = false,
@@ -93,29 +95,40 @@ const SummaryItem = ({
   paragraph,
   tags,
   images,
-  title_image,
+  titleImage,
   sectionTags,
+  sectionHighlight=true
 }) => {
-  let linkContent = internal ? <Link to={link}>{name}</Link> : <a href={link}>{name}</a>;
+  let linkContent = internal ? <Link to={link}>{titleName}</Link> : <a href={link}>{titleName}</a>;
 
-  const experienceTitleParts = description ? description.split("|") : null;
-  const projectTitleParts = name ? name.split("|") : null;
+  // const experienceTitleParts = description ? description.split("|") : null;
+  // const projectTitleParts = titleName ? titleName.split("|") : null;
 
   let experienceTitle = null;
   let experienceTimeframe = null;
+  let projectTitle = null;
+  let projectTimeframe = null;
 
-  if (experienceTitleParts != null && experienceTitleParts.length == 2) {
-    experienceTitle = experienceTitleParts[0].trim();
-    console.log(experienceTitle);
-    console.log(sectionImages[experienceTitle]);
-    experienceTimeframe = experienceTitleParts[1];
+  if (source === "Experience"){
+    experienceTitle = titleName;
+    experienceTimeframe = titleTime;
   }
 
+  if(source === "Projects"){
+    projectTitle = titleName;
+    projectTimeframe = titleTime;
+  }
+
+
+  // if (experienceTitleParts != null && experienceTitleParts.length == 2) {
+  //   experienceTitle = experienceTitleParts[0].trim();
+  //   console.log(experienceTitle);
+  //   console.log(sectionImages[experienceTitle]);
+  //   experienceTimeframe = experienceTitleParts[1];
+  // }
+
   const [isHovered, setIsHovered] = useState(false);
-
   const [isTitleHovered, setIsTitleHovered] = useState(false);
-
-  const [issectionImageHovered, setsectionImageHovered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   // Specific images for skills
@@ -131,7 +144,7 @@ const SummaryItem = ({
   let light_image = null;
   let dark_image = null;
 
-  switch (title_image) {
+  switch (titleImage) {
     case "freshworks":
       light_image = freshworksImgLight;
       dark_image = freshworksImgDark;
@@ -146,200 +159,186 @@ const SummaryItem = ({
   return (
     // Wrapper for Experience, Projects and Skills
     <div className={classes.wrapper}>
-
-      {title_image && (
+      {/* Title image for Freshworks and ASU */}
+      {titleImage && (
         <div className={`flex justify-center items-center mx-auto text-center pb-6 pt-1`}>
           <div className={`${classes.imageWrapper} ${isBrowser ? classes.desktop.ImageSize : classes.mobile.ImageSize}`}>
             <a href={link} target="_blank" rel="noopener noreferrer">
               <img
                 className={`${classes.image} block dark:hidden`}
                 src={light_image}
-                alt={name}
+                alt={titleName}
               />
               <img
                 className={`${classes.image} hidden dark:block`}
                 src={dark_image}
-                alt={name}
+                alt={titleName}
               />
             </a>
           </div>
         </div>
       )}
 
-
-      <div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className={` ${isHovered ? 'dark:bg-slate-800 bg-gray-200 rounded' : ''}`}
-      >
-        <div style={{
+      {/* Box div highlighter for Experience and Projects*/}
+      {sectionHighlight && (
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className={` ${isHovered ? 'dark:bg-slate-800 bg-gray-200 rounded' : ''}`}
+        >
+          {/* Box specific div */}
+          <div style={{
             boxShadow: isHovered ? 'inset 0 1px 0 0 rgba(148,163,184,0.1)' : 'none',
             paddingLeft: '50px',
             paddingRight: '50px',
             paddingTop: '25px',
             paddingBottom: '25px',
-        }}>
-        {!title_image && (
-          // If title image is not present [Applicable specifically for "Projects"]
-          // Check for projectTitleParts
-          // If projectTitleParts has 2 elements, render title and timeframe
-          projectTitleParts && projectTitleParts.length === 2 ? (
-            <div className={`
-              ${classes.projectSectionTitle}
-              ${link ? classes.linkHover : ''}
-              ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}
-              ${isHovered ? `text-black dark:text-teal-300` : 'text-gray-600 dark:text-white'}`}
-              onMouseEnter={() => setIsTitleHovered(true)}
-              onMouseLeave={() => setIsTitleHovered(false)}>
+          }}>
+            {/* Applicable specifically for "Projects" titles */}
+            {/* Check for projectTitle and projectTimeframe and render accordingly */}
+            {source === 'Projects' && projectTitle && projectTimeframe && (
+              <div className={`
+                ${classes.projectSectionTitle}
+                ${link ? classes.linkHover : ''}
+                ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}
+                ${isHovered ? `text-black dark:text-teal-300` : 'text-gray-600 dark:text-white'}`}
+                onMouseEnter={() => setIsTitleHovered(true)}
+                onMouseLeave={() => setIsTitleHovered(false)}>
 
-              {/* Title of project */}
-              <div className={isBrowser ? classes.desktop.projectTitleWidth : ''}>
-                {link ? (
-                  <a href={link} target="_blank" rel="noopener noreferrer" className={classes.titleExternalLink}>
+                {/* Title of project */}
+                <div className={isBrowser ? classes.desktop.projectTitleWidth : ''}>
+                  {link ? (
+                    <a href={link} target="_blank" rel="noopener noreferrer" className={classes.titleExternalLink}>
                       <span className={classes.titleExternalLink}>
                         <span className={`mr-2 ${isTitleHovered && `scale-125`}`}>{" "}<IconExternalLink /></span>
-                        <span>{projectTitleParts[0]}</span>
+                        <span>{projectTitle}</span>
                       </span>
-
-                  </a>
-                ) : (
-                  <span>{projectTitleParts[0]}</span>
-                )}
-              </div>
-
-              {/* Year of project */}
-              <div className={isBrowser ? classes.desktop.projectTimeframe : classes.mobile.projectTimeframe}>
-                {link ? (
-                  <a href={link} target="_blank" rel="noopener noreferrer">
-                    <span>
-                      {projectTitleParts[1]}
-                    </span>
-                  </a>
-                ) : (
-                  <span>
-                    {projectTitleParts[1]}
-                  </span>
-                )}
-              </div>
-            </div>
-          ) : (
-            // If project title does not have 2 elements, render as normal
-            // For skills titles
-            <h3 className={
-              `${classes.projectSectionTitle}
-                ${link ? `${classes.linkHover} text-3xl` : "font-semibold text-lg"}
-                ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}`
-              }
-            >
-              {link ? linkContent : name}
-            </h3>
-          )
-        )}
-
-        {/* Experience title */}
-        {experienceTitleParts && experienceTitleParts.length === 2 ? (
-          <div className={
-            `${classes.experienceSectionTitle}
-            ${subdescription || descriptionBullets ? 'leading-10 ' : ''}
-            ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}
-            ${isHovered ? 'text-black dark:text-teal-300' : 'text-gray-600 dark:text-gray-200'}`
-          }>
-            {/* Experience Role */}
-            <div>
-              <span>{experienceTitleParts[0]}</span>
-            </div>
-
-            {/* Timeframe of experience */}
-            {
-              isBrowser ? (
-                <div className='font-light'>
-                  <span>{experienceTitleParts[1]}</span>
+                    </a>
+                  ) : (
+                      <span>{projectTitle}</span>
+                  )}
                 </div>
-              ) : (
-                <div className='font-light'>{experienceTitleParts[1]}</div>
-              )
-            }
 
+                {/* Year of project */}
+                <div className={isBrowser ? classes.desktop.projectTimeframe : classes.mobile.projectTimeframe}>
+                  {link ? (
+                    <a href={link} target="_blank" rel="noopener noreferrer">
+                      <span>{projectTimeframe}</span>
+                    </a>
+                  ) : (
+                      <span>{projectTimeframe}</span>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Applicable specifically for "Experience" titles */}
+            {/* Check for experienceTitle and experienceTimeframe and render accordingly */}
+            {source === 'Experience' && experienceTitle && experienceTimeframe && (
+              // Applicable specifically for "Experience" titles
+              <div className={
+                `${classes.experienceSectionTitle}
+                ${subdescription || descriptionBullets ? 'leading-10 ' : ''}
+                ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}
+                ${isHovered ? 'text-black dark:text-teal-300' : 'text-gray-600 dark:text-gray-200'}`
+              }>
+                {/* Experience Role */}
+                <div>
+                    <span>{experienceTitle}</span>
+                </div>
+
+                {/* Timeframe of experience */}
+                {
+                  isBrowser ? (
+                    <div className='font-light'>
+                        <span>{experienceTimeframe}</span>
+                    </div>
+                  ) : (
+                    <div className='font-light'>{experienceTimeframe}</div>
+                  )
+                }
+              </div>
+            )}
+
+            {/* Section Level Tags */}
+            {sectionTags && (
+              <ul className="mt-1 flex flex-wrap" aria-label="Technologies used">
+                {sectionTags.map((section, index) => (
+                  <li key={index} className="mr-1.5 mt-1 mb-1">
+                    <div className="flex items-center rounded-full dark:bg-teal-400/10 bg-black/10 px-3 py-1 text-xs font-medium leading-5 dark:text-teal-300 text-slate-900">
+                      {section}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* Description bullets */}
+            {/* Applicable for both Experience and Projects */}
+            {descriptionBullets && (
+                <ul>
+                  {descriptionBullets.map((descriptionBullet) => (
+                    <li
+                      key={`${descriptionBullet}-${uuidv4()}`}
+                      className={`${classes.descriptionBullet}
+                      ${isHovered ? 'text-black dark:text-slate-200' : ''}`}
+                    >
+                      {/* Render each bullet points */}
+                      {descriptionBullet.content}
+                    </li>
+                  ))}
+                </ul>
+            )}
+
+            {/* Section Images with links (Supported for project and Experience) */}
+            {sectionImages[experienceTitle] != null && (
+              <div className="flex flex-wrap gap-4 mt-4 mb-3 pb-3 pt-3">
+                {sectionImages[experienceTitle] != null && sectionImages[experienceTitle].map((image, index) => (
+                  <div key={index} className='relative'
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}>
+                    <a href={image.url} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={image.imageLocation}
+                        alt={`Image ${index + 1}`}
+                        className="rounded border-2 border-slate-800/10 dark:border-slate-800 transition group-hover:border-slate-200/30"
+                        style={{ width: '150px', height: '80px', objectFit: 'cover', opacity: hoveredIndex === index ? 1 : 0.7 }}
+                      />
+
+                      {/* External link icon over the images */}
+                      {hoveredIndex === index && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: '0',
+                            right: '0',
+                            padding: '4px',
+                            backgroundColor: 'rgba(128, 128, 128, 0.7)',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          <IconExternalLink2 />
+                        </div>)}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        ) : (
-          // Experience always has 2 parts
-          // Just in case [Dead code]
-          <p className={
-            `${classes.experienceSectionTitle}
-            ${subdescription || descriptionBullets ? "leading-10 pt-1" : ""} justify-between`
-          }>
-            {description}
-          </p>
-        )}
-
-        {/* Section Level Tags */}
-        {sectionTags && (
-          <ul className="mt-1 flex flex-wrap" aria-label="Technologies used">
-            {sectionTags.map((section, index) => (
-              <li key={index} className="mr-1.5 mt-1 mb-1">
-                <div className="flex items-center rounded-full dark:bg-teal-400/10 bg-black/10 px-3 py-1 text-xs font-medium leading-5 dark:text-teal-300 text-slate-900">
-                  {section}
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-
-
-        {/* Description bullets */}
-        {/* Applicable for both Experience and Projects */}
-        {descriptionBullets && (
-            <ul>
-              {descriptionBullets.map((descriptionBullet) => (
-                <li
-                  key={`${descriptionBullet}-${uuidv4()}`}
-                  className={`${classes.descriptionBullet}
-                  ${isHovered ? 'text-black dark:text-slate-200' : ''}`}
-
-                >
-                  {/* Render each bullet points */}
-                  {descriptionBullet.content}
-                </li>
-              ))}
-            </ul>
-        )}
-
-        {/* Images */}
-          {sectionImages[experienceTitle] != null && (
-            <div className="flex flex-wrap gap-4 mt-4 mb-3 pb-3 pt-3">
-              {/* Map over sectionImages and render each image */}
-              {sectionImages[experienceTitle] != null && sectionImages[experienceTitle].map((image, index) => (
-                <div key={index} className='relative'
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}>
-                  <a href={image.url} target="_blank" rel="noopener noreferrer">
-                    <img
-                      src={image.imageLocation}
-                      alt={`Image ${index + 1}`}
-                      className="rounded border-2 border-slate-800/10 dark:border-slate-800 transition group-hover:border-slate-200/30"
-                      style={{ width: '150px', height: '80px', objectFit: 'cover', opacity: hoveredIndex === index ? 1 : 0.7 }}
-                    />
-                    {hoveredIndex === index && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '0',
-                          right: '0',
-                          padding: '4px',
-                          backgroundColor: 'rgba(128, 128, 128, 0.7)',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        <IconExternalLink2 />
-                      </div>)}
-                  </a>
-                </div>
-              ))}
-            </div>
-          )}
-
         </div>
-      </div>
+      )}
+
+      {source === "Skills" && (
+        // Applicable specifically for "Skills" titles
+        <h3 className={
+          `${classes.projectSectionTitle}
+           ${link ? `${classes.linkHover} text-3xl` : "font-semibold text-lg"}
+           ${isBrowser ? classes.desktop.TitlePartsFlex : classes.mobile.TitlePartsFlex}
+           ${classes.linkHover}`
+        }>
+          {titleName}
+        </h3>
+      )}
 
       {/* Subdescription */}
       {/* Dead code */}
@@ -369,6 +368,7 @@ const SummaryItem = ({
                   src={image}
                   alt={`Light Mode Image ${index}`}
                   className={`logo-image block dark:hidden ${classes.image}`}
+                  style={{ cursor: 'pointer'}}
                 />
               ))}
 
@@ -379,6 +379,7 @@ const SummaryItem = ({
                   src={image}
                   alt={`Dark Mode Image ${index}`}
                   className={`logo-image hidden dark:block ${classes.image}`}
+                  style={{ cursor: 'pointer'}}
                 />
               ))}
             </div>

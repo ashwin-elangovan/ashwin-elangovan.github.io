@@ -84,7 +84,7 @@ const SectionSkills = ({ skills }) => {
   return (
     <Section title="Skills">
       {skills.map((skill) => {
-        switch (skill.name) {
+        switch (skill.key) {
           case "languages":
             darkImagesArray = [python_dark, javascript_dark, ruby_dark, java_dark, c_dark, cpp_dark, go_dark, bash_dark];
             lightImagesArray = [python_light, javascript_light, ruby_light, java_light, c_light, cpp_light, go_light, bash_light];
@@ -112,12 +112,14 @@ const SectionSkills = ({ skills }) => {
         }
         return (
           <SummaryItem
+            source="Skills"
             key={skill.title}
-            name={skill.title}
+            titleName={skill.title}
             description={skill.description}
             subdescription={skill.subdescription}
             tags={skill.tags}
             images={[lightImagesArray, darkImagesArray]}
+            sectionHighlight={false}
           />
         );
       })}

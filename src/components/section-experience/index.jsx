@@ -9,15 +9,17 @@ const SectionExperience = ({ experience }) => {
     <Section title="Experience">
       {experience.map((item) => (
         <SummaryItem
-          key={item.description}
-          name={item.name}
+          source="Experience"
+          key={item.name}
+          titleName={item.name}
+          titleTime={item.timeframe}
           description={item.description}
           link={item.link}
+          titleImage={item.titleImage}
           internal={false}
-          subdescription={item.subdescription}
           descriptionBullets={item.descriptionBullets}
           sectionTags={item.sectionTags}
-          title_image={item.title_image}
+          sectionImages={item.sectionImages}
         />
       ))}
     </Section>

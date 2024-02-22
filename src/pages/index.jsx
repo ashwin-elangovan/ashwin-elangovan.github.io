@@ -58,16 +58,15 @@ export const pageQuery = graphql`
         name
         title
         description
-        about
         author
         github
         githubContent
         linkedin
         linkedinContent
-        resumeContent
         twitter
         twitterContent
-        resume
+        resumeContent
+        professionalResume
         professionalResumeContent
         fullResume
         fullResumeContent
@@ -76,15 +75,17 @@ export const pageQuery = graphql`
         statusPageContent
         multilevelCacheReport
         footer
+        about
         projects {
           name
-          description
+          timeframe
           link
           subdescription
           descriptionBullets {
             content
             link
             linkname
+            contentStyle
           }
           sectionTags
           sectionImages {
@@ -94,6 +95,8 @@ export const pageQuery = graphql`
         }
         experience {
           name
+          timeframe
+          organization
           description
           link
           subdescription
@@ -101,8 +104,9 @@ export const pageQuery = graphql`
             content
             link
             linkname
+            contentStyle
           }
-          title_image
+          titleImage
           sectionTags
           sectionImages {
             imageLocation
@@ -110,11 +114,10 @@ export const pageQuery = graphql`
           }
         }
         skills {
-          name
+          key
           title
-          description
-          subdescription
           tags
+          highlight
         }
       }
     }

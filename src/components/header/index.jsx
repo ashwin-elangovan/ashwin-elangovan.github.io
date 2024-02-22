@@ -64,7 +64,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
   const twitter = get(metadata, "twitter", false);
   const github = get(metadata, "github", false);
   const linkedin = get(metadata, "linkedin", false);
-  const resume = get(metadata, "resume", false);
+  const resume = get(metadata, "professionalResume", false);
   const fullResume = get(metadata, "fullResume", false);
 
   return (
