@@ -96,6 +96,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       name: String
       timeframe: String
       link: String
+      description: String
       subdescription: String
       descriptionBullets: [DescriptionBullet]
       titleImage: String

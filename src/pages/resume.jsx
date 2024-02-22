@@ -7,7 +7,7 @@ export default function MyDocument() {
     query {
       site {
         siteMetadata {
-          resume
+          professionalResume
         }
       }
     }
