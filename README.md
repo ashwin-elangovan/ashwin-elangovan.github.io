@@ -9,4 +9,4 @@ This is fully styled with [TailwindCSS](https://tailwindcss.com/) with the excep
 
 ## License
 
-Licensed under the [MIT License](https://github.com/RyanFitzgerald/devfolio/blob/master/LICENSE.md).
+Licensed under the [MIT License](https://github.com/ashwin-elangovan/ashwin-elangovan.github.io/edit/master/README.md).
