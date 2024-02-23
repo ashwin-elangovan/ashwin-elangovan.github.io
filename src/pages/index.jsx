@@ -13,7 +13,7 @@ import Seo from '../components/seo';
 // import useCursorSpotlight from '../components/spotlight';
 
 const classes = {
-  footer: 'absolute bottom-0 left-0 right-0 font-bold text-gray-900 dark:text-white text-center mb-10'
+  footer: 'relative font-bold text-gray-900 dark:text-white text-center mt-5'
 };
 
 const Index = ({ data }) => {
