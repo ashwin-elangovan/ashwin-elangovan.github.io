@@ -10,6 +10,8 @@ import SectionExperience from '../components/section-experience';
 import SectionProjects from '../components/section-projects';
 import SectionSkills from '../components/section-skills';
 import Seo from '../components/seo';
+import ScrollUp from '../components/scroll-up';
+import { isBrowser } from "react-device-detect";
 // import useCursorSpotlight from '../components/spotlight';
 
 const classes = {
@@ -44,6 +46,7 @@ const Index = ({ data }) => {
           {projects && projects.length && <SectionProjects projects={projects} />}
           {skills && skills.length && <SectionSkills skills={skills} />}
           <div className={classes.footer}>{footerText}</div>
+          {isBrowser && <ScrollUp />}
       </Layout>
     // </div>
   );
