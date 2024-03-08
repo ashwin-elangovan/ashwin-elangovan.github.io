@@ -7,11 +7,11 @@ import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 
 // Components
 import SplashScreen from '../splash-screen';
-// import useCursorSpotlight from '../spotlight';
+import useCursorSpotlight from '../spotlight';
 
 const classes = {
   wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
-  // Dark mode background
+  // Dark mode background color
   outerWrapper: 'relative dark:bg-slate-900',
   svg: 'hidden fixed transform right-0 z-0 xl:block',
   topBarList: 'mt-6 uppercase tracking-wider mr-4',
@@ -35,12 +35,12 @@ const Layout = ({ metadata = {}, children }) => {
     setSplashVisible(false);
   };
 
-  // let [elementRef, spotlightStyle] = useCursorSpotlight(
-  //   "red", // Background color
-  //   "green", // Highlight color
-  //   "200px", // Highlight size
-  //   true // Active state
-  // );
+  let [elementRef, spotlightStyle] = useCursorSpotlight(
+    "green", // Background color
+    "green", // Highlight color
+    "200px", // Highlight size
+    true // Active state
+  );
 
   // Theme toggler option
   const updateTheme = () => {
@@ -163,6 +163,7 @@ const Layout = ({ metadata = {}, children }) => {
               <div className={classes.wrapper} style={containerStyle}>{children}</div>
           </div>
         </div>
+        // </div>
       )}
     </div>
   );

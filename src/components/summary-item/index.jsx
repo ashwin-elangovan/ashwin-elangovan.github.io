@@ -17,6 +17,8 @@ import redisCacheImg from "../../images/sectionImages/freshworks/sse/redis_cache
 import sharedCallerImg from "../../images/sectionImages/freshworks/sse/shared_caller.jpeg";
 import freshCallerImg from "../../images/sectionImages/freshworks/intern/freshcaller.jpeg";
 import gTAImg from "../../images/sectionImages/asu/gta.png";
+import useCursorSpotlight from '../spotlight';
+
 
 // Temporary: ToDo: Refactor this logic
 const sectionImages = {
@@ -119,6 +121,13 @@ const SummaryItem = ({
     projectTimeframe = titleTime;
   }
 
+  let [elementRef, spotlightStyle] = useCursorSpotlight(
+    "red dark:bg-slate-900", // Background color
+    "red", // Highlight color
+    "500px", // Highlight size
+    true // Active state
+  );
+
 
   // if (experienceTitleParts != null && experienceTitleParts.length == 2) {
   //   experienceTitle = experienceTitleParts[0].trim();
@@ -181,10 +190,12 @@ const SummaryItem = ({
 
       {/* Box div highlighter for Experience and Projects*/}
       {sectionHighlight && (
+        //  <div ref={elementRef} style={{ background: spotlightStyle, zIndex: 9999, position: 'relative' }} onMouseMove={handleMouseMove}>
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className={` ${isHovered ? 'dark:bg-slate-800 bg-gray-200 rounded' : ''}`}
+          className={` ${isHovered ? 'dark:bg-slate-800 bg-gray-200 rounded hover:-translate-y-1' : ''}`}
+          style={{position: 'relative', zIndex: 1}}
         >
           {/* Box specific div */}
           <div style={{
@@ -192,7 +203,9 @@ const SummaryItem = ({
             paddingLeft: '50px',
             paddingRight: '50px',
             paddingTop: '25px',
-            paddingBottom: '25px',
+            paddingBottom: '25px'
+            // position: 'relative',
+            // zIndex: 1
           }}>
             {/* Applicable specifically for "Projects" titles */}
             {/* Check for projectTitle and projectTimeframe and render accordingly */}

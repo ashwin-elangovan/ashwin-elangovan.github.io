@@ -12,10 +12,11 @@ import SectionSkills from '../components/section-skills';
 import Seo from '../components/seo';
 import ScrollUp from '../components/scroll-up';
 import { isBrowser } from "react-device-detect";
-// import useCursorSpotlight from '../components/spotlight';
+import useCursorSpotlight from '../components/spotlight';
 
 const classes = {
-  footer: 'relative font-bold text-gray-900 dark:text-white text-center mt-5'
+  footer: 'relative font-bold text-gray-900 dark:text-white text-center mt-5',
+  spotlight: 'inset-0 z-30 transition duration-300 -z-50'
 };
 
 const Index = ({ data }) => {
@@ -27,28 +28,30 @@ const Index = ({ data }) => {
   const footerText = get(data, 'site.siteMetadata.footer', false);
   const noBlog = !posts || !posts.length;
 
-  // const [elementRef, spotlightStyle] = useCursorSpotlight(
-  //   "transparent dark:bg-slate-900", // Background color
-  //   "red", // Highlight color
-  //   "50px", // Highlight size
-  //   true // Active state
-  // );
+  let [elementRef, spotlightStyle] = useCursorSpotlight(
+    "red dark:bg-slate-900", // Background color
+    "red", // Highlight color
+    "500px", // Highlight size
+    true // Active state
+  );
+
+  console.log(elementRef, spotlightStyle)
 
   return (
-    // <div ref={elementRef} style={{ background: spotlightStyle }}>
-      <Layout metadata={data.site.siteMetadata}>
-          <Seo />
-          <Header metadata={data.site.siteMetadata} noBlog={noBlog} />
-          {about && <SectionAbout about={about} />}
-          {experience && experience.length && (
-            <SectionExperience experience={experience} />
-          )}
-          {projects && projects.length && <SectionProjects projects={projects} />}
-          {skills && skills.length && <SectionSkills skills={skills} />}
-          <div className={classes.footer}>{footerText}</div>
-          {isBrowser && <ScrollUp />}
-      </Layout>
-    // </div>
+    <div ref={elementRef} style={{ background: spotlightStyle, zIndex: 9999, position: 'relative' }} >
+        <Layout metadata={data.site.siteMetadata}>
+            <Seo />
+            <Header metadata={data.site.siteMetadata} noBlog={noBlog} />
+            {about && <SectionAbout about={about} />}
+            {experience && experience.length && (
+              <SectionExperience experience={experience} />
+            )}
+            {projects && projects.length && <SectionProjects projects={projects} />}
+            {skills && skills.length && <SectionSkills skills={skills} />}
+            <div className={classes.footer}>{footerText}</div>
+            {isBrowser && <ScrollUp />}
+        </Layout>
+      </div>
   );
 };
 

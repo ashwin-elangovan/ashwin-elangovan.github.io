@@ -7,9 +7,9 @@ const useCursorSpotlight = (
   highlightSize = "400px",
   active = true
 ) => {
+  // console.log(backgroundColor)
   const [cursorInItem, setCursorInItem] = useState(false);
   const [cursorPos, setCursorPos] = useState([0, 0]);
-  // const [spotlightStyle, setSpotlightStyle] = useState(backgroundColor);
 
   const elementRef = useRef();
 
@@ -41,12 +41,11 @@ const useCursorSpotlight = (
   useEffect(() => {
     if (active) {
       const handleMouseMove = (e) => {
-        const rect = elementRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.x;
-        const y = e.clientY - rect.y;
-        const xPerc = (x / rect.width) * 100;
-        const yPerc = (y / rect.height) * 100;
-        setCursorPos([xPerc, yPerc]);
+        let rect = elementRef.current.getBoundingClientRect();
+        let x = e.clientX - rect.x;
+        let y = e.clientY - rect.y;
+        setCursorPos([e.clientX - rect.left, e.clientY - rect.top]);
+
       };
       if (elementRef.current) {
         if (cursorInItem) {
@@ -66,7 +65,8 @@ const useCursorSpotlight = (
 
   return [
     elementRef,
-    `radial-gradient(circle at ${cursorPos[0]}% ${cursorPos[1]}%, ${highlightColor} 0%, ${backgroundColor} ${highlightSize})`
+    // `radial-gradient(circle at ${cursorPos[0]}px ${cursorPos[1]}px, red, rgba(29, 78, 216, 0.15), transparent 40 %)
+    `radial-gradient(250px at ${cursorPos[0]}px ${cursorPos[1]}px, gray, rgba(16, 23, 42, 0.05) 80%)`
   ];
 };
 
