@@ -84,7 +84,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       statusPage: String
       statusPageContent: String
       footer: String
-      about: String
+      about1: String
+      about2: String
       projects: [SectionItem]
       experience: [SectionItem]
       skills: [SectionItem]

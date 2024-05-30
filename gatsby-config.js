@@ -20,7 +20,8 @@ module.exports = {
     statusPage: `https://ashwin.statuspage.io/`,
     statusPageContent: 'STATUS PAGE',
     footer: 'Built with ❤️ by Ashwin Elangovan',
-    about: `I am a graduate student pursuing a Master's in Computer Science at Arizona State University, actively seeking full-time opportunities. I have worked as an Intern, Software Engineer, Senior Software Engineer at Freshworks for 4+ years where I explored full-stack development, object-oriented programming and microservices deployed in cloud.`,
+    about1: `I'm Ashwin Elangovan, a recent Computer Science graduate from Arizona State University. I have worked as an Intern, Software Engineer, and Senior Product Engineer for 4+ years at Freshworks, which develops cool SaaS products to make the lives of businesses easier!`,
+    about2: `I have a wide range of interests in software including developer tools, libraries, frameworks all the way to building products. I'm intrinsically curious and like to learn how tech works under the hood, so I tend to get involved in many things at once.`,
     projects: [
       {
         name: 'EmailChecker',

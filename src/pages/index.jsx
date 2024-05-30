@@ -19,7 +19,8 @@ const classes = {
 };
 
 const Index = ({ data }) => {
-  const about = get(data, 'site.siteMetadata.about', false);
+  const about1 = get(data, 'site.siteMetadata.about1', false);
+  const about2 = get(data, 'site.siteMetadata.about2', false);
   const projects = get(data, 'site.siteMetadata.projects', false);
   const posts = data.allMarkdownRemark.edges;
   const experience = get(data, 'site.siteMetadata.experience', false);
@@ -39,7 +40,7 @@ const Index = ({ data }) => {
       <Layout metadata={data.site.siteMetadata}>
           <Seo />
           <Header metadata={data.site.siteMetadata} noBlog={noBlog} />
-          {about && <SectionAbout about={about} />}
+          {about1 && <SectionAbout about1={about1} about2={about2} />}
           {experience && experience.length && (
             <SectionExperience experience={experience} />
           )}
@@ -78,7 +79,8 @@ export const pageQuery = graphql`
         statusPageContent
         multilevelCacheReport
         footer
-        about
+        about1
+        about2
         projects {
           name
           timeframe

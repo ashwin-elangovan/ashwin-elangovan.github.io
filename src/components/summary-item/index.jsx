@@ -20,12 +20,12 @@ import gTAImg from "../../images/sectionImages/asu/gta.png";
 
 // Temporary: ToDo: Refactor this logic
 const sectionImages = {
-    "Graduate Teaching Assistant": [
-    {
-      imageLocation: gTAImg,
-      url: 'https://search.asu.edu/profile/4145840'
-    },
-    ],
+    // "Graduate Teaching Assistant": [
+    // {
+    //   imageLocation: gTAImg,
+    //   url: 'https://search.asu.edu/profile/4145840'
+    // },
+    // ],
     "Software Engineer": [
     {
       imageLocation: voicebotImg,
