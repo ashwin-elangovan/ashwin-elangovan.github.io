@@ -575,7 +575,7 @@ pre[class*='language-'] {
   animation: line 5s linear infinite;
   /* border-left: 1px dotted #fff; */
   height: 0px;
-  width: 1px;
+  width: 0px;
   position: absolute;
   top: 20px;
   left: 20px;
