@@ -76,17 +76,17 @@ const Layout = ({ metadata = {}, children }) => {
   }, []);
 
   // Freshchat widget
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '//fw-cdn.com/11364413/4045228.js';
-    script.async = true;
-    if (isBrowser){
-      document.body.appendChild(script);
-      return () => {
-        document.body.removeChild(script);
-      };
-    }
-  }, []);
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.src = '//fw-cdn.com/11364413/4045228.js';
+  //   script.async = true;
+  //   if (isBrowser){
+  //     document.body.appendChild(script);
+  //     return () => {
+  //       document.body.removeChild(script);
+  //     };
+  //   }
+  // }, []);
 
   const containerStyle = {
     width: isBrowser ? '75%' : '100%',
