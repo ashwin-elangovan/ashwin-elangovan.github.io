@@ -13,7 +13,7 @@ const SplashScreen = ({ hideSplash }) => {
     const timeout = setTimeout(() => {
       setIsVisible(false);
       hideSplash();
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, [hideSplash]);
@@ -21,8 +21,16 @@ const SplashScreen = ({ hideSplash }) => {
   if (!isVisible) return null;
 
   return (
-    <div className={classes.splashScreenDiv}>
-      <img src={loading} alt="Loading..." />
+    <div>
+      <div className="stars"></div>
+      <div className="twinkling"></div>
+      <div className="clouds"></div>
+
+      <div id="loader">
+        <div id="top"></div>
+        <div id="line"></div>
+        <div id="bottom"></div>
+      </div>
     </div>
   );
 };
