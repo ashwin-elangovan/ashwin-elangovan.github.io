@@ -80,7 +80,7 @@ const classes = {
     ImageSize: "lg:w-1/4 w-full max-w-[60%]",
     TitlePartsFlex: "flex-col text-center",
     projectTimeframe: "mt-3 font-light",
-    paragraphPaddings: "pl-5 pr-5 pt-6 pb-6"
+    paragraphPaddings: "pl-4 pr-4 pt-6 pb-6"
   },
   tagLayout: "tags dark:bg-slate-500 bg-slate-600"
 
