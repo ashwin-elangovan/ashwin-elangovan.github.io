@@ -72,12 +72,15 @@ const classes = {
     ImageSize: "w-full max-w-[25%]",
     TitlePartsFlex: "flex justify-between text-justify",
     projectTitleWidth: "w-10/12",
-    projectTimeframe: "w-2/12 flex justify-end font-light"
+    projectTimeframe: "w-2/12 flex justify-end font-light",
+    paragraphPaddings: "pl-12 pr-12 pt-6 pb-6"
+
   },
   mobile: {
     ImageSize: "lg:w-1/4 w-full max-w-[60%]",
     TitlePartsFlex: "flex-col text-center",
-    projectTimeframe: "mt-3 font-light"
+    projectTimeframe: "mt-3 font-light",
+    paragraphPaddings: "pl-5 pr-5 pt-6 pb-6"
   },
   tagLayout: "tags dark:bg-slate-500 bg-slate-600"
 
@@ -187,12 +190,8 @@ const SummaryItem = ({
           className={` ${isHovered ? 'dark:bg-slate-800 bg-gray-200 rounded' : ''}`}
         >
           {/* Box specific div */}
-          <div style={{
-            boxShadow: isHovered ? 'inset 0 1px 0 0 rgba(148,163,184,0.1)' : 'none',
-            paddingLeft: '50px',
-            paddingRight: '50px',
-            paddingTop: '25px',
-            paddingBottom: '25px',
+          <div className={`${isBrowser ? classes.desktop.paragraphPaddings: classes.mobile.paragraphPaddings}`} style={{
+            boxShadow: isHovered ? 'inset 0 1px 0 0 rgba(148,163,184,0.1)' : 'none'
           }}>
             {/* Applicable specifically for "Projects" titles */}
             {/* Check for projectTitle and projectTimeframe and render accordingly */}
@@ -262,7 +261,7 @@ const SummaryItem = ({
 
             {/* Section Level Tags */}
             {sectionTags && (
-              <ul className="mt-1 flex flex-wrap" aria-label="Technologies used">
+              <ul className={`mt-1 flex flex-wrap ${isBrowser ? '' : 'justify-center'}`} aria-label="Technologies used">
                 {sectionTags.map((section, index) => (
                   <li key={index} className="mr-1.5 mt-1 mb-1">
                     <div className="flex items-center rounded-full dark:bg-teal-400/10 bg-black/10 px-3 py-1 text-xs font-medium leading-5 dark:text-teal-300 text-slate-900">
