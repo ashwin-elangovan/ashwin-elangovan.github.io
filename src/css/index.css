@@ -508,8 +508,8 @@ pre[class*='language-'] {
 
 #loader {
   animation: loader 2s cubic-bezier(.8, 0, .2, 1) infinite;
-  height: 40px;
-  width: 41px;
+  height: 80px;
+  width: 81px;
   position: absolute;
   top: calc(50% - 20px);
   left: calc(50% - 20px);
@@ -528,9 +528,9 @@ pre[class*='language-'] {
 
 #top {
   animation: top 2s linear infinite;
-  border-top: 20px solid #fff;
-  border-right: 20px solid transparent;
-  border-left: 20px solid transparent;
+  border-top: 40px solid #fff;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
   height: 0px;
   width: 1px;
   transform-origin: 50% 100%;
@@ -548,9 +548,9 @@ pre[class*='language-'] {
 
 #bottom {
   animation: bottom 2s linear infinite;
-  border-right: 20px solid transparent;
-  border-bottom: 20px solid #fff;
-  border-left: 20px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 40px solid #fff;
+  border-left: 40px solid transparent;
   height: 0px;
   width: 1px;
   transform: scale(0);
