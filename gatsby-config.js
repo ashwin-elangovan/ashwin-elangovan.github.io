@@ -269,15 +269,15 @@ module.exports = {
       },
       {
         key: 'frameworks',
-        title: 'Frameworks',
+        title: 'Frameworks & Libraries',
         highlight: false,
-        tags: ['Ruby on Rails', 'Ember.js', 'Node.js', 'Flask', 'Django', 'Spring boot', 'React', 'Tailwind CSS']
+        tags: ['Ruby on Rails', 'Spring boot', 'Node.js', 'React', 'Flask', 'Django', 'Ember.js', 'Tailwind CSS']
       },
       {
         key: 'tools',
         title: 'Tools and Databases',
         highlight: false,
-        tags: ['MySQL', 'PostgreSQL', 'MongoDB', 'Apache Kafka', 'AWS', 'Git', 'gRPC', 'Jenkins', 'Docker', 'GraphQL', 'Redis', 'Memcached', 'Elasticsearch', 'Microsoft Azure', 'Kubernetes', 'Grafana', 'Selenium', 'Microservices', 'API design', 'Agile / Scrum', 'System Design', 'Jira', 'Confluence']
+        tags: ['MySQL', 'PostgreSQL', 'MongoDB', 'Apache Kafka', 'AWS', 'Git', 'gRPC', 'Jenkins', 'Docker', 'GraphQL', 'Redis', 'Memcached', 'Elasticsearch', 'Kubernetes', 'Grafana', 'Selenium', 'Microservices', 'API design', 'Agile / Scrum', 'System Design', 'Jira', 'Confluence']
       }
     ],
   },

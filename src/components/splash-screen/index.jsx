@@ -13,7 +13,7 @@ const SplashScreen = ({ hideSplash }) => {
     const timeout = setTimeout(() => {
       setIsVisible(false);
       hideSplash();
-    }, 1000);
+    }, 1500);
 
     return () => clearTimeout(timeout);
   }, [hideSplash]);
@@ -24,7 +24,7 @@ const SplashScreen = ({ hideSplash }) => {
     <div>
       <div className="stars"></div>
       <div className="twinkling"></div>
-      <div className="clouds"></div>
+      {/* <div className="clouds"></div> */}
 
       <div id="loader">
         <div id="top"></div>
