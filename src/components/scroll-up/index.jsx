@@ -5,7 +5,6 @@ const ScrollUp = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.scrollY)
       if (window.scrollY > 300) {
         setIsVisible(true);
       } else {

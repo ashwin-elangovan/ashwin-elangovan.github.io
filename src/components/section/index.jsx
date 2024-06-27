@@ -17,7 +17,7 @@ const Section = ({ title, children }) => {
   });
 
   return (
-    <div className={classes.wrapper}>
+    <div id={title} className={classes.wrapper}>
       <div className={classes.title}>
         <h2
           className={`${classes.heading} ${classes.gradient} sticky-top`}

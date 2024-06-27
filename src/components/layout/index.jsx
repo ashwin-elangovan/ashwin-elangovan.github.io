@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { isBrowser } from 'react-device-detect';
 
+
+import leMe from "../../images/it-man.png";
+import projectImg from "../../images/project.png";
+import experienceImg from "../../images/experience.png";
+import skillsImg from "../../images/skills.png";
+
 // Icons from react-icons
 import { SiStatuspage } from 'react-icons/si';
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
@@ -24,7 +30,8 @@ const classes = {
 };
 
 
-const Layout = ({ metadata = {}, children }) => {
+const Layout = ({ metadata = {}, children, currentSection }) => {
+  console.log("Current section :: ", currentSection);
   const [svgHeight, setSvgHeight] = useState(0);
   const [svgWidth, setSvgWidth] = useState(0);
   const [themeIcon, setThemeIcon] = useState(null);
@@ -33,6 +40,14 @@ const Layout = ({ metadata = {}, children }) => {
   const [splashVisible, setSplashVisible] = useState(true);
   const hideSplash = () => {
     setSplashVisible(false);
+  };
+
+  // Define patterns for each section
+  const patterns = {
+    header: 'home-pattern',
+    experience: 'experience-pattern',
+    projects: 'projects-pattern',
+    skills: 'skills-pattern'
   };
 
   // let [elementRef, spotlightStyle] = useCursorSpotlight(
@@ -132,32 +147,64 @@ const Layout = ({ metadata = {}, children }) => {
                 </div>
               )}
 
-              {/* SVG design background */}
               {isBrowser && (
-                <svg
-                  className={`${classes.svg}`}
-                  style={{ top: '10%' }}
-                  width={svgWidth}
-                  height={svgHeight}
-                  fill="none"
-                  viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-                >
+              <svg className={classes.svg} style={{ top: '10%' }} width={svgWidth} height={svgHeight} fill="none" viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                <defs>
+                  <pattern id="home-pattern" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" className="text-gray-500" fill="currentColor" />
+                  </pattern>
+                  <pattern id="experience-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <circle cx="20" cy="20" r="15" fill="yellow" />
+                    <circle cx="15" cy="15" r="2" fill="black" />
+                    <circle cx="25" cy="15" r="2" fill="black" />
+                    <path d="M15 25 Q20 30 25 25" stroke="black" fill="none" />
+                  </pattern>
+                  <pattern id="projects-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <polygon points="0,0 20,0 10,20" className="text-gray-500" fill="currentColor" />
+                  </pattern>
+                  <pattern id="skills-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M0 0 L20 0 L0 20" className="text-gray-500" fill="currentColor" />
+                  </pattern>
+                </defs>
+                <rect width={svgWidth} height={svgHeight} fill="url(#home-pattern)" />
 
-                  {/* Smaller rectangle pattern inside */}
-                  <defs>
-                    <pattern id="side-bg-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <rect x="0" y="0" width="4" height="4" className="text-gray-500" fill="currentColor" />
-                    </pattern>
-                  </defs>
+                <image
+                  className={`float fade ${(currentSection === 'header' || currentSection === 'about') ? 'show' : ''}`}
+                  href={leMe}
+                  x={svgWidth / 6}
+                  y={svgHeight / 4}
+                  width="300"
+                  height="300"
+                />
 
-                  {/* Larger rectangle on the right */}
-                  <rect
-                    width={svgWidth}
-                    height={svgHeight}
-                    fill="url(#side-bg-pattern)"
-                  />
-                </svg>
-              )}
+                <image
+                  className={`float fade ${currentSection === 'experience' ? 'show' : ''}`}
+                  href={experienceImg}
+                  x={svgWidth / 8}
+                  y={svgHeight / 4}
+                  width="300"
+                  height="300"
+                />
+
+                <image
+                  className={`float fade ${currentSection === 'projects' ? 'show' : ''}`}
+                  href={projectImg}
+                  x={svgWidth / 8}
+                  y={svgHeight / 4}
+                  width="300"
+                  height="300"
+                />
+
+                <image
+                  className={`float fade ${currentSection === 'skills' ? 'show' : ''}`}
+                  href={skillsImg}
+                  x={svgWidth / 8}
+                  y={svgHeight / 4}
+                  width="300"
+                  height="300"
+                />
+              </svg>
+            )}
 
               {/* Main content wrapper */}
               <div className={classes.wrapper} style={containerStyle}>{children}</div>

@@ -1,11 +1,10 @@
+import React, { useEffect, useState, useRef } from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import React from 'react';
 
 import Header from '../components/header';
 import Layout from '../components/layout';
 import SectionAbout from '../components/section-about';
-// import SectionBlog from '../components/section-blog';
 import SectionExperience from '../components/section-experience';
 import SectionProjects from '../components/section-projects';
 import SectionSkills from '../components/section-skills';
@@ -28,27 +27,80 @@ const Index = ({ data }) => {
   const footerText = get(data, 'site.siteMetadata.footer', false);
   const noBlog = !posts || !posts.length;
 
-  // const [elementRef, spotlightStyle] = useCursorSpotlight(
-  //   "transparent dark:bg-slate-900", // Background color
-  //   "red", // Highlight color
-  //   "50px", // Highlight size
-  //   true // Active state
-  // );
+  const [currentSection, setCurrentSection] = useState('header');
+  const observerRef = useRef(null);
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setCurrentSection(entry.target.id);
+        }
+      });
+    };
+
+    observerRef.current = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionsRef.current.forEach(section => {
+      if (section) {
+        observerRef.current.observe(section);
+      }
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  // Function to add section refs
+  const addSectionRef = (el) => {
+    if (el && !sectionsRef.current.includes(el)) {
+      sectionsRef.current.push(el);
+
+      // If the observer is already set up, observe this new section
+      if (observerRef.current) {
+        observerRef.current.observe(el);
+      }
+    }
+  };
 
   return (
     // <div ref={elementRef} style={{ background: spotlightStyle }}>
-      <Layout metadata={data.site.siteMetadata}>
-          <Seo />
-          <Header metadata={data.site.siteMetadata} noBlog={noBlog} />
-          {about1 && <SectionAbout about1={about1} about2={about2} />}
-          {experience && experience.length && (
-            <SectionExperience experience={experience} />
-          )}
-          {projects && projects.length && <SectionProjects projects={projects} />}
-          {skills && skills.length && <SectionSkills skills={skills} />}
-          <div className={classes.footer}>{footerText}</div>
-          {isBrowser && <ScrollUp />}
-      </Layout>
+    <Layout metadata={data.site.siteMetadata} currentSection={currentSection}>
+      <Seo />
+      <Header metadata={data.site.siteMetadata} noBlog={noBlog} />
+      {about1 && (
+        <div id="about" className="section-observer" ref={addSectionRef}>
+          <SectionAbout about1={about1} about2={about2} />
+        </div>
+      )}
+      {experience && experience.length && (
+        <div id="experience" className="section-observer" ref={addSectionRef}>
+          <SectionExperience experience={experience} />
+        </div>
+      )}
+      {projects && projects.length && (
+        <div id="projects" className="section-observer" ref={addSectionRef}>
+          <SectionProjects projects={projects} />
+        </div>
+      )}
+      {skills && skills.length && (
+        <div id="skills" className="section-observer" ref={addSectionRef}>
+          <SectionSkills skills={skills} />
+        </div>
+      )}
+      <div className={classes.footer}>{footerText}</div>
+      {isBrowser && <ScrollUp />}
+    </Layout>
     // </div>
   );
 };
