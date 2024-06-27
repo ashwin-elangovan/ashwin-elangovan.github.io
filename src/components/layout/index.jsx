@@ -31,7 +31,6 @@ const classes = {
 
 
 const Layout = ({ metadata = {}, children, currentSection }) => {
-  console.log("Current section :: ", currentSection);
   const [svgHeight, setSvgHeight] = useState(0);
   const [svgWidth, setSvgWidth] = useState(0);
   const [themeIcon, setThemeIcon] = useState(null);
