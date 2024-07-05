@@ -15,7 +15,7 @@ module.exports = {
     professionalResumeContent: 'Professional Resume',
     fullResume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-full-resume.pdf`,
     fullResumeContent: 'Full Resume',
-    workResume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-ruby-resume.pdf`,
+    workResume: `https://ashwin-docs.s3.amazonaws.com/ashwin-elangovan-work-resume.pdf`,
     multilevelCacheReport: `https://ashwin-docs.s3.amazonaws.com/multi-level-cache-architecture.pdf`,
     statusPage: `https://ashwin.statuspage.io/`,
     statusPageContent: 'STATUS PAGE',
