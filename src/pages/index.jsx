@@ -127,6 +127,7 @@ export const pageQuery = graphql`
         fullResume
         fullResumeContent
         workResume
+        pmResume
         statusPage
         statusPageContent
         multilevelCacheReport

@@ -81,6 +81,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       fullResume: String
       fullResumeContent: String
       workResume: String
+      pmResume: String
       statusPage: String
       statusPageContent: String
       footer: String
@@ -144,6 +145,11 @@ exports.createPages = async ({ actions }) => {
   createPage({
     path: '/work-resume',
     component: require.resolve('./src/pages/work-resume.jsx'),
+  });
+
+  createPage({
+    path: '/my_resume',
+    component: require.resolve('./src/pages/my_resume.jsx'),
   });
 
 
