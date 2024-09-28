@@ -13,8 +13,8 @@ import { useState } from "react";
 import { AiFillFile as IconResume } from "react-icons/ai";
 
 import profileImg from "../../images/profile.jpeg";
-import foregroundImage from "../../images/img_3.jpg";
-import backgroundImage from "../../images/image_2_2.png";
+import foregroundImage from "../../images/profile_picture.jpg";
+import backgroundImage from "../../images/popup_image.png";
 import sign from "../../images/sign.png";
 
 const classes = {
