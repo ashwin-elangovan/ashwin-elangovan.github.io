@@ -13,8 +13,8 @@ import { useState } from "react";
 import { AiFillFile as IconResume } from "react-icons/ai";
 
 import profileImg from "../../images/profile.jpeg";
-import imageBW from "../../images/image_black.jpeg";
-import imageColor from "../../images/image_2_2.png";
+import foregroundImage from "../../images/img_3.jpg";
+import backgroundImage from "../../images/image_2_2.png";
 import sign from "../../images/sign.png";
 
 const classes = {
@@ -75,10 +75,10 @@ const Header = ({ metadata = {}, noBlog = false }) => {
         <div className={`${classes.imageWrapper}`}>
           <div className="card">
             <div className="wrapper">
-              <img src={imageBW} className="cover-image" alt="my-bw-profile-pic" />
+              <img src={foregroundImage} className="cover-image" alt="my-bw-profile-pic" />
             </div>
             <img src={sign} className="title" alt="my-profile-sign" />
-            <img src={imageColor} className="character" alt="my-color-profile-pic" />
+            <img src={backgroundImage} className="background-image" alt="my-color-profile-pic" />
           </div>
         </div>
       ) : (

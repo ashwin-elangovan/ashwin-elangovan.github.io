@@ -7,7 +7,7 @@ import Layout from '../components/layout';
 import SectionAbout from '../components/section-about';
 import SectionExperience from '../components/section-experience';
 import SectionProjects from '../components/section-projects';
-import SectionSkills from '../components/section-skills';
+// import SectionSkills from '../components/section-skills';
 import Seo from '../components/seo';
 import ScrollUp from '../components/scroll-up';
 import { isBrowser } from "react-device-detect";
@@ -23,7 +23,7 @@ const Index = ({ data }) => {
   const projects = get(data, 'site.siteMetadata.projects', false);
   const posts = data.allMarkdownRemark.edges;
   const experience = get(data, 'site.siteMetadata.experience', false);
-  const skills = get(data, 'site.siteMetadata.skills', false);
+  // const skills = get(data, 'site.siteMetadata.skills', false);
   const footerText = get(data, 'site.siteMetadata.footer', false);
   const noBlog = !posts || !posts.length;
 
@@ -93,11 +93,11 @@ const Index = ({ data }) => {
           <SectionProjects projects={projects} />
         </div>
       )}
-      {skills && skills.length && (
+      {/* {skills && skills.length && (
         <div id="skills" className="section-observer" ref={addSectionRef}>
           <SectionSkills skills={skills} />
         </div>
-      )}
+      )} */}
       <div className={classes.footer}>{footerText}</div>
       {isBrowser && <ScrollUp />}
     </Layout>

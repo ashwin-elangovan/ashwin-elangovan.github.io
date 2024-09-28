@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { isBrowser } from 'react-device-detect';
 
 
-import leMe from "../../images/it-man.png";
-import projectImg from "../../images/project.png";
-import experienceImg from "../../images/experience.png";
-import skillsImg from "../../images/skills.png";
+// import leMe from "../../images/it-man.png";
+// import projectImg from "../../images/project.png";
+// import experienceImg from "../../images/experience.png";
+// import skillsImg from "../../images/skills.png";
 
 // Icons from react-icons
 import { SiStatuspage } from 'react-icons/si';
@@ -167,16 +167,16 @@ const Layout = ({ metadata = {}, children, currentSection }) => {
                 </defs>
                 <rect width={svgWidth} height={svgHeight} fill="url(#home-pattern)" />
 
-                <image
+                {/* <image
                   className={`float fade ${(currentSection === 'header' || currentSection === 'about') ? 'show' : ''}`}
                   href={leMe}
                   x={svgWidth / 6}
                   y={svgHeight / 4}
                   width="300"
                   height="300"
-                />
+                /> */}
 
-                <image
+                {/* <image
                   className={`float fade ${currentSection === 'experience' ? 'show' : ''}`}
                   href={experienceImg}
                   x={svgWidth / 8}
@@ -201,7 +201,7 @@ const Layout = ({ metadata = {}, children, currentSection }) => {
                   y={svgHeight / 4}
                   width="300"
                   height="300"
-                />
+                /> */}
               </svg>
             )}
 

@@ -383,15 +383,15 @@ pre[class*='language-'] {
   transform: translate3d(0%, -50px, 100px);
 }
 
-.character {
-  width: 50%;
+.background-image {
+  width: 60%;
   opacity: 0;
   transition: all 0.5s;
   position: absolute;
   z-index: -1;
 }
 
-.card:hover .character {
+.card:hover .background-image {
   opacity: 1;
   transform: translate3d(0%, -30%, 100px);
 }
