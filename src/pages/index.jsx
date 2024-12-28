@@ -119,8 +119,7 @@ export const pageQuery = graphql`
         githubContent
         linkedin
         linkedinContent
-        twitter
-        twitterContent
+        instagram
         resumeContent
         professionalResume
         professionalResumeContent

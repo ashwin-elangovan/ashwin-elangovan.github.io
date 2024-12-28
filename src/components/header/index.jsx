@@ -3,10 +3,12 @@ import get from "lodash/get";
 import React from "react";
 import {
   IoLogoGithub as IconGithub,
-  IoLogoTwitter as IconTwitter,
   IoLogoLinkedin as IconLinkedin,
-  IoChatbox as IconBlog,
+  IoChatbox as IconBlog
 } from "react-icons/io5";
+import {
+  BiLogoInstagramAlt as IconInstagram
+} from "react-icons/bi";
 import { isBrowser } from "react-device-detect";
 import { useScramble } from "use-scramble";
 import { useState } from "react";
@@ -29,10 +31,11 @@ const classes = {
     "bg-gradient-to-r from-black to-gray-100 dark:from-white dark:to-gray-700",
   description: "text-gray-600 dark:text-gray-300 italic pt-2 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]",
   list: "mt-6 uppercase tracking-wider",
-  item: "inline list-none pr-8 ",
-  zoom: "transform transition-all duration-150 hover:scale-125",
+  item: "inline list-none pr-5",
+  zoom: "transform transition-all duration-150 hover:scale-150",
+  resumeZoom: "transform transition-all duration-150 hover:scale-125",
   link: "inline-flex items-center py-2 font-semibold text-s text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-teal-300",
-  linkName: "ml-5",
+  linkName: "ml-2",
   dropDown:
     "absolute top-full left-1/2 transform -translate-x-1/2 ml-[-10%] p-3 mt-2 border dark:border-white-300 border-gray-600 rounded shadow-md text-gray-600 dark:text-gray-300 dark:bg-slate-900 bg-white",
   dropDownText:
@@ -61,9 +64,9 @@ const Header = ({ metadata = {}, noBlog = false }) => {
     setIsDropdownVisible(!isDropdownVisible);
   };
 
-  const twitter = get(metadata, "twitter", false);
   const github = get(metadata, "github", false);
   const linkedin = get(metadata, "linkedin", false);
+  const instagram = get(metadata, "instagram", false);
   const resume = get(metadata, "professionalResume", false);
   const fullResume = get(metadata, "fullResume", false);
 
@@ -117,9 +120,9 @@ const Header = ({ metadata = {}, noBlog = false }) => {
                 rel="noreferrer"
               >
                 <IconGithub />
-                <span className={classes.linkName}>
+                {/* <span className={classes.linkName}>
                   {metadata.githubContent}
-                </span>
+                </span> */}
               </a>
             </li>
           )}
@@ -133,12 +136,27 @@ const Header = ({ metadata = {}, noBlog = false }) => {
                 rel="noreferrer"
               >
                 <IconLinkedin />{" "}
-                <span className={classes.linkName}>
+                {/* <span className={classes.linkName}>
                   {metadata.linkedinContent}
-                </span>
+                </span> */}
               </a>
             </li>
           )}
+
+          {instagram && (
+            <li className={classes.item}>
+              <a
+                className={`${classes.link} ${classes.zoom}`} href={instagram}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconInstagram />{" "}
+                {/* <span className={classes.linkName}>{metadata.twitterContent}</span> */}
+              </a>
+            </li>
+          )}
+
+
 
           {resume && (
             <li
@@ -147,7 +165,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
               onMouseLeave={handleResumeMouseLeave}
               onClick={handleResumeClick}
             >
-              <a className={`${classes.link} ${classes.zoom} cursor-pointer`}>
+              <a className={`${classes.link} ${classes.resumeZoom} cursor-pointer`}>
                 <IconResume />
                 <span className={classes.linkName}>
                   {metadata.resumeContent}
@@ -159,7 +177,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
 
                   {/* Professional Resume */}
                   <a
-                    className={`${classes.dropDownText} ${classes.zoom}`}
+                    className={`${classes.dropDownText} ${classes.resumeZoom}`}
                     href={resume}
                     target="_blank"
                     rel="noreferrer"
@@ -169,7 +187,7 @@ const Header = ({ metadata = {}, noBlog = false }) => {
 
                   {/* Full Resume link */}
                   <a
-                    className={`${classes.dropDownText} ${classes.zoom}`}
+                    className={`${classes.dropDownText} ${classes.resumeZoom}`}
                     href={fullResume}
                     target="_blank"
                     rel="noreferrer"
@@ -178,19 +196,6 @@ const Header = ({ metadata = {}, noBlog = false }) => {
                   </a>
                 </div>
               )}
-            </li>
-          )}
-
-          {twitter && (
-            <li className={classes.item}>
-              <a
-                className={`${classes.link} ${classes.zoom}`} href={twitter}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <IconTwitter />{" "}
-                <span className={classes.linkName}>{metadata.twitterContent}</span>
-              </a>
             </li>
           )}
 

@@ -73,8 +73,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       githubContent: String
       linkedin: String
       linkedinContent: String
-      twitter: String
-      twitterContent: String
+      instagram: String
       resumeContent: String
       professionalResume: String
       professionalResumeContent: String
