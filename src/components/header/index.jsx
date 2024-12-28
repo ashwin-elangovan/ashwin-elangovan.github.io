@@ -24,12 +24,12 @@ const classes = {
   image: "rounded-full transform transition-all duration-150 hover:scale-105",
   contentWrapper:
     "flex-none flex flex-col justify-center items-center pt-6 md:pt-1 md:flex-1 md:pl-20",
-  name: "text-7xl font-bold leading-tight hover:text-black dark:hover:text-blue-200 text-transparent bg-clip-text dark:text-transparent",
+  name: "text-7xl font-bold leading-tight hover:text-black dark:hover:text-blue-200 text-transparent bg-clip-text dark:text-transparent drop-shadow-[0_2px_2px_rgba(236,8,8,0.9)]",
   gradient:
     "bg-gradient-to-r from-black to-gray-100 dark:from-white dark:to-gray-700",
-  description: "text-gray-600 dark:text-gray-300 italic pt-2",
+  description: "text-gray-600 dark:text-gray-300 italic pt-2 drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]",
   list: "mt-6 uppercase tracking-wider",
-  item: "inline list-none pr-8",
+  item: "inline list-none pr-8 ",
   zoom: "transform transition-all duration-150 hover:scale-125",
   link: "inline-flex items-center py-2 font-semibold text-s text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-teal-300",
   linkName: "ml-5",
