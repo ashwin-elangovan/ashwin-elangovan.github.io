@@ -1,114 +1,64 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { graphql } from 'gatsby';
-import get from 'lodash/get';
+import { graphql } from "gatsby";
+import React from "react";
 
-import Header from '../components/header';
-import Layout from '../components/layout';
-import SectionAbout from '../components/section-about';
-import SectionExperience from '../components/section-experience';
-import SectionProjects from '../components/section-projects';
-// import SectionSkills from '../components/section-skills';
-import Seo from '../components/seo';
-import ScrollUp from '../components/scroll-up';
-import { isBrowser } from "react-device-detect";
-// import useCursorSpotlight from '../components/spotlight';
-
-const classes = {
-  footer: 'relative font-bold text-gray-900 dark:text-white text-center mt-5'
-};
+import Header from "../components/header";
+import Layout from "../components/layout";
+import ScrollUp from "../components/scroll-up";
+import SectionAbout from "../components/section-about";
+import SectionExperience from "../components/section-experience";
+import SectionProjects from "../components/section-projects";
 
 const Index = ({ data }) => {
-  const about1 = get(data, 'site.siteMetadata.about1', false);
-  const about2 = get(data, 'site.siteMetadata.about2', false);
-  const projects = get(data, 'site.siteMetadata.projects', false);
-  const posts = data.allMarkdownRemark.edges;
-  const experience = get(data, 'site.siteMetadata.experience', false);
-  // const skills = get(data, 'site.siteMetadata.skills', false);
-  const footerText = get(data, 'site.siteMetadata.footer', false);
-  const noBlog = !posts || !posts.length;
-
-  const [currentSection, setCurrentSection] = useState('header');
-  const observerRef = useRef(null);
-  const sectionsRef = useRef([]);
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0
-    };
-
-    const observerCallback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setCurrentSection(entry.target.id);
-        }
-      });
-    };
-
-    observerRef.current = new IntersectionObserver(observerCallback, observerOptions);
-
-    sectionsRef.current.forEach(section => {
-      if (section) {
-        observerRef.current.observe(section);
-      }
-    });
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, []);
-
-  // Function to add section refs
-  const addSectionRef = (el) => {
-    if (el && !sectionsRef.current.includes(el)) {
-      sectionsRef.current.push(el);
-
-      // If the observer is already set up, observe this new section
-      if (observerRef.current) {
-        observerRef.current.observe(el);
-      }
-    }
-  };
+  const { about1, about2, experience, footer, projects } =
+    data.site.siteMetadata;
 
   return (
-    // <div ref={elementRef} style={{ background: spotlightStyle }}>
-    <Layout metadata={data.site.siteMetadata} currentSection={currentSection}>
-      <Seo />
-      <Header metadata={data.site.siteMetadata} noBlog={noBlog} />
+    <Layout metadata={data.site.siteMetadata}>
+      <Header metadata={data.site.siteMetadata} />
       {about1 && (
-        <div id="about" className="section-observer" ref={addSectionRef}>
+        <div id="about">
           <SectionAbout about1={about1} about2={about2} />
         </div>
       )}
-      {experience && experience.length && (
-        <div id="experience" className="section-observer" ref={addSectionRef}>
+      {experience?.length > 0 && (
+        <div id="experience">
           <SectionExperience experience={experience} />
         </div>
       )}
-      {projects && projects.length && (
-        <div id="projects" className="section-observer" ref={addSectionRef}>
+      {projects?.length > 0 && (
+        <div id="projects">
           <SectionProjects projects={projects} />
         </div>
       )}
-      {/* {skills && skills.length && (
-        <div id="skills" className="section-observer" ref={addSectionRef}>
-          <SectionSkills skills={skills} />
-        </div>
-      )} */}
-      <div className={classes.footer}>{footerText}</div>
-      {isBrowser && <ScrollUp />}
+      <footer className="relative mt-5 text-center font-bold text-gray-900 dark:text-white">
+        {footer}
+      </footer>
+      <ScrollUp />
     </Layout>
-    // </div>
   );
 };
 
 export default Index;
 
+export const Head = ({ data }) => {
+  const { author, description, title } = data.site.siteMetadata;
+
+  return (
+    <>
+      <html lang="en" />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content={author} />
+    </>
+  );
+};
+
 export const pageQuery = graphql`
-  query {
+  query HomePage {
     site {
       siteMetadata {
         name
@@ -116,20 +66,15 @@ export const pageQuery = graphql`
         description
         author
         github
-        githubContent
         linkedin
-        linkedinContent
         instagram
         resumeContent
         professionalResume
         professionalResumeContent
         fullResume
         fullResumeContent
-        workResume
-        pmResume
         statusPage
         statusPageContent
-        multilevelCacheReport
         footer
         about1
         about2
@@ -137,59 +82,20 @@ export const pageQuery = graphql`
           name
           timeframe
           link
-          subdescription
           descriptionBullets {
             content
-            link
-            linkname
-            contentStyle
           }
           sectionTags
-          sectionImages {
-            imageLocation
-            url
-          }
         }
         experience {
           name
           timeframe
-          organization
-          description
           link
-          subdescription
           descriptionBullets {
             content
-            link
-            linkname
-            contentStyle
           }
           titleImage
           sectionTags
-          sectionImages {
-            imageLocation
-            url
-          }
-        }
-        skills {
-          key
-          title
-          tags
-          highlight
-        }
-      }
-    }
-    allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 5) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
         }
       }
     }

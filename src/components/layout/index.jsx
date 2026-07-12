@@ -1,224 +1,125 @@
-import React, { useState, useEffect } from 'react';
-import { isBrowser } from 'react-device-detect';
+import React, { useCallback, useEffect, useState } from "react";
+import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
+import { IoPulse } from "react-icons/io5";
 
+import SplashScreen from "../splash-screen";
+import useClientReady from "../../hooks/use-client-ready";
 
-// import leMe from "../../images/it-man.png";
-// import projectImg from "../../images/project.png";
-// import experienceImg from "../../images/experience.png";
-// import skillsImg from "../../images/skills.png";
+const prefersDarkTheme = () =>
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches);
 
-// Icons from react-icons
-import { SiStatuspage } from 'react-icons/si';
-import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
-
-// Components
-import SplashScreen from '../splash-screen';
-// import useCursorSpotlight from '../spotlight';
-
-const classes = {
-  wrapper: 'p-8 relative max-w-screen-xl xs:p-24',
-  // Dark mode background
-  outerWrapper: 'relative dark:bg-slate-900',
-  svg: 'hidden transform right-0 z-0 xl:block mt-14',
-  topBarList: 'mt-6 mr-4 right-6 px-5 py-2 uppercase tracking-wider rounded-full dark:bg-teal-400/10 bg-black/10',
-  zoom: 'transform transition-all duration-150 hover:scale-125',
-  statusPage: 'inline list-none pr-4',
-  updateTheme: 'inline list-none pr-6',
-  link: 'inline-flex items-center py-2 font-semibold text-xs text-gray-600 hover:text-black dark:text-gray-100 dark:hover:text-teal-300',
-  statusPageLink: 'ml-2',
-  topBar: 'fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-10 shadow-lg'
-};
-
-
-const Layout = ({ metadata = {}, children, currentSection }) => {
-  const [svgHeight, setSvgHeight] = useState(0);
-  const [svgWidth, setSvgWidth] = useState(0);
-  const [themeIcon, setThemeIcon] = useState(null);
-
-  // Splash screen visibility
+const Layout = ({ metadata = {}, children }) => {
+  const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
+  const isClientReady = useClientReady();
+  const [isDark, setIsDark] = useState(false);
   const [splashVisible, setSplashVisible] = useState(true);
-  const hideSplash = () => {
-    setSplashVisible(false);
-  };
 
-  // Define patterns for each section
-  const patterns = {
-    header: 'home-pattern',
-    experience: 'experience-pattern',
-    projects: 'projects-pattern',
-    skills: 'skills-pattern'
-  };
-
-  // let [elementRef, spotlightStyle] = useCursorSpotlight(
-  //   "red", // Background color
-  //   "green", // Highlight color
-  //   "200px", // Highlight size
-  //   true // Active state
-  // );
-
-  // Theme toggler option
-  const updateTheme = () => {
-    document.querySelector('body').classList.add('changing-theme');
-
-    if ((localStorage.theme === 'dark') || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      localStorage.theme = 'light';
-      document.querySelector('body').classList.remove('dark');
-      document.querySelector('body').classList.add('light');
-      setThemeIcon(() => <BsFillSunFill />);
-    } else {
-      localStorage.theme = 'dark';
-      document.querySelector('body').classList.remove('light');
-      document.querySelector('body').classList.add('dark');
-      setThemeIcon(() => <BsFillMoonFill />);
-    }
-
-    window.setTimeout(() => {
-      document.querySelector('body').classList.remove('changing-theme');
-    });
-  };
-
-  // Set the SVG dimensions based on the window size and theme during initial render
   useEffect(() => {
-    setSvgHeight(window.innerHeight);
-    setSvgWidth(window.innerWidth * 0.25);
-
-    if (typeof window !== 'undefined') {
-      const theme = localStorage.getItem('theme');
-      setThemeIcon((theme === 'dark' || (!('theme' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches)) ? <BsFillMoonFill /> : <BsFillSunFill />);
-    }
+    setDimensions({
+      height: window.innerHeight,
+      width: window.innerWidth * 0.25,
+    });
+    setIsDark(prefersDarkTheme());
   }, []);
 
-  // Freshchat widget
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.src = '//fw-cdn.com/11364413/4045228.js';
-  //   script.async = true;
-  //   if (isBrowser){
-  //     document.body.appendChild(script);
-  //     return () => {
-  //       document.body.removeChild(script);
-  //     };
-  //   }
-  // }, []);
-
-  const containerStyle = {
-    width: isBrowser ? '75%' : '100%',
-    marginRight: isBrowser ? '10%' : '0',
-  };
+  const updateTheme = useCallback(() => {
+    const nextIsDark = !prefersDarkTheme();
+    document.body.classList.add("changing-theme");
+    document.body.classList.toggle("dark", nextIsDark);
+    document.body.classList.toggle("light", !nextIsDark);
+    localStorage.theme = nextIsDark ? "dark" : "light";
+    setIsDark(nextIsDark);
+    window.setTimeout(
+      () => document.body.classList.remove("changing-theme"),
+      0,
+    );
+  }, []);
 
   return (
     <div>
-      {/* Render splash screen initially */}
-      {splashVisible && <SplashScreen hideSplash={hideSplash} />}
+      {splashVisible ? (
+        <SplashScreen hideSplash={() => setSplashVisible(false)} />
+      ) : (
+        <div className="relative dark:bg-slate-900">
+          {isClientReady && (
+            <>
+              <nav
+                className="fixed left-0 top-0 z-10 w-full bg-white shadow-lg dark:bg-gray-900"
+                aria-label="Site controls"
+              >
+                <ul className="absolute right-8 z-20 mt-6 flex items-center rounded-full bg-gray-200 px-5 py-2 uppercase shadow-md dark:bg-[#0d3040]">
+                  <li className="list-none pr-6">
+                    <button
+                      type="button"
+                      className="mr-1 inline-flex cursor-pointer items-center py-2 text-xs font-semibold text-gray-600 transition-transform duration-150 hover:scale-125 hover:text-black dark:text-gray-100 dark:hover:text-teal-300"
+                      onClick={updateTheme}
+                      aria-label={`Use ${isDark ? "light" : "dark"} theme`}
+                    >
+                      {isDark ? <BsFillMoonFill /> : <BsFillSunFill />}
+                    </button>
+                  </li>
+                  <li className="list-none">
+                    <a
+                      className="inline-flex items-center py-2 text-xs font-semibold text-gray-600 transition-transform duration-150 hover:scale-125 hover:text-black dark:text-gray-100 dark:hover:text-teal-300"
+                      href={metadata.statusPage}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <IoPulse />
+                      <span className="ml-2 whitespace-nowrap">
+                        {metadata.statusPageContent}
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
 
-      {!splashVisible && (
-        // Cursor spotlight effect
-        // <div ref={elementRef} style={{ background: { spotlightStyle } }}>
-        <div>
-          {/* The wrapper that encapsulates the entire website */}
-          <div className={classes.outerWrapper} >
-
-              <div>
-                {/*Top bar with status page and theme toggler*/}
-                {isBrowser && (
-                  <div className = {classes.topBar}>
-                    <ul className={classes.topBarList} style={{ position: "absolute"}}>
-                        <li className={classes.updateTheme}>
-                          <button
-                            className={`${classes.link} cursor-pointer ${classes.zoom} mr-1`}
-                            onClick={() => updateTheme()}
-                          >
-                            {themeIcon}
-                          </button>
-                        </li>
-                        <li className={classes.statusPage}>
-                          <a
-                            className={`${classes.link} ${classes.zoom}`}
-                            href={metadata.statusPage}
-                            rel="noreferrer"
-                            target="_blank"
-                          >
-                            <SiStatuspage />
-                            <span className={classes.statusPageLink}>{metadata.statusPageContent}</span>
-                          </a>
-                        </li>
-                    </ul>
-                  </div>
-                )}
-
-                {isBrowser && (
-                <div className={`${classes.svg} fixed`} style={{
-                  width: svgWidth, height: svgHeight, top: 'calc(previousElementHeight + 20px)' }}>
-                  <svg
-                    className={`${classes.svg}`}
-                    width={svgWidth}
-                    height={svgHeight}
-                    fill="none"
-                    viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-                  >
-                    <defs>
-                      <pattern id="home-pattern" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
-                        <rect x="0" y="0" width="4" height="4" className="text-gray-500" fill="currentColor" />
-                      </pattern>
-                      <pattern id="experience-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <circle cx="20" cy="20" r="15" fill="yellow" />
-                        <circle cx="15" cy="15" r="2" fill="black" />
-                        <circle cx="25" cy="15" r="2" fill="black" />
-                        <path d="M15 25 Q20 30 25 25" stroke="black" fill="none" />
-                      </pattern>
-                      <pattern id="projects-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <polygon points="0,0 20,0 10,20" className="text-gray-500" fill="currentColor" />
-                      </pattern>
-                      <pattern id="skills-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <path d="M0 0 L20 0 L0 20" className="text-gray-500" fill="currentColor" />
-                      </pattern>
-                    </defs>
-                    <rect width={svgWidth} height={svgHeight} fill="url(#home-pattern)" />
-
-                    {/* <image
-                      className={`float fade ${(currentSection === 'header' || currentSection === 'about') ? 'show' : ''}`}
-                      href={leMe}
-                      x={svgWidth / 6}
-                      y={svgHeight / 4}
-                      width="300"
-                      height="300"
-                    /> */}
-
-                    {/* <image
-                      className={`float fade ${currentSection === 'experience' ? 'show' : ''}`}
-                      href={experienceImg}
-                      x={svgWidth / 8}
-                      y={svgHeight / 4}
-                      width="300"
-                      height="300"
-                    />
-
-                    <image
-                      className={`float fade ${currentSection === 'projects' ? 'show' : ''}`}
-                      href={projectImg}
-                      x={svgWidth / 8}
-                      y={svgHeight / 4}
-                      width="300"
-                      height="300"
-                    />
-
-                    <image
-                      className={`float fade ${currentSection === 'skills' ? 'show' : ''}`}
-                      href={skillsImg}
-                      x={svgWidth / 8}
-                      y={svgHeight / 4}
-                      width="300"
-                      height="300"
-                    /> */}
-                  </svg>
-                </div>
-                )}
+              <div
+                className="fixed right-0 top-32 z-0 hidden xl:block"
+                style={{ width: dimensions.width, height: dimensions.height }}
+                aria-hidden="true"
+              >
+                <svg
+                  width={dimensions.width}
+                  height={dimensions.height}
+                  viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
+                >
+                  <defs>
+                    <pattern
+                      id="home-pattern"
+                      width="15"
+                      height="15"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <rect
+                        width="4"
+                        height="4"
+                        className="text-gray-500"
+                        fill="currentColor"
+                      />
+                    </pattern>
+                  </defs>
+                  <rect
+                    width={dimensions.width}
+                    height={dimensions.height}
+                    fill="url(#home-pattern)"
+                  />
+                </svg>
               </div>
+            </>
+          )}
 
-              {/* Main content wrapper */}
-              <div className={classes.wrapper} style={containerStyle}>{children}</div>
-          </div>
+          <main
+            className="relative max-w-screen-xl p-8 xs:p-24"
+            style={{
+              width: isClientReady ? "75%" : "100%",
+              marginRight: isClientReady ? "10%" : 0,
+            }}
+          >
+            {children}
+          </main>
         </div>
       )}
     </div>

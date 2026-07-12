@@ -1,6 +1,6 @@
-import React from 'react';
-import Section from '../section';
-import SummaryItem from '../summary-item';
+import React from "react";
+import Section from "../section";
+import SummaryItem from "../summary-item";
 
 const SectionProjects = ({ projects }) => {
   if (!projects.length) return null;
@@ -16,7 +16,6 @@ const SectionProjects = ({ projects }) => {
           link={project.link}
           descriptionBullets={project.descriptionBullets}
           sectionTags={project.sectionTags}
-          sectionImages={project.sectionImages}
         />
       ))}
     </Section>

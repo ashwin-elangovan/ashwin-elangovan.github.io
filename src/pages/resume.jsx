@@ -1,22 +1,6 @@
-import { useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import RedirectPage from "../components/redirect-page";
+import React from "react";
 
-export default function MyDocument() {
-
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          professionalResume
-        }
-      }
-    }
-  `);
-
-  const { professionalResume } = data.site.siteMetadata;
-  useEffect(() => {
-    window.location.href = professionalResume;
-  }, [professionalResume]);
-
-  return null;
+export default function ResumePage() {
+  return <RedirectPage target="professionalResume" />;
 }

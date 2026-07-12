@@ -1,10 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
-import loading from "../../images/loading.gif";
-
-const classes = {
-  splashScreenDiv: "bg-white h-screen flex justify-center items-center",
-};
+import React, { useEffect, useState } from "react";
 
 const SplashScreen = ({ hideSplash }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -22,14 +16,13 @@ const SplashScreen = ({ hideSplash }) => {
 
   return (
     <div>
-      <div className="stars"></div>
-      <div className="twinkling"></div>
-      {/* <div className="clouds"></div> */}
+      <div className="stars" />
+      <div className="twinkling" />
 
       <div id="loader">
-        <div id="top"></div>
-        <div id="line"></div>
-        <div id="bottom"></div>
+        <div id="top" />
+        <div id="line" />
+        <div id="bottom" />
       </div>
     </div>
   );

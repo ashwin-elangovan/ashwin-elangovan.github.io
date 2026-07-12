@@ -1,12 +1,19 @@
-A fork of https://github.com/RyanFitzgerald/devfolio.
-### Personal Website
+# Ashwin Elangovan
 
-This portfolio is built on GatsbyJS, so it comes with all the benefits of it. You can make use of the thousands of Gatsby Plugins, utilize the Gatsby APIs (SSR, Browser, etc), and much more. For more information, check out [their great docs](https://www.gatsbyjs.com/docs/).
+Personal portfolio built with Gatsby 5, React 18, and Tailwind CSS 4.
 
-### Adding or Updating Styles
+## Development
 
-This is fully styled with [TailwindCSS](https://tailwindcss.com/) with the exception of a couple minor additional styles, as found in `src/css/index.css`.
+Use Node 22, then install dependencies and start the local site:
+
+```sh
+nvm use
+npm install
+npm run develop
+```
+
+Create a production build with `npm run build`.
 
 ## License
 
-Licensed under the [MIT License](https://github.com/ashwin-elangovan/ashwin-elangovan.github.io/blob/master/LICENSE.md).
+Licensed under the [MIT License](./LICENSE.md).

@@ -1,19 +1,21 @@
-import React from 'react';
+import React from "react";
 
 import { useScramble } from "use-scramble";
 
 const classes = {
-  wrapper: 'block pt-4 md:flex',
-  title: 'pb-6 md:w-full md:max-w-150 md:p-0',
+  wrapper:
+    "grid grid-cols-1 gap-6 pt-10 md:grid-cols-[150px_minmax(0,1fr)] md:gap-20",
+  title: "pb-2 md:p-0",
   heading: `text-xl font-bold uppercase tracking-widest hover:text-black dark:hover:text-blue-200 text-transparent bg-clip-text dark:text-transparent`,
-  gradient: 'bg-gradient-to-r from-black to-gray-100 dark:from-white dark:to-gray-700',
-  content: 'flex-none text-base text-gray-600 dark:text-gray-200 font-normal md:flex-1 md:pl-20',
+  gradient:
+    "bg-gradient-to-r from-black to-gray-100 dark:from-white dark:to-gray-700",
+  content: "min-w-0 text-base font-normal text-gray-600 dark:text-gray-200",
 };
 
 const Section = ({ title, children }) => {
-  const { ref, replay } = useScramble({
+  const { ref } = useScramble({
     text: title,
-    speed: 0.25
+    speed: 0.25,
   });
 
   return (
@@ -22,8 +24,7 @@ const Section = ({ title, children }) => {
         <h2
           className={`${classes.heading} ${classes.gradient} sticky-top`}
           ref={ref}
-          onMouseOver={replay}
-          onFocus={replay}>
+        >
           {title}
         </h2>
       </div>

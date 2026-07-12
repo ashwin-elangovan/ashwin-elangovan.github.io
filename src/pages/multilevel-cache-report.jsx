@@ -1,22 +1,6 @@
-import { useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import RedirectPage from "../components/redirect-page";
+import React from "react";
 
-export default function MyDocument() {
-
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          multilevelCacheReport
-        }
-      }
-    }
-  `);
-
-  const { multilevelCacheReport } = data.site.siteMetadata;
-  useEffect(() => {
-    window.location.href = multilevelCacheReport;
-  }, [multilevelCacheReport]);
-
-  return null;
+export default function MultilevelCacheReportPage() {
+  return <RedirectPage target="multilevelCacheReport" />;
 }
